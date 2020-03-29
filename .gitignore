@@ -1,0 +1,17 @@
+# Optionnel: ignorer les fichiers generes automatiquement
+*/Generated_Source
+
+# Ignorer les preferences personnelles
+*.cyprj.*
+*.cywrk.*
+
+# Ignorer les fichiers temporaires et rapports de compilation
+*/*.log
+*/codegentemp/
+*/CortexM3/
+*/*.cycdx
+*/*.cyfit
+*/*.rpt
+*/*_timing.html
+*/Export/PSoCCreatorExportIDE*
+
