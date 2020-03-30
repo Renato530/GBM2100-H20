@@ -55,9 +55,13 @@ où `X` est le numéro de votre groupe (1 ou 2) et `Y` est le numéro d'équipe 
 
 Vous avez également accès aux espaces `gbm2100-H20` et `gbm2100-H20/gX` en lecture seulement.
 
+
+
 ### Création de votre dépôt de travail
 
 Afin de démarrer facilement, vous pouvez faire une copie d'un projet de référence disponible dans l'espace partagé `gbm2100-H20`. À partir de la page `https://git.step.polymtl.ca/gbm2100-H20`, consultez le projet `pstat-psoc`. 
+
+SVP, activez la cloche de notifications associées au projet `pstat-psoc`.
 
 *Un seul* membre de votre équipe doit faire une copie du projet dans votre espace de travail.
 
@@ -83,4 +87,5 @@ Pour finir, assurez-vous de travailler dans une branche de développement (`dev`
     git checkout dev
 
 Vous pouvez bien sûr créer de nouvelles branches selon vos besoins et les partager avec vos coéquipiers.
+
 
