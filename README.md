@@ -49,9 +49,9 @@ Vous êtes maintenant en mesure de vous connecter et de vous identifier automati
 
 Vous partagerez votre travail via un dépôt dans un espace de travail qui vous est réservé dans un groupe qui a été créé pour votre équipe. Le chemin d'accès à votre espace de travail est:
 
-    https://git.step.polymtl.ca/gbm2100-H20/gX/eY
+    https://git.step.polymtl.ca/gbm2100-H20/gX/Y
 
-où `X` est le numéro de votre groupe (1 ou 2) et `Y` est le numéro d'équipe qui vous a été attribué. Le chemin `gbm2100-H20/gX/eY` constitue le *namespace* de votre/vos projet/s.
+où `X` est le numéro de votre groupe (1 ou 2) et `Y` est la lettre de d'équipe qui vous a été attribuée. Le chemin `gbm2100-H20/gX/eY` constitue le *namespace* de votre/vos projet/s.
 
 Vous avez également accès aux espaces `gbm2100-H20` et `gbm2100-H20/gX` en lecture seulement.
 
