@@ -6,11 +6,13 @@ Voici quelques instructions à suivre afin de posséder et configurer les outils
 
 ## Installation de Git
 
-Téléchargez et installez git (https://git-scm.com/downloads) en acceptant les options par défaut.
+Téléchargez et installez git (https://git-scm.com/downloads) en acceptant les options par défaut. Vous pouvez aussi installer une interface graphique plus conviviale de votre choix: https://git-scm.com/downloads/guis
 
-L'installation de base inclut on outil de type terminal (`Bash`), de même qu'une interface graphique (`Gui`). Sur Windows, vous avez accès à ceux-ci depuis le navigateur de fichiers. En utilisant le bouton de droite sur/dans un dossier, les items `Git Bash Here` et `Git Gui Here` devraient être disponibles dans le menu déroulant.
+Sur Mac et Linux, l'outil peut être utilisé en lignes de commandes à partir de n'importe quelle fenêtre de terminal. 
+Sur Windows, l'installation de base inclut on outil de type terminal (`Bash`) compatible avec les commandes Linux, Unix et MacOS nécessaires à l'utilisation de git. 
+Dans les deux cas, l'installation inclut une interface graphique (`Gui`) de base. 
 
-Vous pouvez aussi installer une interface graphique plus conviviale de votre choix: https://git-scm.com/downloads/guis
+Notez que sur Windows, vous avez accès aux programmes depuis le navigateur de fichiers: en utilisant le bouton de droite sur/dans un dossier, les items `Git Bash Here` et `Git Gui Here` devraient être disponibles dans le menu déroulant.
 
 
 ## Accès via SSH
@@ -19,7 +21,7 @@ Vous devez avoir une clé SSH afin d'interagir de façon transparente et sécuri
 
 ### Création d'une clé SSH
 
-Dans l'explorateur de fichiers, utilisez le bouton de droite de votre souris puis sélectionnez, dans le menu déroulant, l'item `Git Bash Here`. Vous avez maintenant un terminal compatible avec les commandes Linux, Unix et MacOS nécessaires à l'utilisation de git.
+Dans l'explorateur de fichiers, utilisez le bouton de droite de votre souris puis sélectionnez, dans le menu déroulant, l'item `Git Bash Here`.
 
 À moins que n'avez déjà généré une clé SSH sur votre ordinateur et sachiez la récupérer, entrez la commande suivante dans le terminal Git Bash:
 
@@ -51,15 +53,13 @@ Vous partagerez votre travail via un dépôt dans un espace de travail qui vous 
 
     https://git.step.polymtl.ca/gbm2100-H20/gX/Y
 
-où `X` est le numéro de votre groupe (1 ou 2) et `Y` est la lettre de d'équipe qui vous a été attribuée. Le chemin `gbm2100-H20/gX/eY` constitue le *namespace* de votre/vos projet/s.
-
-Vous avez également accès aux espaces `gbm2100-H20` et `gbm2100-H20/gX` en lecture seulement.
+où `X` est le numéro de votre groupe (1 ou 2) et `Y` est un identificant d'équipe qui vous a été attribuée (c.f. votre courriel d'invitation). Le chemin `gbm2100-H20/gX/Y` constitue le *namespace* de votre/vos projet/s.
 
 
 
 ### Création de votre dépôt de travail
 
-Afin de démarrer facilement, vous pouvez faire une copie d'un projet de référence disponible dans l'espace partagé `gbm2100-H20`. À partir de la page `https://git.step.polymtl.ca/gbm2100-H20`, consultez le projet `pstat-psoc`. 
+Afin de démarrer facilement, vous pouvez faire une copie d'un projet de référence disponible dans l'espace partagé `gbm2100-H20`. À partir de votre espace de travail, consultez la section `Shared projects` et rendez-vous sur la page du projet `pstat-psoc`. 
 
 SVP, activez la cloche de notifications associées au projet `pstat-psoc`.
 
