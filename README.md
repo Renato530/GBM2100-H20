@@ -89,3 +89,13 @@ Pour finir, assurez-vous de travailler dans une branche de développement (`dev`
 Vous pouvez bien sûr créer de nouvelles branches selon vos besoins et les partager avec vos coéquipiers.
 
 
+# Ressources
+
+Vous pouvez consulter de nombreuses ressources pour approfondir vos connaissances, notamment:
+
+- un [petit guide visuel](https://agripongit.vincenttunru.com) illustrant les concepts de base;
+- un [guide plus complet](http://www-cs-students.stanford.edu/~blynn/gitmagic/intl/fr/) en français;
+- un [court tutoriel](https://gitguide.readthedocs.io/en/latest/index.html) en anglais pour l'essentiel;
+- un [site instructif](https://www.atlassian.com/fr/git/tutorials/what-is-version-control), notamment au sujet de la [collaboration](https://www.atlassian.com/fr/git/tutorials/syncing) et des [méthodes de travail](https://www.atlassian.com/fr/git/tutorials/comparing-workflows)
+- les [notions de base](https://docs.gitlab.com/ee/gitlab-basics/README.html) sur GitLab
+
