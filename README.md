@@ -21,7 +21,7 @@ Vous devez avoir une clé SSH afin d'interagir de façon transparente et sécuri
 
 ### Création d'une clé SSH
 
-Dans l'explorateur de fichiers, utilisez le bouton de droite de votre souris puis sélectionnez, dans le menu déroulant, l'item `Git Bash Here`.
+Sur Mac/Linux, ouvrez une fenêtre de terminal. Pour les utilisateurs de Windows: dans l'explorateur de fichiers, utilisez le bouton de droite de votre souris puis sélectionnez, dans le menu déroulant, l'item `Git Bash Here`.
 
 À moins que n'avez déjà généré une clé SSH sur votre ordinateur et sachiez la récupérer, entrez la commande suivante dans le terminal Git Bash:
 
