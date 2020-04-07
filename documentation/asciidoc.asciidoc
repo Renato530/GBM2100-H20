@@ -1,0 +1,5 @@
+= Asciidoc
+
+Asciidoc est comparable à [Markdown](./markdown.md), mais a été plus spécifiquement inventé pour la rédaction technique et le monde de l'édition. Il offre plus de fonctionnalités et d'options de mise en forme/page.
+
+NOTE: [L'implémentation courante](https://asciidoctor.org) est supportée par GitLab
