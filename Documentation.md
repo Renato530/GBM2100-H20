@@ -11,7 +11,7 @@ Les différentes composantes du multimètre sont intégrés à partir d'une inte
 
 
 
-## Ampéremètre
+## Ampèremètre
 
 
 
