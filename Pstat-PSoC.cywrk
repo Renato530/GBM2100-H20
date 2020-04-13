@@ -16,7 +16,6 @@
 <wrkspc_dependencies>
 <wrkspc_dependency project="Pstat.cydsn\Pstat.cyprj" dependency="${CyRoot}\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj" />
 <wrkspc_dependency project="Pstat.cydsn\Pstat.cyprj" dependency="${CyRoot}\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj" />
-<wrkspc_dependency project="Pstat.cydsn\Pstat.cyprj" dependency="..\..\Dependencies\CharLCD_I2C.cylib\CharLCD_I2C.cyprj" />
 <wrkspc_dependency project="Pstat.cydsn\Pstat.cyprj" dependency="..\..\..\Desktop\CharLCD_I2C.cylib\CharLCD_I2C.cyprj" />
 </wrkspc_dependencies>
 </CyGuid_dcbd9771-0334-43dc-9cc3-fe99dc3c5316>

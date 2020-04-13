@@ -15,7 +15,7 @@
 #include "project.h"
 #include "FreeRTOS.h"
 #include "task.h"
-
+#include <stdio.h>
 
 int main(void)
 {
