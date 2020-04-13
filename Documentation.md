@@ -6,12 +6,12 @@ De plus, deux relations mathématiques ont été nécessaires afin de fournir le
 l'utilisateur.
 
 #### Loi d'Ohm
-$$V = RI$$
+$V = RI$
 
 #### La relation courant/capacitance
-$$C = \frac{q}{V}$$
+$C = \frac{q}{V}$
 
-$$i(t) = c*\frac{dv}{dt}$$
+$i(t) = c*\frac{dv}{dt}$
 
 ## Volmètre
 
