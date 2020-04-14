@@ -1,13 +1,13 @@
 /* ========================================
  *
- * Copyright ÉQUIPE 1E, 2020
+ * Copyright ÉQUIPE '1E', 2020
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
  * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF TEAM 1E.
+ * WHICH IS THE PROPERTY OF TEAM '1E'.
  * Renato Castillo 1962797 
- * Karl-Philippe Beaudet XXXXXXX
+ * Karl-Philippe Beaudet 1958657
  * Richema Métellus XXXXXXX
  * Tasnim Ahmed XXXXXXX
  * ========================================
@@ -16,12 +16,6 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include <stdio.h>
-
-// Variables générales
-int courant =0;
-int resistance =0;
-int voltage=0;
-char val_resistance[10];
 
 // TODO : S'assurer de l'affichage d'une resistance sur Putty
 // TODO : Integrer cette composante du multimetre au Voltmetre par une interface
@@ -40,6 +34,12 @@ CY_ISR(UART_Debut)
 
 int main(void)
 {
+    // Variables générales
+    int courant = 0;
+    int resistance = 0;
+    int voltage = 0;
+    char val_resistance[10];
+    
     CyGlobalIntEnable; /* Enable global interrupts. */
     FreeRTOS_Start();
     DAC_Start();
@@ -49,13 +49,11 @@ int main(void)
     SAR_ADC_StartConvert();
     UART_PutString("Ohmetre \r\r");
     
-    //    xTaskCreate(...);
-    
     vTaskStartScheduler();
     for(;;) 
     {
         courant = 200; // uA 
-        while (SAR_ADC_IsEndConversion(SAR_ADC_RETURN_STATUS)) {} // TODO : Essayer de verifier si la conversion est fini pour faire le calcul
+        //while (SAR_ADC_IsEndConversion(SAR_ADC_RETURN_STATUS)) {} // TODO : Essayer de verifier si la conversion est fini pour faire le calcul
         voltage= SAR_ADC_CountsTo_uVolts(SAR_ADC_GetResult16()); // uV
         resistance = voltage/courant;
         sprintf(val_resistance,"%d",resistance);
