@@ -1,15 +1,15 @@
 /* ========================================
  *
- * Copyright GBM2100 Équipe 1e, 2020
+ * Copyright GBM2100 Équipe 1E, 2020
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
  * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF Équipe 1e.
- * Renato Castillo 1962797
- * Karl-Philippe Beaudet 1958657
- * Richema Métallus xxxxxxx
- * Tasnim Ahmed xxxxxxx
+ * WHICH IS THE PROPERTY OF Équipe 1E.
+ * Renato Castillo          1962797
+ * Karl-Philippe Beaudet    1958657
+ * Richema Métallus         1953911
+ * Tasnim Ahmed             1958545
  * ========================================
 */
 
@@ -30,13 +30,11 @@ int main(void)
     UART_Start();
     ADC_SAR_Start();
     //LCD_Start();
-    
+   
     // Fonctions ecran LED
     //LCD_Position(0,0);
     //LCD_PrintString("Voltmetre");
     
-    // xTaskCreate(...);
-    vTaskStartScheduler();
     ADC_SAR_StartConvert();
     
     for(;;) 
