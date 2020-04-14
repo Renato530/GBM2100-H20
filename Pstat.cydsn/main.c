@@ -17,28 +17,31 @@
 #include "task.h"
 #include "stdio.h"
 
-float x,y=0;
-char result[15]={'\0'};
+float x=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
+float y=0; // y étant la conversion de x en millivolts
+char result[15]={'\0'}; //louer un espace pour le string de l'affichage via Putty
 
 int main(void)
 {
-    CyGlobalIntEnable; /* Enable global interrupts. */
+    //CyGlobalIntEnable; aucune interruption
     FreeRTOS_Start();
-    ADC_SAR_Start();
     UART_Start();
+    ADC_SAR_Start();
+    
     
     
 //    xTaskCreate(...);
     
     vTaskStartScheduler();
+    ADC_SAR_StartConvert();
     for(;;) 
     {
-        ADC_SAR_StartConvert();
+        
         ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT);
         x=ADC_SAR_GetResult16(0);
-        float32 y=ADC_SAR_CountsTo_mVolts(x);
+        float32 y=ADC_SAR_CountsTo_mVolts(x); //conversion du résultats de l'ADC origninallement en bit en mvolts 
         UART_PutString("Voltage \n");
-        sprintf(result,"%.2f",y);
+        sprintf(result,"%.2f",y); //affichage de résultat en mvolts via UART et Putty
         
          
         
