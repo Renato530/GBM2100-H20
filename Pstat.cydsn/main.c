@@ -7,11 +7,12 @@
  * CONFIDENTIAL AND PROPRIETARY INFORMATION
  * WHICH IS THE PROPERTY OF Équipe 1e.
  * Renato Castillo 1962797
- * Karl-Philippe Beaudet xxxxxxx
+ * Karl-Philippe Beaudet 1958657
  * Richema Métallus xxxxxxx
  * Tasnim Ahmed xxxxxxx
  * ========================================
 */
+
 #include "project.h"
 #include "FreeRTOS.h"
 #include "task.h"
@@ -23,28 +24,22 @@ char result[15]={'\0'}; //louer un espace pour le string de l'affichage via Putt
 
 int main(void)
 {
-    //CyGlobalIntEnable; aucune interruption
+    // CyGlobalIntEnable; aucune interruption
     FreeRTOS_Start();
     UART_Start();
     ADC_SAR_Start();
     
-    
-    
-//    xTaskCreate(...);
-    
+    // xTaskCreate(...);
     vTaskStartScheduler();
     ADC_SAR_StartConvert();
+    
     for(;;) 
     {
-        
         ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT);
-        x=ADC_SAR_GetResult16(0);
-        float32 y=ADC_SAR_CountsTo_mVolts(x); //conversion du résultats de l'ADC origninallement en bit en mvolts 
-        UART_PutString("Voltage \n");
+        x=ADC_SAR_GetResult16(0); // Retourne la conversion à x pour le channel '0'
+        y=ADC_SAR_CountsTo_mVolts(x); //conversion du résultats de l'ADC origninallement en bit en mvolts 
+        UART_PutString("Voltage \n"); 
         sprintf(result,"%.2f",y); //affichage de résultat en mvolts via UART et Putty
-        
-         
-        
     }
 }
 
