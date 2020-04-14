@@ -5,6 +5,10 @@ Les différentes composantes du multimètre sont intégrés à partir d'une inte
 De plus, deux relations mathématiques ont été nécessaires afin de fournir les données recherchées par 
 l'utilisateur.
 
+![Schéma du multimètre](documentation/images/Schéma_Multimetre.png "Schéma du multimètre")
+
+
+
 #### Loi d'Ohm
 $V = RI$
 
