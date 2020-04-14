@@ -7,7 +7,7 @@
  * CONFIDENTIAL AND PROPRIETARY INFORMATION
  * WHICH IS THE PROPERTY OF TEAM 1E.
  * Renato Castillo 1962797 
- * Karl-Philippe Beaudet 1958657
+ * Karl-Philippe Beaudet XXXXXXX
  * Richema Métellus XXXXXXX
  * Tasnim Ahmed XXXXXXX
  * ========================================
