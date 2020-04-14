@@ -10,7 +10,7 @@ l'utilisateur.
 
 
 #### Loi d'Ohm
-$V = RI$
+$$V = RI$$
 
 #### La relation courant/capacitance
 $C = \frac{q}{V}$
