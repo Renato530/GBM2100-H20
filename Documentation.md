@@ -29,6 +29,7 @@ un ADC simple tel vu dans le laboratoire 3 du cours.
 Voici un tableau qui resume les caractéristiques principales de notre voltmètre.
 
 Tableau 1: Caractéristiques du Ohmètre
+
 | Voltmètre    |    Potentiel minimal      |    Potentiel maximal     | 
 | :---         | :--------------------:    | -------------:           | 
 | N/A          | Cell 2                    | Cell 3                   | 
@@ -49,6 +50,7 @@ indiquées sur le tableau permet d'établir une plage dans lequel les valeurs fo
 près de celles fournis par le fabriquant d'un élément résistif.
 
 Tableau 2: Caractéristiques du Ohmètre
+
 | Ohmmètre     |    Résistance minimale    |    Résistance maximale   | 
 | :---         | :--------------------:    | -------------:           | 
 | N/A          | Cell 2                    | Cell 3                   | 
