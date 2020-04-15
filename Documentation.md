@@ -5,7 +5,7 @@ Les différentes composantes du multimètre sont intégrés à partir d'une inte
 De plus, deux relations mathématiques ont été nécessaires afin de fournir les données recherchées par 
 l'utilisateur.
 
-![Schéma du multimètre](documentation/images/Schema_multimetre.png)*Schéma du multimètre*
+![Schéma du multimètre](documentation/images/Schema_multimetre.png)*Figure 1: Schéma du multimètre*
 
 
 #### Loi d'Ohm
@@ -24,10 +24,11 @@ Ce voltmètre sera la composante du multimètre qui requiert le moins d'élement
 on peut simplement construire un voltmètre à partir d'un ADC. Dans notre cas, on a choisi d'implementer
 un ADC simple tel vu dans le laboratoire 3 du cours. 
 
-![Schéma du Voltmètre](documentation/images/Schema_Voltmetre.png)*Schéma du Voltmètre*
+![Schéma du Voltmètre](documentation/images/Schema_Voltmetre.png)*Figure 2: Schéma du Voltmètre*
 
 Voici un tableau qui resume les caractéristiques principales de notre voltmètre.
 
+Tableau 1: Caractéristiques du Ohmètre
 | Voltmètre    |    Potentiel minimal      |    Potentiel maximal     | 
 | :---         | :--------------------:    | -------------:           | 
 | N/A          | Cell 2                    | Cell 3                   | 
@@ -41,12 +42,13 @@ est conçu à partir d'un iDAC et un ADC simple. Le iDAC permet de fournir un co
 le segmenter avec le ADC pour extraire l'information sur le potentiel puis calculer la résistance par la 
 loi d'Ohm. Le schéma ci-dessous indique la manière dont notre équipe à décidé d'approcher le problème.
 
-![Schéma du Ohmètre](documentation/images/Schema_Ohmetre.png)*Schéma du Ohmètre*
+![Schéma du Ohmètre](documentation/images/Schema_Ohmetre.png)*Figure 3: Schéma du Ohmètre*
 
 Voici un tableau qui resume les caractéristiques principales de notre ohmètre. Les valeurs des résistances 
 indiquées sur le tableau permet d'établir une plage dans lequel les valeurs fournis par l'Ohmètre sont 
 près de celles fournis par le fabriquant d'un élément résistif.
 
+Tableau 2: Caractéristiques du Ohmètre
 | Ohmmètre     |    Résistance minimale    |    Résistance maximale   | 
 | :---         | :--------------------:    | -------------:           | 
 | N/A          | Cell 2                    | Cell 3                   | 
