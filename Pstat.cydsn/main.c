@@ -6,10 +6,10 @@
  *
  * CONFIDENTIAL AND PROPRIETARY INFORMATION
  * WHICH IS THE PROPERTY OF TEAM '1E'.
- * Renato Castillo 1962797 
- * Karl-Philippe Beaudet 1958657
- * Richema Métellus XXXXXXX
- * Tasnim Ahmed XXXXXXX
+ * Renato Castillo          1962797
+ * Karl-Philippe Beaudet    1958657
+ * Richema Métallus         1953911
+ * Tasnim Ahmed             1958545
  * ========================================
 */
 #include "project.h"
