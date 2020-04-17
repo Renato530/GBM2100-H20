@@ -30,9 +30,6 @@ int main(void)
     UART_PutString("- Mode Amperemetre -\n\r");
     ADC_StartConvert();
     
-    
-//    xTaskCreate(...);
-    
     vTaskStartScheduler();
     for(;;) 
     {
