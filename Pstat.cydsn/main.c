@@ -57,12 +57,11 @@ int main(void)
     FreeRTOS_Start();
     ADC_Start();
     ADC_StartConvert();
-<<<<<<< HEAD
+
     char8 input;
     
 //    xTaskCreate(...);
-=======
->>>>>>> 22cdea4bf6039fb3f0446c18485d7f3278cc903a
+
     
     vTaskStartScheduler();
     for(;;) 
