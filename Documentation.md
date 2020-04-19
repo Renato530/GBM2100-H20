@@ -32,7 +32,7 @@ Tableau 1: Caractéristiques du Ohmètre
 
 | Voltmètre    |    Potentiel minimal      |    Potentiel maximal     | 
 | :---         | :--------------------:    | -------------:           | 
-| N/A          | Cell 2                    | Cell 3                   | 
+| N/A          | 0 mv                      | 2040 mV                  | 
 
 ## Ohmètre
 
