@@ -60,31 +60,24 @@ void mode_Voltmetre()
     
     if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT !=0)) // Verficiation de la conversion
     {
-         dac_bin=ADC_SAR_GetResult16(0); // Retourne la conversion à x pour le channel '0' 
-         dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
-         UART_PutString("-> Voltage : "); 
-         sprintf(result_volts,"%d",dac_volt); //affichage de résultat en mvolts via UART et Putty
-         UART_PutString(result_volts);
-         UART_PutString (" mV\n\r");
+        dac_bin=ADC_SAR_GetResult16(0); // Retourne la conversion à x pour le channel '0'
     
-    } // 
-    
-    
-    dac_bin=ADC_SAR_GetResult16(0); // Retourne la conversion à x pour le channel '0'
-    
-    dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
+        dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
          
-    if (dac_volt <=0) // Condition pour retourner un potentiel positif via notre multimètre
-    {
-        dac_volt=0;
+        if (dac_volt <=0) // Condition pour retourner un potentiel positif via notre multimètre
+        {
+            dac_volt=0;
+        }
+        dac_bin=ADC_SAR_GetResult16(0); // Retourne la conversion à x pour le channel '0' 
+        dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
+        UART_PutString("-> Voltage : "); 
+        sprintf(result_volts,"%d",dac_volt); //affichage de résultat en mvolts via UART et Putty
+        UART_PutString(result_volts);
+        UART_PutString (" mV\n\r");
     }
-    //UART_PutString("-> Voltage : "); 
-    sprintf(result_volts,"%d",dac_volt); //affichage de résultat en mvolts via UART et Putty
-    UART_PutString(result_volts);
-    UART_PutString (" mV\n\r");
-
 } // Ceci est une tache qui correspond au mode Voltmetre de notre multimetre (utile pour l'implementation de plusieurs outils dans le multimetre)
 //////////////////////////////////////////////////////////////////////////
+
 
 /////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////// MAIN LOOP /////////////////////////////////
@@ -125,7 +118,7 @@ int main(void)
                 while(inputTemp == 0)
                 {
                     mode_Voltmetre();
-                    CyDelay(100);
+                    CyDelay(500);
                     inputTemp=UART_GetChar();
                     if (!inputTemp)
                     {
