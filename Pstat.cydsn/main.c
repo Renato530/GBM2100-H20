@@ -35,11 +35,13 @@
 void UART_initialisation() 
 {
     UART_Start();
-    UART_PutString("- Bienvenue au multimetre de l'equipe 1e - \n\r ");
-    CyDelay(2000);
+    // Affichage du MENU
+    UART_PutString("== MULTIMETRE == \n \r");
+    UART_PutString("  0 - Mode Voltmetre \n \r");
+    UART_PutString("  1 - Mode Amperemetre \n \r");
+    UART_PutString("  2 - Mode Ohmmetre \n \r");
     UART_PutString("- Veuillez choisir un mode - \n \r");
     CyDelay(4000);
-   
 }
 
 ////////////////////////
@@ -50,7 +52,7 @@ void UART_initialisation()
 //TODO: Envoyer les donnes via MATLAB (affichage tableau, graphique...)
 void mode_Voltmetre() 
 {
-    UART_PutString("- Mode Voltmetre - \n\r ");
+    //UART_PutString("- Mode Voltmetre (Appuyez sur nimporte quelle touche pour quitter) - \n\r ");
     // Declaration des variables
     float dac_bin=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
     float dac_volt=0; // y étant la conversion de x en millivolts
@@ -67,10 +69,10 @@ void mode_Voltmetre()
         dac_volt=0;
     }
     
-    UART_PutString("- Voltage - \n\r"); 
+    UART_PutString("-> Voltage : "); 
     sprintf(result_volts,"%.2f",dac_volt); //affichage de résultat en mvolts via UART et Putty
     UART_PutString (" mV\n\r");
-    
+
 } // Ceci est une tache qui correspond au mode Voltmetre de notre multimetre (utile pour l'implementation de plusieurs outils dans le multimetre)
 //////////////////////////////////////////////////////////////////////////
 
@@ -80,36 +82,82 @@ void mode_Voltmetre()
 
 int main(void)
 {
-    
-    char8 input;
+    char8 input; 
     // CyGlobalIntEnable; aucune interruption
     FreeRTOS_Start();
     ADC_SAR_Start();
     //LCD_Start();
    
     // Fonctions ecran LED
-    //LCD_Position(0,0);
-    //LCD_PrintString("Voltmetre");
-    //LCD_ClearDisplay();
+    // LCD_Position(0,0);
+    // LCD_PrintString("Voltmetre");
+    // LCD_ClearDisplay();
     
     ADC_SAR_StartConvert();
     //xTaskCreate(UART_initialisation,"InUART",200,(void*)0, tskIDLE_PRIORITY,&mTache1); // Creation d'un task pour le FreeRTOS
     
-    
+    // Affichage du message d'accueil
+    UART_PutString("- Bienvenue au multimetre de l'equipe 1e - \n\r ");
+    CyDelay(2000);
     
     for(;;) 
     {
         UART_initialisation();
         input=UART_GetChar(); // Permet de savoir le mode choisi
-        if (input=='0')
+            
+        char8 inputTemp;
+        switch (input)
         {
-            mode_Voltmetre();
+            case '0':
+                UART_PutString("- Mode Voltmetre (Appuyez sur n'importe quelle touche pour quitter) - \n \r ");
+                // On reste dans le mode Voltmètre tant qu'on appuie pas sur une touche sur le clavier
+                inputTemp = 0;
+                while(inputTemp == 0)
+                {
+                    mode_Voltmetre();
+                    CyDelay(500);
+                    inputTemp=UART_GetChar();
+                    if (!inputTemp)
+                    {
+                        inputTemp=0;
+                    }
+                }
+                break;
+                
+            case '1':
+                UART_PutString("- Mode Amperemetre (Appuyez sur n'importe quelle touche pour quitter) - \n\r ");
+                inputTemp = 0;
+                while(inputTemp == 0)
+                {
+                    //mode_Amperemetre();
+                    CyDelay(500);
+                    inputTemp=UART_GetChar();
+                    if (!inputTemp)
+                    {
+                        inputTemp=0;
+                    }
+                }
+                break;
+
+            case '2':
+                UART_PutString("- Mode Ohmmetre (Appuyez sur n'importe quelle touche pour quitter) - \n\r ");
+                inputTemp = 0;
+                while(inputTemp == 0)
+                {
+                    //mode_Ohmmetre();
+                    CyDelay(500);
+                    inputTemp=UART_GetChar();
+                    if (!inputTemp)
+                    {
+                        inputTemp=0;
+                    }
+                }
+                break;    
+            default:
+                UART_PutString("-No mode selected-\n\r");
         }
-        else
-        {
-            UART_PutString("-No mode selected-\n\r");
-        }
-        CyDelay(3000);
+
+        CyDelay(1000);
     }
 } ///////////////////=========== main loop Ends Here ===============/////////////////////////
 
