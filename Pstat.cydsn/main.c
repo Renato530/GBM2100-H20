@@ -58,7 +58,7 @@ void mode_Voltmetre()
     int dac_volt=0; // y étant la conversion de x en millivolts
     char result_volts[15]={'\0'}; //louer un espace pour le string de l'affichage via Putty
     
-    if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT !=0)) // Verficiation de la conversion
+    if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT) !=0) // Verficiation de la conversion
     {
         dac_bin=ADC_SAR_GetResult16(0); // Retourne la conversion à x pour le channel '0'
     
