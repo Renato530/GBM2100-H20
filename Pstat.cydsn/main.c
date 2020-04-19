@@ -54,8 +54,8 @@ void mode_Voltmetre()
 {
     //UART_PutString("- Mode Voltmetre (Appuyez sur nimporte quelle touche pour quitter) - \n\r ");
     // Declaration des variables
-    float dac_bin=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
-    float dac_volt=0; // y étant la conversion de x en millivolts
+    int dac_bin=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
+    int dac_volt=0; // y étant la conversion de x en millivolts
     char result_volts[15]={'\0'}; //louer un espace pour le string de l'affichage via Putty
     
     ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT); // Vérification de la conversion
@@ -68,9 +68,9 @@ void mode_Voltmetre()
     {
         dac_volt=0;
     }
-    
-    UART_PutString("-> Voltage : "); 
-    sprintf(result_volts,"%.2f",dac_volt); //affichage de résultat en mvolts via UART et Putty
+    //UART_PutString("-> Voltage : "); 
+    sprintf(result_volts,"%d",dac_volt); //affichage de résultat en mvolts via UART et Putty
+    UART_PutString(result_volts);
     UART_PutString (" mV\n\r");
 
 } // Ceci est une tache qui correspond au mode Voltmetre de notre multimetre (utile pour l'implementation de plusieurs outils dans le multimetre)
@@ -115,7 +115,7 @@ int main(void)
                 while(inputTemp == 0)
                 {
                     mode_Voltmetre();
-                    CyDelay(500);
+                    CyDelay(100);
                     inputTemp=UART_GetChar();
                     if (!inputTemp)
                     {
