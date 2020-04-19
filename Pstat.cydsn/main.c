@@ -22,15 +22,6 @@
 
 // Pour l'instant essayer de tester avec des resistances du FreeSoC
 
-CY_ISR(UART_Debut)
-{
-    UART_Timer_ReadStatusRegister();
-    UART_Start();
-    UART_PutString("Bienvenue \n\r");
-    CyDelay(200);
-    UART_PutString("Veuillez inserer la resistance\r\r");
-}
-
 
 int main(void)
 {
@@ -44,8 +35,7 @@ int main(void)
     FreeRTOS_Start();
     DAC_Start();
     SAR_ADC_Start();
-    UART_Timer_Start();
-    UART_interrupt_StartEx(UART_Debut);
+   
     SAR_ADC_StartConvert();
     UART_PutString("Ohmetre \r\r");
     
@@ -53,7 +43,7 @@ int main(void)
     for(;;) 
     {
         courant = 200; // uA 
-        //while (SAR_ADC_IsEndConversion(SAR_ADC_RETURN_STATUS)) {} // TODO : Essayer de verifier si la conversion est fini pour faire le calcul
+        if (SAR_ADC_IsEndConversion(SAR_ADC_RETURN_STATUS)) {} // TODO : Essayer de verifier si la conversion est fini pour faire le calcul
         voltage= SAR_ADC_CountsTo_uVolts(SAR_ADC_GetResult16()); // uV
         resistance = voltage/courant;
         sprintf(val_resistance,"%d",resistance);
@@ -65,7 +55,7 @@ int main(void)
         }
         else 
         {
-            UART_PutString("\r\r");
+            UART_PutString("\n\r");
             UART_PutString("Veuillez inserer la resistance");
         }
     }
