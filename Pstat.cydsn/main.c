@@ -64,7 +64,7 @@ void mode_Ohmetre()
         CyDelay(3);
         if (SAR_ADC_IsEndConversion(SAR_ADC_WAIT_FOR_RESULT)!=0)
         {
-            v_input= SAR_ADC_GetResult16();
+            v_input= SAR_ADC_GetResult16(0);
         }
         CyDelay(2);
 
