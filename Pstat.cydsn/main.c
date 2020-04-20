@@ -19,6 +19,7 @@
 
 // TODO : S'assurer de l'affichage d'une resistance sur Putty
 // TODO : Integrer cette composante du multimetre au Voltmetre par une interface
+// TODO : Remplacer les chiffre (valeurs qui sortent de nulpart) par des variables explicatives
 
 // Pour l'instant essayer de tester avec des resistances du FreeSoC
 
@@ -45,6 +46,7 @@ void UART_initialisation()
 
 void mode_Ohmetre()
 {
+    // Déclaration des variables
     int courant = 0;
     int resistance = 0;
     int voltage = 0;
@@ -52,11 +54,14 @@ void mode_Ohmetre()
     unsigned int DAC_valeur = 0xff;
     int v_input=5000;
     
+    // Initialisation des composantes
     DAC_Start();
     SAR_ADC_Start();
     DAC_valeur= 0xff;
     DAC_SetValue(DAC_valeur);
     SAR_ADC_StartConvert();
+    
+    
     while ((DAC_valeur > 0) && (v_input >=5000))
     {
         DAC_valeur=DAC_valeur - 0x01;
@@ -75,7 +80,7 @@ void mode_Ohmetre()
         CyDelay(1);
         courant = DAC_valeur*8;
         voltage=v_input*400;
-        resistance= voltage/courant;
+        resistance= voltage/courant*10; // **facteur de 10 et facteur d'impédance** à revoir *(1000/805)
         
         if (resistance <= 0) 
         {
@@ -147,7 +152,7 @@ int main(void)
                 while(inputTemp == 0)
                 {
                     //mode_Voltmetre();
-                    CyDelay(500);
+                    CyDelay(100);
                     inputTemp=UART_GetChar();
                     if (!inputTemp)
                     {
@@ -177,7 +182,7 @@ int main(void)
                 while(inputTemp == 0)
                 {
                     mode_Ohmetre();
-                    CyDelay(500);
+                    CyDelay(100);
                     inputTemp=UART_GetChar();
                     if (!inputTemp)
                     {
