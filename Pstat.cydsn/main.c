@@ -99,6 +99,9 @@ int main(void)
     ADC_SAR_StartConvert();
     //xTaskCreate(UART_initialisation,"InUART",200,(void*)0, tskIDLE_PRIORITY,&mTache1); // Creation d'un task pour le FreeRTOS
     
+    int frequence_echatillonage = 10; // Hz
+    int periode_echatillonage=1000/frequence_echatillonage; // mS
+    
     // Affichage du message d'accueil
     UART_PutString("- Bienvenue au multimetre de l'equipe 1e - \n\r ");
     CyDelay(2000);
@@ -118,7 +121,7 @@ int main(void)
                 while(inputTemp == 0)
                 {
                     mode_Voltmetre();
-                    CyDelay(500);
+                    CyDelay(periode_echatillonage);
                     inputTemp=UART_GetChar();
                     if (!inputTemp)
                     {
@@ -133,7 +136,7 @@ int main(void)
                 while(inputTemp == 0)
                 {
                     //mode_Amperemetre();
-                    CyDelay(500);
+                    CyDelay(periode_echatillonage);
                     inputTemp=UART_GetChar();
                     if (!inputTemp)
                     {
@@ -148,7 +151,7 @@ int main(void)
                 while(inputTemp == 0)
                 {
                     //mode_Ohmmetre();
-                    CyDelay(500);
+                    CyDelay(periode_echatillonage);
                     inputTemp=UART_GetChar();
                     if (!inputTemp)
                     {
