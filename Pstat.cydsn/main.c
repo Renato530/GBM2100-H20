@@ -74,7 +74,7 @@ void mode_Ohmetre()
         DAC_SetValue(DAC_valeur);
         CyDelay(1);
         courant = DAC_valeur*8;
-        voltage=v_input*1000;
+        voltage=v_input*400;
         resistance= voltage/courant;
         
         if (resistance <= 0) 
