@@ -49,25 +49,47 @@ void mode_Ohmetre()
     int resistance = 0;
     int voltage = 0;
     char val_resistance[10];
-    uint DAC_valeur = 0xff;
-    int compte=4095;
+    unsigned int DAC_valeur = 0xff;
+    int v_input=5000;
     
     DAC_Start();
     SAR_ADC_Start();
     DAC_valeur= 0xff;
     DAC_SetValue(DAC_valeur);
     SAR_ADC_StartConvert();
-    while ((DAC_valeur > 0) && (compte >=4000))
+    while ((DAC_valeur > 0) && (v_input >=5000))
     {
         DAC_valeur=DAC_valeur - 0x01;
         DAC_SetValue(DAC_valeur);
-        CyDelay(10);
-    }
+        CyDelay(3);
         if (SAR_ADC_IsEndConversion(SAR_ADC_WAIT_FOR_RESULT)!=0)
         {
-            compte= SAR_ADC_GetResult16(0);
+            v_input= SAR_ADC_GetResult16();
         }
+        CyDelay(2);
+
+    }
+    if (v_input < 5000)
+    {
+        DAC_SetValue(DAC_valeur);
+        CyDelay(1);
+        courant = DAC_valeur*8;
+        voltage=v_input*1000/5;
+        resistance= voltage/courant;
+        
+        if (resistance <= 0) 
+        {
+            resistance = 0;
+        }
+        if(resistance < 500000)
+        {
+            sprintf(val_resistance,"%d",resistance);
+            
+        }
+        
+    }
     
+      
     
 }
 
