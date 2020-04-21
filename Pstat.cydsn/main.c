@@ -22,27 +22,37 @@
 void UART_initialisation() 
 {
     UART_Start();
-    UART_PutString("- Bienvenue au multimetre de l'equipe 1e - \n\r ");
-    CyDelay(2000);
+    // Affichage du MENU
+    UART_PutString(" \n \r");
+    UART_PutString("=========================== \n \r");
+    UART_PutString("======= MULTIMETRE ======== \n \r");
+    UART_PutString("=========================== \n \r");
+    UART_PutString("||  0 - Mode Voltmetre   ||\n \r");
+    UART_PutString("||  1 - Mode Amperemetre ||\n \r");
+    UART_PutString("||  2 - Mode Ohmmetre    ||\n \r");
+    UART_PutString("=========================== \n \r");
     UART_PutString("- Veuillez choisir un mode - \n \r");
-    CyDelay(4000);
-   
+    UART_PutString("=========================== \n \r");
+    CyDelay(300);
 }
 
-void mode_Amp () // Configuration de l'amperemetre
+void mode_Amperemetre () // Configuration de l'amperemetre
 {
-    UART_PutString("- Mode Amperemetre -\n\r");
     int32 adcResult;
-    float adcVolt;
-    float adcAmp;
-    float R_2;
+    int adcVolt;
+    int adcAmp;
+    int R_2=100;
     char result_Amp[20];
-    ADC_IsEndConversion(ADC_RETURN_STATUS);
-    adcResult=ADC_GetResult32();
-    adcVolt=ADC_CountsTo_mVolts(adcResult);
-    adcAmp = adcVolt/R_2;
-    sprintf(result_Amp,"%+1.3f A",adcAmp);
-    UART_PutString(result_Amp);
+    if (ADC_IsEndConversion(ADC_RETURN_STATUS)!=0)
+    {
+        adcResult=ADC_GetResult32();
+        adcVolt=ADC_CountsTo_mVolts(adcResult);
+        adcAmp = adcVolt/R_2;
+        UART_PutString("-> Courant : ");
+        sprintf(result_Amp,"%d",adcAmp);
+        UART_PutString(result_Amp);
+        UART_PutString (" A\n\r");   
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -57,8 +67,15 @@ int main(void)
     FreeRTOS_Start();
     ADC_Start();
     ADC_StartConvert();
+    int frequence_echatillonage = 10; // Hz
+    int periode_echatillonage=1000/frequence_echatillonage; // mS
+    char input;
+    UART_Start();
+    // Affichage du message d'accueil
+    UART_PutString("- Bienvenue au multimetre de l'equipe 1e - \n\r ");
+    CyDelay(2000);
 
-    char8 input;
+  
     
 //    xTaskCreate(...);
 
@@ -66,17 +83,69 @@ int main(void)
     vTaskStartScheduler();
     for(;;) 
     {
-       UART_initialisation();
-       input=UART_GetChar(); // Permet de savoir le mode choisi
-       if (input=='1')
-        {
-            mode_Amp();
+        UART_initialisation();
+        input='\0';
+        
+        while (!input){
+             input=UART_GetChar(); // Permet de savoir le mode choisi
         }
-       else
+        
+        char8 inputTemp;
+        switch (input)
         {
-            UART_PutString("-No mode selected-\n\r");
+            case '0':
+                UART_PutString("- Mode Voltmetre (Appuyez sur ENTER pour quitter) - \n \r ");
+                CyDelay(500);
+                // On reste dans le mode Voltmètre tant qu'on appuie pas sur une touche sur le clavier
+                inputTemp = 0;
+                while(inputTemp == 0)
+                {
+                    //mode_Voltmetre();
+                    CyDelay(periode_echatillonage);
+                    inputTemp=UART_GetChar();
+                    if (!inputTemp)
+                    {
+                        inputTemp=0;
+                    }
+                }
+                break;
+                
+            case '1':
+                UART_PutString("- Mode Amperemetre (Appuyez sur ENTER pour quitter) - \n\r ");
+                CyDelay(500);
+                inputTemp = 0;
+                while(inputTemp == 0)
+                {
+                    //mode_Amperemetre();
+                    CyDelay(periode_echatillonage);
+                    inputTemp=UART_GetChar();
+                    if (!inputTemp)
+                    {
+                        inputTemp=0;
+                    }
+                }
+                break;
+
+            case '2':
+                UART_PutString("- Mode Ohmmetre (Appuyez sur ENTER pour quitter) - \n\r ");
+                CyDelay(500);
+                inputTemp = 0;
+                while(inputTemp == 0)
+                {
+                    //mode_Ohmmetre();
+                    CyDelay(periode_echatillonage);
+                    inputTemp=UART_GetChar();
+                    if (!inputTemp)
+                    {
+                        inputTemp=0;
+                    }
+                }
+                break;    
+            default:
+                UART_PutString("- Error: No mode selected -\n\r");
         }
-       CyDelay(3000);
+
+        CyDelay(1000);
     }
 }
  ///////////////////=========== main loop Ends Here ===============/////////////////////////
