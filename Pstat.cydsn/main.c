@@ -24,7 +24,7 @@
 #include "task.h"
 #include "stdio.h"
 
-// TaskHandle_t mTache1 = NULL; // Variable pour l'utilisation du FreeRTOS
+TaskHandle_t mTache1_Handle = NULL; // Variable pour l'utilisation du FreeRTOS
 
 
 ///////////////////////////// FUNCTIONS BODY /////////////////////////////
@@ -32,9 +32,16 @@
 ////////////////////////
 // Cette fonction permet d'initialiser le UART et selectioner un mode du multimetre
 ////////////////////////
-void UART_initialisation() 
+void UART_initialisation()
 {
     UART_Start();
+    UART_PutString("- Bienvenue au multimetre de l'equipe 1e - \n\r ");
+    UART_PutString("========================================== \n\r ");
+    vTaskDelay(pdMS_TO_TICKS(2000));
+}
+
+void UART_menu() 
+{
     // Affichage du MENU
     UART_PutString("== MULTIMETRE == \n \r");
     UART_PutString("  0 - Mode Voltmetre \n \r");
@@ -42,6 +49,12 @@ void UART_initialisation()
     UART_PutString("  2 - Mode Ohmmetre \n \r");
     UART_PutString("- Veuillez choisir un mode - \n \r");
     CyDelay(4000);
+}
+
+void UART_choix()
+{
+    char8 input;
+    
 }
 
 ////////////////////////
@@ -97,18 +110,17 @@ int main(void)
     // LCD_ClearDisplay();
     
     ADC_SAR_StartConvert();
-    //xTaskCreate(UART_initialisation,"InUART",200,(void*)0, tskIDLE_PRIORITY,&mTache1); // Creation d'un task pour le FreeRTOS
+    xTaskCreate(UART_initialisation,"task1",configMINIMAL_STACK_SIZE,NULL, tskIDLE_PRIORITY,&mTache1_Handle); // Creation d'un task pour le FreeRTOS
     
     int frequence_echatillonage = 10; // Hz
     int periode_echatillonage=1000/frequence_echatillonage; // mS
     
     // Affichage du message d'accueil
-    UART_PutString("- Bienvenue au multimetre de l'equipe 1e - \n\r ");
-    CyDelay(2000);
-    
+    vTaskStartScheduler();
+    UART_Start();
     for(;;) 
     {
-        UART_initialisation();
+        UART_menu();
         input=UART_GetChar(); // Permet de savoir le mode choisi
             
         char8 inputTemp;
