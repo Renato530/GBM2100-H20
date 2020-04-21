@@ -36,6 +36,7 @@ void UART_initialisation()
 {
     UART_Start();
     // Affichage du MENU
+    UART_PutString(" \n \r");
     UART_PutString("=========================== \n \r");
     UART_PutString("======= MULTIMETRE ======== \n \r");
     UART_PutString("=========================== \n \r");
@@ -45,7 +46,7 @@ void UART_initialisation()
     UART_PutString("=========================== \n \r");
     UART_PutString("- Veuillez choisir un mode - \n \r");
     UART_PutString("=========================== \n \r");
-    CyDelay(4000);
+    CyDelay(300);
 }
 
 ////////////////////////
@@ -89,7 +90,7 @@ void mode_Voltmetre()
 
 int main(void)
 {
-    char8 input; 
+    //char8 input; 
     // CyGlobalIntEnable; aucune interruption
     FreeRTOS_Start();
     ADC_SAR_Start();
@@ -105,6 +106,7 @@ int main(void)
     
     int frequence_echatillonage = 10; // Hz
     int periode_echatillonage=1000/frequence_echatillonage; // mS
+    char input;
     
     // Affichage du message d'accueil
     UART_PutString("- Bienvenue au multimetre de l'equipe 1e - \n\r ");
@@ -113,13 +115,18 @@ int main(void)
     for(;;) 
     {
         UART_initialisation();
-        input=UART_GetChar(); // Permet de savoir le mode choisi
-            
+        input='\0';
+        
+        while (!input){
+             input=UART_GetChar(); // Permet de savoir le mode choisi
+        }
+        
         char8 inputTemp;
         switch (input)
         {
             case '0':
-                UART_PutString("- Mode Voltmetre (Appuyez sur n'importe quelle touche pour quitter) - \n \r ");
+                UART_PutString("- Mode Voltmetre (Appuyez sur ENTER pour quitter) - \n \r ");
+                CyDelay(500);
                 // On reste dans le mode Voltmètre tant qu'on appuie pas sur une touche sur le clavier
                 inputTemp = 0;
                 while(inputTemp == 0)
@@ -135,7 +142,8 @@ int main(void)
                 break;
                 
             case '1':
-                UART_PutString("- Mode Amperemetre (Appuyez sur n'importe quelle touche pour quitter) - \n\r ");
+                UART_PutString("- Mode Amperemetre (Appuyez sur ENTER pour quitter) - \n\r ");
+                CyDelay(500);
                 inputTemp = 0;
                 while(inputTemp == 0)
                 {
@@ -150,7 +158,8 @@ int main(void)
                 break;
 
             case '2':
-                UART_PutString("- Mode Ohmmetre (Appuyez sur n'importe quelle touche pour quitter) - \n\r ");
+                UART_PutString("- Mode Ohmmetre (Appuyez sur ENTER pour quitter) - \n\r ");
+                CyDelay(500);
                 inputTemp = 0;
                 while(inputTemp == 0)
                 {
@@ -164,7 +173,7 @@ int main(void)
                 }
                 break;    
             default:
-                UART_PutString("-No mode selected-\n\r");
+                UART_PutString("- Error: No mode selected -\n\r");
         }
 
         CyDelay(1000);
