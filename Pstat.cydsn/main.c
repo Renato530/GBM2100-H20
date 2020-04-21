@@ -57,7 +57,7 @@ void mode_Ohmetre()
     int voltage = 0;
     char val_resistance[10];
     unsigned int DAC_valeur = 0xff;
-    int v_input=5000;
+    int v_input=4095;
     
     // Initialisation des composantes
     DAC_Start();
@@ -67,30 +67,32 @@ void mode_Ohmetre()
     SAR_ADC_StartConvert();
     
     
-    while ((DAC_valeur > 0) && (v_input >=5000))
+    while ((DAC_valeur > 0) && (v_input >=4000))
     {
         DAC_valeur=DAC_valeur - 0x01;
         DAC_SetValue(DAC_valeur);
         CyDelay(3);
         if (SAR_ADC_IsEndConversion(SAR_ADC_WAIT_FOR_RESULT)!=0)
         {
-            v_input= SAR_ADC_GetResult16(0);
+            v_input= SAR_ADC_GetResult16();
         }
         CyDelay(2);
 
     }
-    if (v_input < 5000)
+    if (v_input < 4000)
     {
         DAC_SetValue(DAC_valeur);
         CyDelay(1);
         courant = DAC_valeur*8;
-        voltage=v_input*400;
-        resistance= voltage/courant*10; // **facteur de 10 et facteur d'impédance** à revoir *(1000/805)
-        
+        voltage=v_input*1000/2;
+        resistance= voltage/courant; 
+        resistance -=148;
+        resistance=(resistance-927)/0.875;
         if (resistance <= 0) 
         {
             resistance = 0;
         }
+        if (resistance > 500000) {resistance *=1.05;}
         if(resistance < 500000)
         {
             UART_PutString("-> Resistance : "); 
@@ -170,7 +172,7 @@ int main(void)
                 break;
                 
             case '1':
-                UART_PutString("- Mode Voltmetre (Appuyez sur ENTER pour quitter) - \n \r ");
+                UART_PutString("- Mode Amperemetre (Appuyez sur ENTER pour quitter) - \n \r ");
                 inputTemp = 0;
                 while(inputTemp == 0)
                 {
@@ -185,7 +187,7 @@ int main(void)
                 break;
 
             case '2':
-                UART_PutString("- Mode Voltmetre (Appuyez sur ENTER pour quitter) - \n \r ");
+                UART_PutString("- Mode Ohmmetre (Appuyez sur ENTER pour quitter) - \n \r ");
                 inputTemp = 0;
                 while(inputTemp == 0)
                 {
