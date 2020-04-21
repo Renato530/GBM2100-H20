@@ -63,24 +63,19 @@ void mode_Amperemetre () // Configuration de l'amperemetre
 /////////////////////////////////////////////////////////////////////////////////
 int main(void)
 {
-    CyGlobalIntEnable; /* Enable global interrupts. */
-    FreeRTOS_Start();
+    UART_Start();
     ADC_Start();
     ADC_StartConvert();
     int frequence_echatillonage = 10; // Hz
     int periode_echatillonage=1000/frequence_echatillonage; // mS
     char input;
-    UART_Start();
+   
     // Affichage du message d'accueil
-    UART_PutString("- Bienvenue au multimetre de l'equipe 1e - \n\r ");
+    UART_Start();
+    UART_PutString("************* Bienvenue au multimetre de l'equipe 1e *************\n\r ");
+    UART_PutString("******************************************************************\n\r ");
     CyDelay(2000);
 
-  
-    
-//    xTaskCreate(...);
-
-    
-    vTaskStartScheduler();
     for(;;) 
     {
         UART_initialisation();
@@ -116,7 +111,7 @@ int main(void)
                 inputTemp = 0;
                 while(inputTemp == 0)
                 {
-                    //mode_Amperemetre();
+                    mode_Amperemetre();
                     CyDelay(periode_echatillonage);
                     inputTemp=UART_GetChar();
                     if (!inputTemp)

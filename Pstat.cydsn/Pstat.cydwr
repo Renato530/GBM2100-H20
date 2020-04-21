@@ -3355,7 +3355,7 @@
     </Group>
     <Group key="c749b343-c33f-4215-9c90-dc046a2a27ae">
       <Group key="0">
-        <Data key="Port Format" value="0,4" />
+        <Data key="Port Format" value="0,7" />
       </Group>
     </Group>
     <Group key="e851a3b9-efb8-48be-bbb8-b303b216c393">
@@ -3370,13 +3370,13 @@
     </Group>
     <Group key="UnAssigned Pins">
       <Group key="fb15f730-5e63-477e-ba9f-464c8703451b/ed092b9b-d398-4703-be89-cebf998501f6">
-        <Data key="0" value="132319826011659174" />
-        <Data key="1" value="132319826011659174" />
-        <Data key="2" value="132319826011659174" />
-        <Data key="3" value="132319826011659174" />
-        <Data key="4" value="132319826011659174" />
-        <Data key="5" value="132319826011659174" />
-        <Data key="6" value="132319826011659174" />
+        <Data key="0" value="132319830602033214" />
+        <Data key="1" value="132319830602033214" />
+        <Data key="2" value="132319830602033214" />
+        <Data key="3" value="132319830602033214" />
+        <Data key="4" value="132319830602033214" />
+        <Data key="5" value="132319830602033214" />
+        <Data key="6" value="132319830602033214" />
       </Group>
     </Group>
   </Group>
