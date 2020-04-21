@@ -36,11 +36,15 @@ void UART_initialisation()
 {
     UART_Start();
     // Affichage du MENU
-    UART_PutString("== MULTIMETRE == \n \r");
-    UART_PutString("  0 - Mode Voltmetre \n \r");
-    UART_PutString("  1 - Mode Amperemetre \n \r");
-    UART_PutString("  2 - Mode Ohmmetre \n \r");
+    UART_PutString("=========================== \n \r");
+    UART_PutString("======= MULTIMETRE ======== \n \r");
+    UART_PutString("=========================== \n \r");
+    UART_PutString("||  0 - Mode Voltmetre   ||\n \r");
+    UART_PutString("||  1 - Mode Amperemetre ||\n \r");
+    UART_PutString("||  2 - Mode Ohmmetre    ||\n \r");
+    UART_PutString("=========================== \n \r");
     UART_PutString("- Veuillez choisir un mode - \n \r");
+    UART_PutString("=========================== \n \r");
     CyDelay(4000);
 }
 
