@@ -109,7 +109,9 @@ int main(void)
     char input;
     
     // Affichage du message d'accueil
-    UART_PutString("- Bienvenue au multimetre de l'equipe 1e - \n\r ");
+    UART_Start();
+    UART_PutString("************* Bienvenue au multimetre de l'equipe 1e *************\n\r ");
+    UART_PutString("******************************************************************\n\r ");
     CyDelay(2000);
     
     for(;;) 
