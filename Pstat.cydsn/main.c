@@ -86,8 +86,8 @@ void mode_Ohmetre()
         courant = DAC_valeur*8;
         voltage=v_input*1000/2;
         resistance= voltage/courant; 
-        resistance -=148;
-        resistance=(resistance-927)/0.875;
+        resistance -=464;
+        //resistance=(resistance-927)/0.875;
         if (resistance <= 0) 
         {
             resistance = 0;
@@ -142,11 +142,13 @@ int main(void)
     //xTaskCreate(UART_initialisation,"InUART",200,(void*)0, tskIDLE_PRIORITY,&mTache1); // Creation d'un task pour le FreeRTOS
     
     // Affichage du message d'accueil
-    UART_PutString("- Bienvenue au multimetre de l'equipe 1e - \n\r ");
+    UART_Start();
+    UART_PutString("******************** Bienvenue au multimetre de l'equipe 1e *******************\n\r ");
+     UART_PutString("******************************************************************************\n\r ");
     CyDelay(2000);
     for(;;) 
     {
-       UART_initialisation();
+        UART_initialisation();
         input='\0';
         
         while (!input){
