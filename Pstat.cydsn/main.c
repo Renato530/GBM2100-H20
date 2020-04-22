@@ -23,15 +23,40 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "stdio.h"
+#include <stdlib.h>
+#include <math.h>
 
-// TaskHandle_t mTache1 = NULL; // Variable pour l'utilisation du FreeRTOS
+//////////////////////////// VARIABLES ///////////////////////////////////
 
+int ready=0; 
+int close = 1;
+
+//////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////// FUNCTIONS BODY /////////////////////////////
 
 ////////////////////////
 // Cette fonction permet d'initialiser le UART et selectioner un mode du multimetre
 ////////////////////////
+
+CY_ISR(Interruption_Rx)
+{
+    char verify;
+    verify = UART_GetChar();
+    if (verify =='1')
+    {
+        ready =1;
+        close=0;
+        LED_Write(1);
+    }
+    else if (verify=='c')
+    {
+        ready=0;
+        close=1;
+        LED_Write(0);
+    }
+}
+
 void UART_initialisation() 
 {
     UART_Start();
@@ -59,8 +84,8 @@ void mode_Voltmetre()
 {
     //UART_PutString("- Mode Voltmetre (Appuyez sur nimporte quelle touche pour quitter) - \n\r ");
     // Declaration des variables
-    int dac_bin=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
-    int dac_volt=0; // y étant la conversion de x en millivolts
+    int32 dac_bin=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
+    float32 dac_volt=0; // y étant la conversion de x en millivolts
     char result_volts[15]={'\0'}; //louer un espace pour le string de l'affichage via Putty
     
     if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT) !=0) // Verficiation de la conversion
@@ -76,9 +101,21 @@ void mode_Voltmetre()
         dac_bin=ADC_SAR_GetResult16(0); // Retourne la conversion à x pour le channel '0' 
         dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
         UART_PutString("-> Voltage : "); 
-        sprintf(result_volts,"%d",dac_volt); //affichage de résultat en mvolts via UART et Putty
-        UART_PutString(result_volts);
-        UART_PutString (" mV\n\r");
+        sprintf(result_volts,"%.2f",dac_volt); //affichage de résultat en mvolts via UART et Putty
+        if ((ready==1)&&(close==0))
+        {
+            UART_ClearTxBuffer();
+            UART_PutString(result_volts);
+            //UART_PutString (" mV\n\r");
+            
+            CyDelay(20);
+            UART_ClearTxBuffer();
+        }
+        else if ((ready==0) && (close==1))
+        {
+            UART_ClearTxBuffer();
+        }
+        
     }
 } // Ceci est une tache qui correspond au mode Voltmetre de notre multimetre (utile pour l'implementation de plusieurs outils dans le multimetre)
 //////////////////////////////////////////////////////////////////////////
@@ -90,11 +127,12 @@ void mode_Voltmetre()
 
 int main(void)
 {
-    //char8 input; 
-    // CyGlobalIntEnable; aucune interruption
+    
     FreeRTOS_Start();
     ADC_SAR_Start();
     //LCD_Start();
+    CyGlobalIntEnable;
+    intRx_StartEx(Interruption_Rx);
    
     // Fonctions ecran LED
     // LCD_Position(0,0);
