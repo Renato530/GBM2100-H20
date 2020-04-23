@@ -86,14 +86,13 @@ void mode_Ohmetre()
         courant = DAC_valeur*8;
         voltage=v_input*1000/2;
         resistance= voltage/courant; 
-        resistance -=464;
-        //resistance=(resistance-927)/0.875;
+        resistance -=470;
         if (resistance <= 0) 
         {
             resistance = 0;
         }
-        if (resistance > 500000) {resistance *=1.05;}
-        if(resistance < 500000)
+        if (resistance > 5000) {resistance *=1.05;}
+        if(resistance < 250000)
         {
             UART_PutString("-> Resistance : "); 
             sprintf(val_resistance,"%d",resistance);
