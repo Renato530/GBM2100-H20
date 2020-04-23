@@ -91,13 +91,14 @@ void mode_Ohmetre()
         {
             resistance = 0;
         }
-        if (resistance > 5000) {resistance *=1.05;}
+        
+        else if (resistance > 10000) {resistance *=1.1;}
         if(resistance < 250000)
         {
-            UART_PutString("-> Resistance : "); 
+            UART_PutString("|| Resistance || "); 
             sprintf(val_resistance,"%d",resistance);
             UART_PutString(val_resistance);
-            UART_PutString (" Ohms\n\r");
+            UART_PutString (" Ohms||\n\r");
             CyDelay(100);
         }
         else
