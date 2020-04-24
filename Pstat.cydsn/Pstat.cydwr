@@ -253,6 +253,7 @@
     <Group key="Pin">
       <Data key="00d0ed3a-5979-4715-ae89-a7faf72dd09a" value="Resistance" />
       <Data key="6c65cfef-3481-422b-88f3-edc7f32e6296/16a808f6-2e13-45b9-bce0-b001c8655113" value="SAR_ADC_Bypass" />
+      <Data key="774d9c7e-47b1-4d10-a8e5-a9412f48c81d/16a808f6-2e13-45b9-bce0-b001c8655113" value="SAR_ADC2_Bypass" />
       <Data key="05137f1a-4f17-41e5-8761-efdffa679b34" value="R_s" />
       <Data key="90736bbe-0afb-4fdb-bf73-8b74c01effe1/16a808f6-2e13-45b9-bce0-b001c8655113" value="SAR_ADC_Bypass" />
       <Data key="1425177d-0d0e-4468-8bcc-e638e5509a9b" value="Rx" />
@@ -3348,7 +3349,7 @@
   <Group key="Pin2">
     <Group key="00d0ed3a-5979-4715-ae89-a7faf72dd09a">
       <Group key="0">
-        <Data key="Port Format" value="0,4" />
+        <Data key="Port Format" value="0,7" />
       </Group>
     </Group>
     <Group key="1425177d-0d0e-4468-8bcc-e638e5509a9b">
@@ -3383,7 +3384,7 @@
     <Data key="CYDEV_DEBUGGING_DPS" value="SWD_SWV" />
     <Data key="CYDEV_DEBUGGING_XRES" value="False" />
     <Data key="CYDEV_ECC_ENABLE" value="False" />
-    <Data key="CYDEV_HEAP_SIZE" value="0x80" />
+    <Data key="CYDEV_HEAP_SIZE" value="0x1000" />
     <Data key="CYDEV_INSTRUCT_CACHE_ENABLED" value="True" />
     <Data key="CYDEV_PROTECTION_ENABLE" value="False" />
     <Data key="CYDEV_STACK_SIZE" value="0x0800" />
