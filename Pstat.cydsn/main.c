@@ -15,14 +15,15 @@
 
 // TODO: Integrer l'Ohmetre
 // TODO: Integrer l'Amperemetre
-// TODO: Tester le Volmetre
-// TODO: Tester l'Ohmetre
 // TODO: Tester l'Amperemetre
 
 #include "project.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "stdio.h"
+
+
+
 
 ///////////////////////////// FUNCTIONS BODY /////////////////////////////
 
@@ -50,15 +51,16 @@ void UART_initialisation()
 // Cette fonction permet l'utilisation du voltmetre 
 ////////////////////////
 
+//TODO: Integrer FreeRTOS
+//TODO: Envoyer les donnes via MATLAB (affichage tableau, graphique...)
 void mode_Voltmetre() 
 {
-    ADC_SAR_Start();
-    ADC_SAR_StartConvert();
+    //UART_PutString("- Mode Voltmetre (Appuyez sur nimporte quelle touche pour quitter) - \n\r ");
     // Declaration des variables
     float dac_bin=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
     float dac_volt=0; // y étant la conversion de x en millivolts
     char result_volts[15]={'\0'}; //louer un espace pour le string de l'affichage via Putty
-    ADC_SAR_Start();
+    
     if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT) !=0) // Verficiation de la conversion
     {
         dac_bin=ADC_SAR_GetResult16(0); // Retourne la conversion à x pour le channel '0'
@@ -86,6 +88,12 @@ void mode_Voltmetre()
 
 int main(void)
 {
+    
+    FreeRTOS_Start();
+    ADC_SAR_Start();
+    ADC_SAR_StartConvert();
+    
+    
     int frequence_echatillonage = 10; // Hz
     int periode_echatillonage=1000/frequence_echatillonage; // mS
     char input;
@@ -165,3 +173,4 @@ int main(void)
 } ///////////////////=========== main loop Ends Here ===============/////////////////////////
 
 /* [] END OF FILE */
+
