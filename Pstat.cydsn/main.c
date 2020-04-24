@@ -24,9 +24,6 @@
 #include "task.h"
 #include "stdio.h"
 
-// TaskHandle_t mTache1 = NULL; // Variable pour l'utilisation du FreeRTOS
-
-
 ///////////////////////////// FUNCTIONS BODY /////////////////////////////
 
 ////////////////////////
@@ -53,16 +50,15 @@ void UART_initialisation()
 // Cette fonction permet l'utilisation du voltmetre 
 ////////////////////////
 
-//TODO: Integrer FreeRTOS
-//TODO: Envoyer les donnes via MATLAB (affichage tableau, graphique...)
 void mode_Voltmetre() 
 {
-    //UART_PutString("- Mode Voltmetre (Appuyez sur nimporte quelle touche pour quitter) - \n\r ");
+    ADC_SAR_Start();
+    ADC_SAR_StartConvert();
     // Declaration des variables
     float dac_bin=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
     float dac_volt=0; // y étant la conversion de x en millivolts
     char result_volts[15]={'\0'}; //louer un espace pour le string de l'affichage via Putty
-    
+    ADC_SAR_Start();
     if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT) !=0) // Verficiation de la conversion
     {
         dac_bin=ADC_SAR_GetResult16(0); // Retourne la conversion à x pour le channel '0'
@@ -90,20 +86,6 @@ void mode_Voltmetre()
 
 int main(void)
 {
-    //char8 input; 
-    // CyGlobalIntEnable; aucune interruption
-    FreeRTOS_Start();
-    ADC_SAR_Start();
-    //LCD_Start();
-   
-    // Fonctions ecran LED
-    // LCD_Position(0,0);
-    // LCD_PrintString("Voltmetre");
-    // LCD_ClearDisplay();
-    
-    ADC_SAR_StartConvert();
-    //xTaskCreate(UART_initialisation,"InUART",200,(void*)0, tskIDLE_PRIORITY,&mTache1); // Creation d'un task pour le FreeRTOS
-    
     int frequence_echatillonage = 10; // Hz
     int periode_echatillonage=1000/frequence_echatillonage; // mS
     char input;
@@ -165,7 +147,7 @@ int main(void)
                 inputTemp = 0;
                 while(inputTemp == 0)
                 {
-                    //mode_Ohmmetre();
+                    mode_Ohmmetre();
                     CyDelay(periode_echatillonage);
                     inputTemp=UART_GetChar();
                     if (!inputTemp)
