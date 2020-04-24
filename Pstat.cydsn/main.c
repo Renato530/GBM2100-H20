@@ -17,11 +17,9 @@
 #include "task.h"
 #include <stdio.h>
 
-// TODO : S'assurer de l'affichage d'une resistance sur Putty
 // TODO : Integrer cette composante du multimetre au Voltmetre par une interface
 // TODO : Remplacer les chiffre (valeurs qui sortent de nulpart) par des variables explicatives
 
-// Pour l'instant essayer de tester avec des resistances du FreeSoC
 
 ///////////////////////////// FUNCTIONS BODY /////////////////////////////
 
@@ -53,7 +51,7 @@ void mode_Ohmetre()
 {
     // Déclaration des variables
     int courant = 0;
-    int resistance = 0;
+    float resistance = 0;
     int voltage = 0;
     char val_resistance[10];
     unsigned int DAC_valeur = 0xff;
@@ -61,10 +59,10 @@ void mode_Ohmetre()
     
     // Initialisation des composantes
     DAC_Start();
-    SAR_ADC_Start();
+    SAR_ADC2_Start();
     DAC_valeur= 0xff;
     DAC_SetValue(DAC_valeur);
-    SAR_ADC_StartConvert();
+    SAR_ADC2_StartConvert();
     
     
     while ((DAC_valeur > 0) && (v_input >=4000))
@@ -72,9 +70,9 @@ void mode_Ohmetre()
         DAC_valeur=DAC_valeur - 0x01;
         DAC_SetValue(DAC_valeur);
         CyDelay(3);
-        if (SAR_ADC_IsEndConversion(SAR_ADC_WAIT_FOR_RESULT)!=0)
+        if (SAR_ADC2_IsEndConversion(SAR_ADC2_WAIT_FOR_RESULT)!=0)
         {
-            v_input= SAR_ADC_GetResult16();
+            v_input= SAR_ADC2_GetResult16();
         }
         CyDelay(2);
 
@@ -96,7 +94,7 @@ void mode_Ohmetre()
         if(resistance < 250000)
         {
             UART_PutString("|| Resistance || "); 
-            sprintf(val_resistance,"%d",resistance);
+            sprintf(val_resistance,"%f",resistance);
             UART_PutString(val_resistance);
             UART_PutString (" Ohms||\n\r");
             CyDelay(100);
@@ -126,25 +124,13 @@ void mode_Ohmetre()
 int main(void)
 {
     // Variables générales
-    
-    CyGlobalIntEnable; /* Enable global interrupts. */
     char8 input; 
-    FreeRTOS_Start();
-    SAR_ADC_Start();
-    //LCD_Start();
-   
-    // Fonctions ecran LED
-    // LCD_Position(0,0);
-    // LCD_PrintString("Voltmetre");
-    // LCD_ClearDisplay();
-    
-    SAR_ADC_StartConvert();
-    //xTaskCreate(UART_initialisation,"InUART",200,(void*)0, tskIDLE_PRIORITY,&mTache1); // Creation d'un task pour le FreeRTOS
+
     
     // Affichage du message d'accueil
     UART_Start();
-    UART_PutString("******************** Bienvenue au multimetre de l'equipe 1e *******************\n\r ");
-     UART_PutString("******************************************************************************\n\r ");
+    UART_PutString("************* Bienvenue au multimetre de l'equipe 1e *************\n\r ");
+    UART_PutString("******************************************************************\n\r ");
     CyDelay(2000);
     for(;;) 
     {
