@@ -66,17 +66,18 @@ void mode_Voltmetre()
         dac_bin=ADC_SAR_GetResult16(0); // Retourne la conversion à x pour le channel '0'
     
         dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
-         
+        
         if (dac_volt <=0) // Condition pour retourner un potentiel positif via notre multimètre
         {
             dac_volt=0;
         }
         dac_bin=ADC_SAR_GetResult16(0); // Retourne la conversion à x pour le channel '0' 
         dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
+        dac_volt=dac_volt/1000; // Conversion des mVolts en volts
         UART_PutString("-> Voltage : "); 
-        sprintf(result_volts,"%f",dac_volt); //affichage de résultat en mvolts via UART et Putty
+        sprintf(result_volts,"%.3f",dac_volt); //affichage de résultat en mvolts via UART et Putty
         UART_PutString(result_volts);
-        UART_PutString (" mV\n\r");
+        UART_PutString (" V\n\r");
     }
 } // Ceci est une tache qui correspond au mode Voltmetre de notre multimetre (utile pour l'implementation de plusieurs outils dans le multimetre)
 //////////////////////////////////////////////////////////////////////////
