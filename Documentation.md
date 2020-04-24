@@ -70,7 +70,8 @@ Tableau 2: Essais expérimentaux effectués sur le volmètre
 
 </details>
 
-<img src="documentation/images/TopDesign_Voltmètre.PNG" width="700" height="500">*Figure 2: Schéma du TopDesign du voltmètre*
+<img src="documentation/images/TopDesign_Voltmetre.PNG" width="700" height="500">
+*Figure 3: Schéma du TopDesign du voltmètre*
 
 <details>
   <summary markdown="span"> La branche Ohmètre</summary>
