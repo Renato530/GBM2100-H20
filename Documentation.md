@@ -52,6 +52,24 @@ Ce voltmètre sera la composante du multimètre qui requiert le moins d'élement
 on peut simplement construire un voltmètre à partir d'un ADC. Dans notre cas, on a choisi d'implementer
 un ADC simple tel vu dans le laboratoire 3 du cours. 
 
+```mermaid
+graph TB
+
+  SubGraph1 --> SubGraph1Flow
+  subgraph "SubGraph 1 Flow"
+  SubGraph1Flow(SubNode 1)
+  SubGraph1Flow -- Choice1 --> DoChoice1
+  SubGraph1Flow -- Choice2 --> DoChoice2
+  end
+
+
+  subgraph "Fonctionnement du code du Voltmètre"
+  Node1[Message de bienvenu à l'usager] --> Node2[Mode Voltmètre] --> Node3[Utilisation d'un ADC]
+  Node3 --> SubGraph1[Jump to SubGraph1]
+  SubGraph1 --> FinalThing[Final Thing]
+end
+```
+
 ![Schéma du Voltmètre](documentation/images/Schema_Voltmetre.png)*Figure 2: Schéma du Voltmètre*
 
 Voici un tableau qui resume les caractéristiques principales de notre voltmètre.
