@@ -1,30 +1,24 @@
 # Multimètre FreeSoC2 PSoC5LP DevBoard
-
-Dans le cadre du cours GBM2100, nous avons opté pour l'élaboration d'un multimètre à l'aide d'un microcontrôleur.
-Notre intérêt est focalisé sur la conception d'un voltmètre, d'un ohmètre, d'un ampèrmètre, ainsi qu'un capacimètre.
+Ce projet consiste à concevoir un multimètre à partir de notre microcontrôleur CY8C5888AXI-LP096. 
+En outre, cet outil sera composé d'un voltmère, d'un ohmètre, d'un ampèremètre et d'un capacimètre.
 Les différentes composantes du multimètre sont intégrés à partir d'une interface conçue avec Putty.
-Une configuration d'un menu a été ajouté.
-Il est un outil permettant de choisir la composante voulue en saisissant le numéro correspondant de cette dernière.
-Ainsi, cet outil est une application desntinée à faciliter la sélection.
-Dans les prochaines lignes, nous abordons les différentes étapes permettant la création et l'optimisation d'un multimètre.
+De plus, deux relations mathématiques ont été nécessaires afin de fournir les données recherchées par 
+l'utilisateur.
 
-Nous commençons tout d'abord, par spécifier le matériel et les deux relations mathématiques permettant de fournir les données recherchées par 
-l'utilisateur. Par la suite, on va enchainer avec l'explication de chaque branche crée.
 
 <img src="documentation/images/Schema_multimetre.png" width="700" height="500">*Figure 1: Schéma du multimètre*
 
 ## Matériel
 
--   FreeSoC 5LP CY8C5888AXI-LP096
+-   FreeSoC 5LP
 -   PSoC Creator 4.2
--   Circuit imprimé
 -   Kit de résistance
 -   Potentiomètre 10kOhm
 -   Putty
--   Fils électrique
 -   Fils jumper
 -   Condensateur
 -   écran LCD
+
 
 #### Loi d'Ohm
 
@@ -76,8 +70,7 @@ Tableau 2: Essais expérimentaux effectués sur le volmètre
 
 </details>
 
-<img src="documentation/images/TopDesign_Voltmetre.PNG" width="700" height="500">
-*Figure 3: Schéma du TopDesign du voltmètre*
+<img src="documentation/images/TopDesign_Voltmetre.PNG" width="700" height="500">*Figure 3: Schéma du TopDesign du voltmètre*
 
 <details>
   <summary markdown="span"> La branche Ohmètre</summary>
@@ -123,6 +116,8 @@ Tableau 4: Essais expérimentaux effectués sur l'ohmètre
 
 </details>
 
+<img src="documentation/images/TopDesign_Ohmetre.PNG" width="700" height="500">*Figure 5: Schéma du TopDesign du ohmmètre*
+
 <details>
   <summary markdown="span"> La branche Ampèremètre</summary>
 ## Ampèremètre
@@ -136,6 +131,9 @@ Tableau 4: Essais expérimentaux effectués sur l'ohmètre
 - [ ] Task 7 insérer schéma 
  
 </details>
+
+<img src="documentation/images/TopDesign_Amperemetre.PNG" width="700" height="500">*Figure 7: Schéma du TopDesign de l'ampèremètre*
+
 
 <details>
   <summary markdown="span"> La branche Capacimètre</summary>
