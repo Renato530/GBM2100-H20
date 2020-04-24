@@ -39,19 +39,19 @@ void UART_initialisation()
 void mode_Amperemetre () // Configuration de l'amperemetre
 {
     int32 adcResult;
-    int adcVolt;
-    int adcAmp;
-    int R_2=100; // resistance de reference en Ohms
+    float adcVolt;
+    float adcAmp;
+    int R_2=100; // resistance de reference en mOhms
     char result_Amp[20];
     if (ADC_IsEndConversion(ADC_RETURN_STATUS)!=0)
     {
         adcResult=ADC_GetResult32();
-        adcVolt=ADC_CountsTo_mVolts(adcResult);
-        adcAmp = 1000*adcVolt/R_2; // en nA
+        adcVolt=ADC_CountsTo_Volts(adcResult);
+        adcAmp = adcVolt/R_2; // en A
         UART_PutString("|| Courant || ");
-        sprintf(result_Amp,"%d",adcAmp);
+        sprintf(result_Amp,"%f",adcAmp);
         UART_PutString(result_Amp);
-        UART_PutString (" nA||\n\r");   
+        UART_PutString (" A||\n\r");   
     }
 }
 
