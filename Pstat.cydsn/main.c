@@ -17,11 +17,9 @@
 #include "task.h"
 #include <stdio.h>
 
-// TODO : S'assurer de l'affichage d'une resistance sur Putty
 // TODO : Integrer cette composante du multimetre au Voltmetre par une interface
 // TODO : Remplacer les chiffre (valeurs qui sortent de nulpart) par des variables explicatives
 
-// Pour l'instant essayer de tester avec des resistances du FreeSoC
 
 ///////////////////////////// FUNCTIONS BODY /////////////////////////////
 
@@ -126,15 +124,13 @@ void mode_Ohmetre()
 int main(void)
 {
     // Variables générales
-    
-    CyGlobalIntEnable; /* Enable global interrupts. */
     char8 input; 
 
     
     // Affichage du message d'accueil
     UART_Start();
-    UART_PutString("******************** Bienvenue au multimetre de l'equipe 1e *******************\n\r ");
-    UART_PutString("*******************************************************************************\n\r ");
+    UART_PutString("************* Bienvenue au multimetre de l'equipe 1e *************\n\r ");
+    UART_PutString("******************************************************************\n\r ");
     CyDelay(2000);
     for(;;) 
     {
