@@ -1,5 +1,5 @@
 # Multimètre FreeSoC2 PSoC5LP DevBoard
-Ce projet consiste a concevoir un multimètre à partir de notre microcontrôleur. 
+Ce projet consiste à concevoir un multimètre à partir de notre microcontrôleur CY8C5888AXI-LP096. 
 En outre, cet outil sera composé d'un voltmère, d'un ohmètre, d'un ampèremètre et d'un capacimètre.
 Les différentes composantes du multimètre sont intégrés à partir d'une interface conçue avec Putty.
 De plus, deux relations mathématiques ont été nécessaires afin de fournir les données recherchées par 
@@ -11,11 +11,14 @@ l'utilisateur.
 ## Matériel
 
 -   FreeSoC 5LP
--   Potentiomètre 10kOhm
 -   PSoC Creator 4.2
+-   Kit de résistance
+-   Potentiomètre 10kOhm
+-   Putty
 -   Fils jumper
 -   Condensateur
 -   écran LCD
+
 
 #### Loi d'Ohm
 
@@ -26,6 +29,10 @@ $`V=RI`$
 $`C = \frac{q}{V}`$
 
 $`i(t) = C*\frac{dv}{dt}`$
+
+<details>
+  <summary markdown="span"> La branche Voltmètre</summary>
+
 
 ## Volmètre
 
@@ -61,7 +68,11 @@ Tableau 2: Essais expérimentaux effectués sur le volmètre
 | essai 2      | Cell 2                    | Cell 3                   | 
 | essai 3      | Cell 2                    | Cell 3                   | 
 
+</details>
 
+<details>
+  <summary markdown="span"> La branche Ohmètre</summary>
+  
 ## Ohmètre
 
 - [ ] Task 1 Completer tableaux essais
@@ -101,7 +112,10 @@ Tableau 4: Essais expérimentaux effectués sur l'ohmètre
 | essai 2      | Cell 2                    | Cell 3                   | 
 | essai 3      | Cell 2                    | Cell 3                   | 
 
+</details>
 
+<details>
+  <summary markdown="span"> La branche Ampèremètre</summary>
 ## Ampèremètre
 
 - [ ] Task 1 Completer paragraphe de description
@@ -111,7 +125,12 @@ Tableau 4: Essais expérimentaux effectués sur l'ohmètre
 - [ ] Task 5 insérer des images du montage expérimental
 - [ ] Task 6 insérer une image du TopDesign
 - [ ] Task 7 insérer schéma 
+ 
+</details>
 
+<details>
+  <summary markdown="span"> La branche Capacimètre</summary>
+  
 ## Capacimètre
 
 - [ ] Task 1 Completer paragraphe de description
@@ -121,6 +140,8 @@ Tableau 4: Essais expérimentaux effectués sur l'ohmètre
 - [ ] Task 5 insérer des images du montage expérimental
 - [ ] Task 6 insérer une image du TopDesign
 - [ ] Task 7 insérer schéma 
+
+</details>
 
 ## Composantes à améliorer 
 
