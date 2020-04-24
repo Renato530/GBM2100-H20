@@ -147,7 +147,7 @@ int main(void)
                 inputTemp = 0;
                 while(inputTemp == 0)
                 {
-                    mode_Ohmmetre();
+                    //mode_Ohmmetre();
                     CyDelay(periode_echatillonage);
                     inputTemp=UART_GetChar();
                     if (!inputTemp)
