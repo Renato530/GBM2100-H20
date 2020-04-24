@@ -59,8 +59,8 @@ void mode_Voltmetre()
 {
     //UART_PutString("- Mode Voltmetre (Appuyez sur nimporte quelle touche pour quitter) - \n\r ");
     // Declaration des variables
-    int dac_bin=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
-    int dac_volt=0; // y étant la conversion de x en millivolts
+    float dac_bin=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
+    float dac_volt=0; // y étant la conversion de x en millivolts
     char result_volts[15]={'\0'}; //louer un espace pour le string de l'affichage via Putty
     
     if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT) !=0) // Verficiation de la conversion
@@ -76,7 +76,7 @@ void mode_Voltmetre()
         dac_bin=ADC_SAR_GetResult16(0); // Retourne la conversion à x pour le channel '0' 
         dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
         UART_PutString("-> Voltage : "); 
-        sprintf(result_volts,"%d",dac_volt); //affichage de résultat en mvolts via UART et Putty
+        sprintf(result_volts,"%f",dac_volt); //affichage de résultat en mvolts via UART et Putty
         UART_PutString(result_volts);
         UART_PutString (" mV\n\r");
     }

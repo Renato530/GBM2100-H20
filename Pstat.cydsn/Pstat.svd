@@ -7,8 +7,6 @@
   <width>32</width>
   <peripherals>
     <peripheral>
-<<<<<<< HEAD
-=======
       <name>ADC_SAR_SAR</name>
       <description>SAR ADC</description>
       <baseAddress>0x0</baseAddress>
@@ -156,7 +154,6 @@
       </registers>
     </peripheral>
     <peripheral>
->>>>>>> Voltmètre
       <name>UART</name>
       <description>UART</description>
       <baseAddress>0x0</baseAddress>
@@ -194,24 +191,9 @@
           <resetMask>0</resetMask>
         </register>
         <register>
-<<<<<<< HEAD
-          <name>TX_UART_TX_DATA</name>
-          <description>TX Data Register</description>
-          <addressOffset>0x4000644E</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>RX_UART_RX_STATUS</name>
-          <description>RX status register</description>
-          <addressOffset>0x4000646C</addressOffset>
-=======
           <name>RX_UART_RX_STATUS</name>
           <description>RX status register</description>
           <addressOffset>0x4000646A</addressOffset>
->>>>>>> Voltmètre
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -269,11 +251,6 @@
           </fields>
         </register>
         <register>
-<<<<<<< HEAD
-          <name>TX_UART_TX_STATUS</name>
-          <description>TX status register</description>
-          <addressOffset>0x4000646E</addressOffset>
-=======
           <name>TX_UART_TX_DATA</name>
           <description>TX Data Register</description>
           <addressOffset>0x40006548</addressOffset>
@@ -286,7 +263,6 @@
           <name>TX_UART_TX_STATUS</name>
           <description>TX status register</description>
           <addressOffset>0x4000656B</addressOffset>
->>>>>>> Voltmètre
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
