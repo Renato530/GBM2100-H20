@@ -1,28 +1,20 @@
 # Multimètre FreeSoC2 PSoC5LP DevBoard
-
-Dans le cadre du cours GBM2100, nous avons opté pour l'élaboration d'un multimètre à l'aide d'un microcontrôleur.
-Notre intérêt est focalisé sur la conception d'un voltmètre, d'un ohmètre, d'un ampèrmètre, ainsi qu'un capacimètre.
+Ce projet consiste à concevoir un multimètre à partir de notre microcontrôleur CY8C5888AXI-LP096. 
+En outre, cet outil sera composé d'un voltmère, d'un ohmètre, d'un ampèremètre et d'un capacimètre.
 Les différentes composantes du multimètre sont intégrés à partir d'une interface conçue avec Putty.
-Une configuration d'un menu a été ajouté.
-Il est un outil permettant de choisir la composante voulue en saisissant le numéro correspondant de cette dernière.
-Ainsi, cet outil est une application desntinée à faciliter la sélection.
-Dans les prochaines lignes, nous abordons les différentes étapes permettant la création et l'optimisation d'un multimètre.
-
-Nous commençons tout d'abord, par spécifier le matériel et les deux relations mathématiques permettant de fournir les données recherchées par 
-l'utilisateur. Par la suite, on va enchainer avec l'explication de chaque branche crée.
+De plus, deux relations mathématiques ont été nécessaires afin de fournir les données recherchées par 
+l'utilisateur.
 
 
 <img src="documentation/images/Schema_multimetre.png" width="700" height="500">*Figure 1: Schéma du multimètre*
 
 ## Matériel
 
--   FreeSoC 5LP CY8C5888AXI-LP096
+-   FreeSoC 5LP
 -   PSoC Creator 4.2
--   Circuit imprimé
 -   Kit de résistance
 -   Potentiomètre 10kOhm
 -   Putty
--   Fils électrique
 -   Fils jumper
 -   Condensateur
 -   écran LCD
@@ -46,29 +38,11 @@ $`i(t) = C*\frac{dv}{dt}`$
 
 - [ ] Task 1 Completer tableaux essais
 - [ ] Task 2 insérer des images du montage expérimental
-- [ ] Task 3 insérer une image du TopDesign
+- [X] Task 3 insérer une image du TopDesign
 
 Ce voltmètre sera la composante du multimètre qui requiert le moins d'élements dans PSoC. En effet
 on peut simplement construire un voltmètre à partir d'un ADC. Dans notre cas, on a choisi d'implementer
 un ADC simple tel vu dans le laboratoire 3 du cours. 
-
-```mermaid
-graph TB
-
-  SubGraph1 --> SubGraph1Flow
-  subgraph "SubGraph 1 Flow"
-  SubGraph1Flow(SubNode 1)
-  SubGraph1Flow -- Choice1 --> DoChoice1
-  SubGraph1Flow -- Choice2 --> DoChoice2
-  end
-
-
-  subgraph "Fonctionnement du code du Voltmètre"
-  Node1[Message de bienvenu à l'usager] --> Node2[Mode Voltmètre] --> Node3[Utilisation d'un ADC]
-  Node3 --> SubGraph1[Jump to SubGraph1]
-  SubGraph1 --> FinalThing[Final Thing]
-end
-```
 
 ![Schéma du Voltmètre](documentation/images/Schema_Voltmetre.png)*Figure 2: Schéma du Voltmètre*
 
@@ -94,11 +68,9 @@ Tableau 2: Essais expérimentaux effectués sur le volmètre
 | essai 2      | Cell 2                    | Cell 3                   | 
 | essai 3      | Cell 2                    | Cell 3                   | 
 
-
-
-<img src="documentation/images/TopDesign_Voltmetre.PNG" width="700" height="500">*Figure 3: Schéma du TopDesign du voltmètre*
-
 </details>
+
+<img src="documentation/images/TopDesign_Voltmetre.PNG" width="700" height="500">*Figure 3: TopDesign du voltmètre*
 
 <details>
   <summary markdown="span"> La branche Ohmètre</summary>
@@ -107,16 +79,16 @@ Tableau 2: Essais expérimentaux effectués sur le volmètre
 
 - [ ] Task 1 Completer tableaux essais
 - [ ] Task 2 insérer des images du montage expérimental
-- [ ] Task 3 insérer une image du TopDesign
+- [X] Task 3 insérer une image du TopDesign
 
-En ce qui concerne l'Ohmètre, cette composante va s'inspirer du laboratoire 3 dans lequel nous avons du 
+En ce qui concerne l'Ohmètre, cette composante va s'inspirer du laboratoire 3 dans lequel nous avons dû 
 déterminer une résistance interne du FreeSoC2 PSoC5LP. Cépendant, on doit être en mesure d'extraire les 
 valeurs de plusieurs résistance différentes qui se retrouvent dans une plage en particulier. Notre ohmètre,
 est conçu à partir d'un iDAC et un ADC simple. Le iDAC permet de fournir un courant connu afin de pouvoir 
 le segmenter avec le ADC pour extraire l'information sur le potentiel puis calculer la résistance par la 
 loi d'Ohm. Le schéma ci-dessous indique la manière dont notre équipe à décidé d'approcher le problème.
 
-![Schéma du Ohmètre](documentation/images/Schema_Ohmetre.png)*Figure 3: Schéma du Ohmètre*
+![Schéma du Ohmètre](documentation/images/Schema_Ohmetre.png)*Figure 4: Schéma du Ohmètre*
 
 Voici un tableau qui resume les caractéristiques principales de notre ohmètre. Les valeurs des résistances 
 indiquées sur le tableau permet d'établir une plage dans lequel les valeurs fournis par l'Ohmètre sont 
@@ -142,29 +114,58 @@ Tableau 4: Essais expérimentaux effectués sur l'ohmètre
 | essai 2      | Cell 2                    | Cell 3                   | 
 | essai 3      | Cell 2                    | Cell 3                   | 
 
-
-
-<img src="documentation/images/TopDesign_Ohmetre.PNG" width="700" height="500">*Figure 5: Schéma du TopDesign du ohmmètre*
-
 </details>
+
+<img src="documentation/images/TopDesign_Ohmetre.PNG" width="700" height="500">*Figure 5: TopDesign du ohmmètre*
 
 <details>
   <summary markdown="span"> La branche Ampèremètre</summary>
 ## Ampèremètre
 
 - [ ] Task 1 Completer paragraphe de description
-- [ ] Task 2 insérer tableau de caractéristiques
+- [X] Task 2 insérer tableau de caractéristiques
 - [ ] Task 3 completer le tableau de caractéristique
 - [ ] Task 4 Completer tableaux essais
 - [ ] Task 5 insérer des images du montage expérimental
-- [ ] Task 6 insérer une image du TopDesign
+- [X] Task 6 insérer une image du TopDesign
 - [ ] Task 7 insérer schéma 
+
+Pour ce qui est de l'ampèremètre, nous avons dû pousser nos recherches en ce qui concerne la disposition de notre circuit, 
+les composantes que nous voulions utiliser ainsi que les branchements que nous souhaitions faire pour que le tout puisse fonctionner
+étant donné que nous n'avions pas de modèle de référence en tant que tel contrairement au voltmètre et au ohmmètre. 
+Cette fonction du multimètre a donc été celle qui a demandé une recherche plus poussée de notre part. 
+Afin de concevoir cette fonction, nous avons opté pour des résistances externes plutôt qu'interne. Notre ampèremètre
+est conçu d'un ADC.(pas fini d'expliquer)
+Le schéma ci-dessous indique la manière dont notre équipe à décidé d'approcher le problème.
+
+
+Voici un tableau qui resume les caractéristiques principales de notre ampèremètre.
+[Compléter le texte]
+
+Tableau 5: Caractéristiques de l'Ampèremètre
+
+| Ampèremètre  |    Courant minimal        |    Courant maximale      | 
+| :---         | :--------------------:    | -------------:           | 
+| N/A          | Cell 2                    | Cell 3                   | 
+
+
+### Essais expérimentaux
+
+[Insérer un texte]
+
+Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
+
+| Ampèremètre  |    Courant affiché        |    Courant écrit         | 
+| :---         | :--------------------:    | -------------:           | 
+| essai 1      | Cell 2                    | Cell 3                   | 
+| essai 2      | Cell 2                    | Cell 3                   | 
+| essai 3      | Cell 2                    | Cell 3                   |
+
  
-
-
-<img src="documentation/images/TopDesign_Amperemetre.PNG" width="700" height="500">*Figure 7: Schéma du TopDesign de l'ampèremètre*
-
 </details>
+
+<img src="documentation/images/TopDesign_Amperemetre.PNG" width="700" height="500">*Figure 7: TopDesign de l'ampèremètre*
+
 
 <details>
   <summary markdown="span"> La branche Capacimètre</summary>
