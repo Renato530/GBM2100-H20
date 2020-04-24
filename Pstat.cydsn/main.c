@@ -47,11 +47,11 @@ void mode_Amperemetre () // Configuration de l'amperemetre
     {
         adcResult=ADC_GetResult32();
         adcVolt=ADC_CountsTo_Volts(adcResult);
-        adcAmp = adcVolt/R_2; // en A
+        adcAmp = adcVolt/R_2; // en A  (loi d'Ohm)
         UART_PutString("|| Courant || ");
         sprintf(result_Amp,"%f",adcAmp);
         UART_PutString(result_Amp);
-        UART_PutString (" A||\n\r");   
+        UART_PutString (" A||\n\r");
     }
 }
 
