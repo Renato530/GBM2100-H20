@@ -29,8 +29,7 @@ $`C = \frac{q}{V}`$
 
 $`i(t) = C*\frac{dv}{dt}`$
 
-<details>
-  <summary markdown="span"> La branche Voltmètre</summary>
+
 
 
 ## Volmètre
@@ -43,7 +42,7 @@ Ce voltmètre sera la composante du multimètre qui requiert le moins d'élement
 on peut simplement construire un voltmètre à partir d'un ADC. Dans notre cas, on a choisi d'implementer
 un ADC simple tel vu dans le laboratoire 3 du cours. 
 
-![Schéma du Voltmètre](documentation/images/Schema_Voltmetre.png)*Figure 2: Schéma du Voltmètre*
+<img src="documentation/images/Schema_Voltmetre.png" width="500" height="800">*Figure 2: Schéma du Voltmètre*
 
 Voici un tableau qui resume les caractéristiques principales de notre voltmètre.
 
@@ -67,12 +66,11 @@ Tableau 2: Essais expérimentaux effectués sur le volmètre
 | essai 2      | Cell 2                    | Cell 3                   | 
 | essai 3      | Cell 2                    | Cell 3                   | 
 
-</details>
+
 
 <img src="documentation/images/TopDesign_Voltmetre.PNG" width="700" height="500">*Figure 3: TopDesign du voltmètre*
 
-<details>
-  <summary markdown="span"> La branche Ohmètre</summary>
+
   
 ## Ohmètre
 
@@ -87,7 +85,7 @@ est conçu à partir d'un iDAC et un ADC simple. Le iDAC permet de fournir un co
 le segmenter avec le ADC pour extraire l'information sur le potentiel puis calculer la résistance par la 
 loi d'Ohm. Le schéma ci-dessous indique la manière dont notre équipe à décidé d'approcher le problème.
 
-![Schéma du Ohmètre](documentation/images/Schema_Ohmetre.png)*Figure 4: Schéma du Ohmètre*
+<img src="documentation/images/Schema_Ohmetre.png" width="500" height="800">*Figure 4: Schéma du Ohmètre*
 
 Voici un tableau qui resume les caractéristiques principales de notre ohmètre. Les valeurs des résistances 
 indiquées sur le tableau permet d'établir une plage dans lequel les valeurs fournis par l'Ohmètre sont 
@@ -117,8 +115,7 @@ Tableau 4: Essais expérimentaux effectués sur l'ohmètre
 
 <img src="documentation/images/TopDesign_Ohmetre.PNG" width="700" height="500">*Figure 5: TopDesign du ohmmètre*
 
-<details>
-  <summary markdown="span"> La branche Ampèremètre</summary>
+
 ## Ampèremètre
 
 - [ ] Task 1 Completer paragraphe de description
@@ -161,13 +158,12 @@ Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
 | essai 3      | Cell 2                    | Cell 3                   |
 
  
-</details>
+
 
 <img src="documentation/images/TopDesign_Amperemetre.PNG" width="700" height="500">*Figure 7: TopDesign de l'ampèremètre*
 
 
-<details>
-  <summary markdown="span"> La branche Capacimètre</summary>
+
   
 ## Capacimètre
 
@@ -179,7 +175,6 @@ Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
 - [ ] Task 6 insérer une image du TopDesign
 - [ ] Task 7 insérer schéma 
 
-</details>
 
 ## Composantes à améliorer 
 
