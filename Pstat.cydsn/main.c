@@ -23,82 +23,7 @@
 #include "stdio.h"
 
 
-<<<<<<< HEAD
 
-
-///////////////////////////// FUNCTIONS BODY /////////////////////////////
-=======
->>>>>>> Ohmètre
-
-////////////////////////
-// Cette fonction permet d'initialiser le UART et selectioner un mode du multimetre
-////////////////////////
-void UART_initialisation() 
-{
-    UART_Start();
-    // Affichage du MENU
-    UART_PutString(" \n \r");
-    UART_PutString("=========================== \n \r");
-    UART_PutString("======= MULTIMETRE ======== \n \r");
-    UART_PutString("=========================== \n \r");
-    UART_PutString("||  0 - Mode Voltmetre   ||\n \r");
-    UART_PutString("||  1 - Mode Amperemetre ||\n \r");
-    UART_PutString("||  2 - Mode Ohmmetre    ||\n \r");
-    UART_PutString("=========================== \n \r");
-    UART_PutString("- Veuillez choisir un mode - \n \r");
-    UART_PutString("=========================== \n \r");
-    CyDelay(300);
-}
-
-////////////////////////
-// Cette fonction permet l'utilisation du voltmetre 
-////////////////////////
-
-//TODO: Integrer FreeRTOS
-//TODO: Envoyer les donnes via MATLAB (affichage tableau, graphique...)
-void mode_Voltmetre() 
-{
-    //UART_PutString("- Mode Voltmetre (Appuyez sur nimporte quelle touche pour quitter) - \n\r ");
-    // Declaration des variables
-    float dac_bin=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
-    float dac_volt=0; // y étant la conversion de x en millivolts
-    char result_volts[15]={'\0'}; //louer un espace pour le string de l'affichage via Putty
-    
-    if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT) !=0) // Verficiation de la conversion
-    {
-        dac_bin=ADC_SAR_GetResult32(); // Retourne la conversion à x pour le channel '0'
-    
-        dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
-        
-        if (dac_volt <=0) // Condition pour retourner un potentiel positif via notre multimètre
-        {
-            dac_volt=0;
-        }
-        dac_bin=ADC_SAR_GetResult32(); // Retourne la conversion à x pour le channel '0' 
-        dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
-        dac_volt=dac_volt/1000; // Conversion des mVolts en volts
-        UART_PutString("-> Voltage : "); 
-        sprintf(result_volts,"%.3f",dac_volt); //affichage de résultat en mvolts via UART et Putty
-        UART_PutString(result_volts);
-        UART_PutString (" V\n\r");
-    }
-} // Ceci est une tache qui correspond au mode Voltmetre de notre multimetre (utile pour l'implementation de plusieurs outils dans le multimetre)
-
-////////////////////////
-// Cette fonction permet l'utilisation du ohmetre 
-////////////////////////
-
-
-////////////////////////
-// Cette fonction permet l'utilisation de l'amperemetre 
-////////////////////////
-
-//////////////////////////////////////////////////////////////////////////
-
-
-/////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////// MAIN LOOP /////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////// FUNCTIONS BODY /////////////////////////////
 
@@ -160,67 +85,6 @@ void mode_Voltmetre()
 // Cette fonction permet l'utilisation du ohmetre 
 ////////////////////////
 
-/*void mode_Ohmetre()
-{
-    // Déclaration des variables
-    int courant = 0;
-    float resistance = 0;
-    int voltage = 0;
-    char val_resistance[10];
-    unsigned int DAC_valeur = 0xff;
-    int v_input=4095;
-    
-    // Initialisation des composantes
-    DAC_Start();
-    SAR_ADC2_Start();
-    DAC_valeur= 0xff;
-    DAC_SetValue(DAC_valeur);
-    SAR_ADC2_StartConvert();
-    
-    
-    while ((DAC_valeur > 0) && (v_input >=4000))
-    {
-        DAC_valeur=DAC_valeur - 0x01;
-        DAC_SetValue(DAC_valeur);
-        CyDelay(3);
-        if (SAR_ADC2_IsEndConversion(SAR_ADC2_WAIT_FOR_RESULT)!=0)
-        {
-            v_input= SAR_ADC2_GetResult16();
-        }
-        CyDelay(2);
-
-    }
-    if (v_input < 4000)
-    {
-        DAC_SetValue(DAC_valeur);
-        CyDelay(1);
-        courant = DAC_valeur*8;
-        voltage=v_input*1000/2;
-        resistance= voltage/courant; 
-        resistance -=470;
-        if (resistance <= 0) 
-        {
-            resistance = 0;
-        }
-        
-        else if (resistance > 10000) {resistance *=1.1;}
-        if(resistance < 250000)
-        {
-            UART_PutString("|| Resistance || "); 
-            sprintf(val_resistance,"%f",resistance);
-            UART_PutString(val_resistance);
-            UART_PutString (" Ohms||\n\r");
-            CyDelay(100);
-        }
-        else
-        {
-            UART_PutString (" ==========\n\r");
-            UART_PutString (" Aucune resistance presente\n\r");
-            CyDelay(100);
-        }
-        CyDelay(100);
-        
-    }*/
 
 ////////////////////////
 // Cette fonction permet l'utilisation de l'amperemetre 
@@ -321,7 +185,3 @@ int main(void)
 
 /* [] END OF FILE */
 
-<<<<<<< HEAD
-=======
-
->>>>>>> Ohmètre

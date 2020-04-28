@@ -251,22 +251,10 @@
   <Data key="DataVersionKey" value="2" />
   <Group key="DWRInstGuidMapping">
     <Group key="Pin">
-<<<<<<< HEAD
       <Data key="1c779830-17c1-4e85-ac9d-f6672eb88df1/dea208d9-07b0-438b-a5e0-ac5d207f2658/16a808f6-2e13-45b9-bce0-b001c8655113" value="ADC_SAR_SAR_Bypass" />
       <Data key="3b178603-254d-48b3-be28-68f56c1a9f14/16a808f6-2e13-45b9-bce0-b001c8655113" value="ADC_Bypass" />
       <Data key="1425177d-0d0e-4468-8bcc-e638e5509a9b" value="Rx" />
       <Data key="77715107-f8d5-47e5-a629-0fb83101ac6b" value="P_1" />
-=======
-      <Data key="00d0ed3a-5979-4715-ae89-a7faf72dd09a" value="Resistance" />
-      <Data key="6c65cfef-3481-422b-88f3-edc7f32e6296/16a808f6-2e13-45b9-bce0-b001c8655113" value="SAR_ADC_Bypass" />
-      <Data key="9b7114bd-8bf6-4cb5-bb87-e08298a5379f/ed092b9b-d398-4703-be89-cebf998501f6" value="LCD_LCDPort" />
-      <Data key="774d9c7e-47b1-4d10-a8e5-a9412f48c81d/16a808f6-2e13-45b9-bce0-b001c8655113" value="SAR_ADC2_Bypass" />
-      <Data key="05137f1a-4f17-41e5-8761-efdffa679b34" value="R_s" />
-      <Data key="90736bbe-0afb-4fdb-bf73-8b74c01effe1/16a808f6-2e13-45b9-bce0-b001c8655113" value="SAR_ADC_Bypass" />
-      <Data key="1425177d-0d0e-4468-8bcc-e638e5509a9b" value="Rx" />
-      <Data key="77715107-f8d5-47e5-a629-0fb83101ac6b" value="P_1" />
-      <Data key="e6cbc685-e410-4cfd-ac13-f8219653b4e9/dea208d9-07b0-438b-a5e0-ac5d207f2658/16a808f6-2e13-45b9-bce0-b001c8655113" value="SAR_ADC_SAR_Bypass" />
->>>>>>> Ohmètre
       <Data key="e851a3b9-efb8-48be-bbb8-b303b216c393" value="LED" />
       <Data key="ed092b9b-d398-4703-be89-cebf998501f6" value="Tx" />
     </Group>
@@ -3355,39 +3343,7 @@
     </Group>
   </Group>
   <Group key="Pin2">
-<<<<<<< HEAD
     <Group key="1c779830-17c1-4e85-ac9d-f6672eb88df1/dea208d9-07b0-438b-a5e0-ac5d207f2658/16a808f6-2e13-45b9-bce0-b001c8655113">
-=======
-    <Group key="00d0ed3a-5979-4715-ae89-a7faf72dd09a">
-      <Group key="0">
-        <Data key="Port Format" value="5,7" />
-      </Group>
-    </Group>
-    <Group key="9b7114bd-8bf6-4cb5-bb87-e08298a5379f/ed092b9b-d398-4703-be89-cebf998501f6">
-      <Group key="0">
-        <Data key="Port Format" value="3,0" />
-      </Group>
-      <Group key="1">
-        <Data key="Port Format" value="3,1" />
-      </Group>
-      <Group key="2">
-        <Data key="Port Format" value="3,2" />
-      </Group>
-      <Group key="3">
-        <Data key="Port Format" value="3,3" />
-      </Group>
-      <Group key="4">
-        <Data key="Port Format" value="3,4" />
-      </Group>
-      <Group key="5">
-        <Data key="Port Format" value="3,5" />
-      </Group>
-      <Group key="6">
-        <Data key="Port Format" value="3,6" />
-      </Group>
-    </Group>
-    <Group key="774d9c7e-47b1-4d10-a8e5-a9412f48c81d/16a808f6-2e13-45b9-bce0-b001c8655113">
->>>>>>> Ohmètre
       <Group key="0">
         <Data key="Port Format" value="0,2" />
       </Group>

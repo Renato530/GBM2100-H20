@@ -16,7 +16,6 @@
 */Export/PSoCCreatorExportIDE*
 
 Backup/Pstat-PSoC._4.2.zip
-<<<<<<< HEAD
 Pstat.cydsn/main_BACKUP_1240.c
 Pstat.cydsn/main_BACKUP_1373.c
 Pstat.cydsn/main_BASE_1240.c
@@ -28,18 +27,4 @@ Pstat.cydsn/main_REMOTE_1373.c
 Pstat.cydsn/main_BACKUP_1432.c
 Pstat.cydsn/main_BASE_1432.c
 Pstat.cydsn/main_LOCAL_1432.c
-=======
-Backup/Pstat-PSoC._4.3.zip
-Pstat.cydsn/main_BACKUP_1240.c
-Pstat.cydsn/main_BACKUP_1373.c
-Pstat.cydsn/main_BACKUP_1432.c
-Pstat.cydsn/main_BASE_1240.c
-Pstat.cydsn/main_BASE_1373.c
-Pstat.cydsn/main_BASE_1432.c
-Pstat.cydsn/main_LOCAL_1240.c
-Pstat.cydsn/main_LOCAL_1373.c
-Pstat.cydsn/main_LOCAL_1432.c
-Pstat.cydsn/main_REMOTE_1240.c
-Pstat.cydsn/main_REMOTE_1373.c
->>>>>>> Ohmètre
 Pstat.cydsn/main_REMOTE_1432.c
