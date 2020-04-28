@@ -254,11 +254,14 @@
       <Data key="1c779830-17c1-4e85-ac9d-f6672eb88df1/dea208d9-07b0-438b-a5e0-ac5d207f2658/16a808f6-2e13-45b9-bce0-b001c8655113" value="ADC_SAR_SAR_Bypass" />
       <Data key="3b178603-254d-48b3-be28-68f56c1a9f14/16a808f6-2e13-45b9-bce0-b001c8655113" value="ADC_Bypass" />
       <Data key="03bd3978-b509-4caa-8c6c-a7fe697a42a5" value="Resistance" />
+      <Data key="5cff2b9b-0ef2-43c4-920d-7358d9691c09" value="Pin_2" />
       <Data key="92c3f1f9-4bb2-4e2c-87ba-082176c2b94a/16a808f6-2e13-45b9-bce0-b001c8655113" value="SAR_ADC2_Bypass" />
+      <Data key="048899cb-1aa9-4d6b-913b-7913aacf3b4d/16a808f6-2e13-45b9-bce0-b001c8655113" value="ADC_SAR_Bypass" />
       <Data key="1425177d-0d0e-4468-8bcc-e638e5509a9b" value="Rx" />
       <Data key="77715107-f8d5-47e5-a629-0fb83101ac6b" value="P_1" />
       <Data key="e0f57667-42ab-4306-9349-9d1685f2d3f3/ed092b9b-d398-4703-be89-cebf998501f6" value="LCD_LCDPort" />
       <Data key="e851a3b9-efb8-48be-bbb8-b303b216c393" value="LED" />
+      <Data key="ea7c3e36-4821-4097-b59f-82d7d37236b4" value="Pin_1" />
       <Data key="ed092b9b-d398-4703-be89-cebf998501f6" value="Tx" />
     </Group>
   </Group>
@@ -3356,6 +3359,11 @@
         <Data key="Port Format" value="5,7" />
       </Group>
     </Group>
+    <Group key="5cff2b9b-0ef2-43c4-920d-7358d9691c09">
+      <Group key="0">
+        <Data key="Port Format" value="0,7" />
+      </Group>
+    </Group>
     <Group key="92c3f1f9-4bb2-4e2c-87ba-082176c2b94a/16a808f6-2e13-45b9-bce0-b001c8655113">
       <Group key="0">
         <Data key="Port Format" value="0,2" />
@@ -3374,6 +3382,11 @@
     <Group key="e851a3b9-efb8-48be-bbb8-b303b216c393">
       <Group key="0">
         <Data key="Port Format" value="6,7" />
+      </Group>
+    </Group>
+    <Group key="ea7c3e36-4821-4097-b59f-82d7d37236b4">
+      <Group key="0">
+        <Data key="Port Format" value="3,1" />
       </Group>
     </Group>
     <Group key="ed092b9b-d398-4703-be89-cebf998501f6">
