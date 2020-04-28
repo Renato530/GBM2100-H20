@@ -55,6 +55,7 @@ void UART_initialisation()
 //TODO: Envoyer les donnes via MATLAB (affichage tableau, graphique...)
 void mode_Voltmetre() 
 {
+    AMux_FastSelect(0);
     //UART_PutString("- Mode Voltmetre (Appuyez sur nimporte quelle touche pour quitter) - \n\r ");
     // Declaration des variables
     float dac_bin=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
@@ -63,7 +64,7 @@ void mode_Voltmetre()
     
     if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT) !=0) // Verficiation de la conversion
     {
-        dac_bin=ADC_SAR_GetResult32(); // Retourne la conversion à x pour le channel '0'
+        dac_bin=ADC_SAR_GetResult16(); // Retourne la conversion à x pour le channel '0'
     
         dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
         
@@ -71,7 +72,7 @@ void mode_Voltmetre()
         {
             dac_volt=0;
         }
-        dac_bin=ADC_SAR_GetResult32(); // Retourne la conversion à x pour le channel '0' 
+        dac_bin=ADC_SAR_GetResult16(); // Retourne la conversion à x pour le channel '0' 
         dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
         dac_volt=dac_volt/1000; // Conversion des mVolts en volts
         UART_PutString("-> Voltage : "); 
@@ -87,6 +88,7 @@ void mode_Voltmetre()
 
 void mode_Ohmetre()
 {
+    AMux_FastSelect(1);
     // Déclaration des variables
     int courant = 0;
     float resistance = 0;
@@ -97,10 +99,10 @@ void mode_Ohmetre()
     
     // Initialisation des composantes
     DAC_Start();
-    SAR_ADC2_Start();
+    ADC_SAR_Start();
     DAC_valeur= 0xff;
     DAC_SetValue(DAC_valeur);
-    SAR_ADC2_StartConvert();
+    ADC_SAR_StartConvert();
     
     
     while ((DAC_valeur > 0) && (v_input >=4000))
@@ -108,9 +110,9 @@ void mode_Ohmetre()
         DAC_valeur=DAC_valeur - 0x01;
         DAC_SetValue(DAC_valeur);
         CyDelay(3);
-        if (SAR_ADC2_IsEndConversion(SAR_ADC2_WAIT_FOR_RESULT)!=0)
+        if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT)!=0)
         {
-            v_input= SAR_ADC2_GetResult16();
+            v_input= ADC_SAR_GetResult16();
         }
         CyDelay(2);
 
@@ -163,6 +165,7 @@ int main(void)
 {
     
     FreeRTOS_Start();
+    AMux_Start();
     ADC_SAR_Start();
     ADC_SAR_StartConvert();
     
