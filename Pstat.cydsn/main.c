@@ -80,6 +80,16 @@ void mode_Voltmetre()
         UART_PutString (" V\n\r");
     }
 } // Ceci est une tache qui correspond au mode Voltmetre de notre multimetre (utile pour l'implementation de plusieurs outils dans le multimetre)
+
+////////////////////////
+// Cette fonction permet l'utilisation du ohmetre 
+////////////////////////
+
+
+////////////////////////
+// Cette fonction permet l'utilisation de l'amperemetre 
+////////////////////////
+
 //////////////////////////////////////////////////////////////////////////
 
 
