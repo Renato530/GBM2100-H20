@@ -1,24 +1,28 @@
 /* ========================================
  *
- * Copyright ÉQUIPE '1E', 2020
+ * Copyright GBM2100 Équipe 1E, 2020
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
  * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF TEAM '1E'.
+ * WHICH IS THE PROPERTY OF Équipe 1E.
  * Renato Castillo          1962797
  * Karl-Philippe Beaudet    1958657
  * Richema Métallus         1953911
  * Tasnim Ahmed             1958545
  * ========================================
 */
+
+// TODO: Integrer l'Ohmetre
+// TODO: Integrer l'Amperemetre
+// TODO: Tester l'Amperemetre
+
 #include "project.h"
 #include "FreeRTOS.h"
 #include "task.h"
-#include <stdio.h>
+#include "stdio.h"
 
-// TODO : Integrer cette composante du multimetre au Voltmetre par une interface
-// TODO : Remplacer les chiffre (valeurs qui sortent de nulpart) par des variables explicatives
+
 
 
 ///////////////////////////// FUNCTIONS BODY /////////////////////////////
@@ -47,7 +51,41 @@ void UART_initialisation()
 // Cette fonction permet l'utilisation du voltmetre 
 ////////////////////////
 
-void mode_Ohmetre()
+//TODO: Integrer FreeRTOS
+//TODO: Envoyer les donnes via MATLAB (affichage tableau, graphique...)
+void mode_Voltmetre() 
+{
+    //UART_PutString("- Mode Voltmetre (Appuyez sur nimporte quelle touche pour quitter) - \n\r ");
+    // Declaration des variables
+    float dac_bin=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
+    float dac_volt=0; // y étant la conversion de x en millivolts
+    char result_volts[15]={'\0'}; //louer un espace pour le string de l'affichage via Putty
+    
+    if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT) !=0) // Verficiation de la conversion
+    {
+        dac_bin=ADC_SAR_GetResult32(); // Retourne la conversion à x pour le channel '0'
+    
+        dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
+        
+        if (dac_volt <=0) // Condition pour retourner un potentiel positif via notre multimètre
+        {
+            dac_volt=0;
+        }
+        dac_bin=ADC_SAR_GetResult32(); // Retourne la conversion à x pour le channel '0' 
+        dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
+        dac_volt=dac_volt/1000; // Conversion des mVolts en volts
+        UART_PutString("-> Voltage : "); 
+        sprintf(result_volts,"%.3f",dac_volt); //affichage de résultat en mvolts via UART et Putty
+        UART_PutString(result_volts);
+        UART_PutString (" V\n\r");
+    }
+} // Ceci est une tache qui correspond au mode Voltmetre de notre multimetre (utile pour l'implementation de plusieurs outils dans le multimetre)
+
+////////////////////////
+// Cette fonction permet l'utilisation du ohmetre 
+////////////////////////
+
+/*void mode_Ohmetre()
 {
     // Déclaration des variables
     int courant = 0;
@@ -107,11 +145,11 @@ void mode_Ohmetre()
         }
         CyDelay(100);
         
-    }
-    
-      
-    
-}
+    }*/
+
+////////////////////////
+// Cette fonction permet l'utilisation de l'amperemetre 
+////////////////////////
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -120,18 +158,24 @@ void mode_Ohmetre()
 ///////////////////////////////////// MAIN LOOP /////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
 
-
 int main(void)
 {
-    // Variables générales
-    char8 input; 
-
+    
+    FreeRTOS_Start();
+    ADC_SAR_Start();
+    ADC_SAR_StartConvert();
+    
+    
+    int frequence_echatillonage = 10; // Hz
+    int periode_echatillonage=1000/frequence_echatillonage; // mS
+    char input;
     
     // Affichage du message d'accueil
     UART_Start();
     UART_PutString("************* Bienvenue au multimetre de l'equipe 1e *************\n\r ");
     UART_PutString("******************************************************************\n\r ");
     CyDelay(2000);
+    
     for(;;) 
     {
         UART_initialisation();
@@ -140,17 +184,19 @@ int main(void)
         while (!input){
              input=UART_GetChar(); // Permet de savoir le mode choisi
         }
+        
         char8 inputTemp;
         switch (input)
         {
             case '0':
                 UART_PutString("- Mode Voltmetre (Appuyez sur ENTER pour quitter) - \n \r ");
+                CyDelay(500);
                 // On reste dans le mode Voltmètre tant qu'on appuie pas sur une touche sur le clavier
                 inputTemp = 0;
                 while(inputTemp == 0)
                 {
-                    //mode_Voltmetre();
-                    CyDelay(100);
+                    mode_Voltmetre();
+                    CyDelay(periode_echatillonage);
                     inputTemp=UART_GetChar();
                     if (!inputTemp)
                     {
@@ -160,12 +206,13 @@ int main(void)
                 break;
                 
             case '1':
-                UART_PutString("- Mode Amperemetre (Appuyez sur ENTER pour quitter) - \n \r ");
+                UART_PutString("- Mode Amperemetre (Appuyez sur ENTER pour quitter) - \n\r ");
+                CyDelay(500);
                 inputTemp = 0;
                 while(inputTemp == 0)
                 {
                     //mode_Amperemetre();
-                    CyDelay(500);
+                    CyDelay(periode_echatillonage);
                     inputTemp=UART_GetChar();
                     if (!inputTemp)
                     {
@@ -175,12 +222,13 @@ int main(void)
                 break;
 
             case '2':
-                UART_PutString("- Mode Ohmmetre (Appuyez sur ENTER pour quitter) - \n \r ");
+                UART_PutString("- Mode Ohmmetre (Appuyez sur ENTER pour quitter) - \n\r ");
+                CyDelay(500);
                 inputTemp = 0;
                 while(inputTemp == 0)
                 {
-                    mode_Ohmetre();
-                    CyDelay(100);
+                    //mode_Ohmmetre();
+                    CyDelay(periode_echatillonage);
                     inputTemp=UART_GetChar();
                     if (!inputTemp)
                     {
@@ -197,3 +245,5 @@ int main(void)
 } ///////////////////=========== main loop Ends Here ===============/////////////////////////
 
 /* [] END OF FILE */
+
+
