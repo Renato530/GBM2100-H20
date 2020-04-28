@@ -156,11 +156,13 @@ void mode_Ohmetre()
 
 void mode_Amperemetre () // Configuration de l'amperemetre
 {
+    ADC_Start();
     int32 adcResult;
     float adcVolt;
     float adcAmp;
     int R_2=100; // resistance de reference en mOhms
     char result_Amp[20];
+    ADC_StartConvert();
     if (ADC_IsEndConversion(ADC_RETURN_STATUS)!=0)
     {
         adcResult=ADC_GetResult32();
