@@ -85,6 +85,68 @@ void mode_Voltmetre()
 // Cette fonction permet l'utilisation du ohmetre 
 ////////////////////////
 
+void mode_Ohmetre()
+{
+    // Déclaration des variables
+    int courant = 0;
+    float resistance = 0;
+    int voltage = 0;
+    char val_resistance[10];
+    unsigned int DAC_valeur = 0xff;
+    int v_input=4095;
+    
+    // Initialisation des composantes
+    DAC_Start();
+    SAR_ADC2_Start();
+    DAC_valeur= 0xff;
+    DAC_SetValue(DAC_valeur);
+    SAR_ADC2_StartConvert();
+    
+    
+    while ((DAC_valeur > 0) && (v_input >=4000))
+    {
+        DAC_valeur=DAC_valeur - 0x01;
+        DAC_SetValue(DAC_valeur);
+        CyDelay(3);
+        if (SAR_ADC2_IsEndConversion(SAR_ADC2_WAIT_FOR_RESULT)!=0)
+        {
+            v_input= SAR_ADC2_GetResult16();
+        }
+        CyDelay(2);
+
+    }
+    if (v_input < 4000)
+    {
+        DAC_SetValue(DAC_valeur);
+        CyDelay(1);
+        courant = DAC_valeur*8;
+        voltage=v_input*1000/2;
+        resistance= voltage/courant; 
+        resistance -=470;
+        if (resistance <= 0) 
+        {
+            resistance = 0;
+        }
+        
+        else if (resistance > 10000) {resistance *=1.1;}
+        if(resistance < 250000)
+        {
+            UART_PutString("|| Resistance || "); 
+            sprintf(val_resistance,"%f",resistance);
+            UART_PutString(val_resistance);
+            UART_PutString (" Ohms||\n\r");
+            CyDelay(100);
+        }
+        else
+        {
+            UART_PutString (" ==========\n\r");
+            UART_PutString (" Aucune resistance presente\n\r");
+            CyDelay(100);
+        }
+        CyDelay(100);
+        
+    }
+}
 
 ////////////////////////
 // Cette fonction permet l'utilisation de l'amperemetre 
@@ -166,7 +228,7 @@ int main(void)
                 inputTemp = 0;
                 while(inputTemp == 0)
                 {
-                    //mode_Ohmmetre();
+                    mode_Ohmetre();
                     CyDelay(periode_echatillonage);
                     inputTemp=UART_GetChar();
                     if (!inputTemp)
