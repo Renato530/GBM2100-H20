@@ -63,7 +63,7 @@ void mode_Voltmetre()
     
     if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT) !=0) // Verficiation de la conversion
     {
-        dac_bin=ADC_SAR_GetResult16(0); // Retourne la conversion à x pour le channel '0'
+        dac_bin=ADC_SAR_GetResult32(); // Retourne la conversion à x pour le channel '0'
     
         dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
         
@@ -71,7 +71,7 @@ void mode_Voltmetre()
         {
             dac_volt=0;
         }
-        dac_bin=ADC_SAR_GetResult16(0); // Retourne la conversion à x pour le channel '0' 
+        dac_bin=ADC_SAR_GetResult32(); // Retourne la conversion à x pour le channel '0' 
         dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
         dac_volt=dac_volt/1000; // Conversion des mVolts en volts
         UART_PutString("-> Voltage : "); 
