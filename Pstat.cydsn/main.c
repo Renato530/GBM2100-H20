@@ -156,8 +156,6 @@ void mode_Ohmetre()
 
 /*void mode_Amperemetre () // Configuration de l'amperemetre
 {
-    ADC_Start();
-    ADC_StartConvert();
     int32 adcResult;
     float adcVolt;
     float adcAmp;
@@ -174,7 +172,6 @@ void mode_Ohmetre()
         UART_PutString (" A||\n\r");
     }
 }*/
-
 //////////////////////////////////////////////////////////////////////////
 
 
