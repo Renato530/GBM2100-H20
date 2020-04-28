@@ -154,6 +154,27 @@ void mode_Ohmetre()
 // Cette fonction permet l'utilisation de l'amperemetre 
 ////////////////////////
 
+<<<<<<< HEAD
+=======
+/*void mode_Amperemetre () // Configuration de l'amperemetre
+{
+    int32 adcResult;
+    float adcVolt;
+    float adcAmp;
+    int R_2=100; // resistance de reference en mOhms
+    char result_Amp[20];
+    if (ADC_IsEndConversion(ADC_RETURN_STATUS)!=0)
+    {
+        adcResult=ADC_GetResult32();
+        adcVolt=ADC_CountsTo_Volts(adcResult);
+        adcAmp = adcVolt/R_2; // en A  (loi d'Ohm)
+        UART_PutString("|| Courant || ");
+        sprintf(result_Amp,"%f",adcAmp);
+        UART_PutString(result_Amp);
+        UART_PutString (" A||\n\r");
+    }
+}*/
+>>>>>>> Ampèremètre
 //////////////////////////////////////////////////////////////////////////
 
 
