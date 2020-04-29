@@ -19,8 +19,12 @@
 #include "task.h"
 #include "stdio.h"
 
-
-
+// Variable options permettent de définir les unitées des fonctions du multimetre
+volatile int optionVoltmetre=0; // Volts
+volatile int optionAmperemetre=1; // miliAmperes
+volatile int optionOhmmetre=0; // Ohms
+volatile int frequence_echatillonage=10; //Hz
+volatile int periode_echatillonage;
 
 ///////////////////////////// FUNCTIONS BODY /////////////////////////////
 
@@ -35,16 +39,221 @@ void UART_initialisation()
     UART_PutString("=========================== \n \r");
     UART_PutString("======= MULTIMETRE ======== \n \r");
     UART_PutString("=========================== \n \r");
-    UART_PutString("||  0 - Mode Voltmetre   ||\n \r");
-    UART_PutString("||  1 - Mode Amperemetre ||\n \r");
-    UART_PutString("||  2 - Mode Ohmmetre    ||\n \r");
-    UART_PutString("||  3 - Mode Capacimetre ||\n \r");
+    UART_PutString("||  1 - Mode Voltmetre   ||\n \r");
+    UART_PutString("||  2 - Mode Amperemetre ||\n \r");
+    UART_PutString("||  3 - Mode Ohmmetre    ||\n \r");
+    UART_PutString("||  4 - Mode Capacimetre ||\n \r");
+    UART_PutString("||  5 - Parametres       ||\n \r");
     UART_PutString("=========================== \n \r");
     UART_PutString("- Veuillez choisir un mode - \n \r");
     UART_PutString("=========================== \n \r");
     CyDelay(300);
 }
 
+void MenuOptionVoltmetre()
+{
+    UART_PutString(" \n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("============= Unite voltage ============= \n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("||  1 - Volts (V)                      || \n \r");
+    UART_PutString("||  2 - Milivolts (mV)                 || \n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("- Veuillez choisir une options - \n \r");
+    UART_PutString("========================================= \n \r");
+    char input='\0';
+        
+    while (!input){
+        input=UART_GetChar(); // Permet de savoir le mode choisi
+    }
+    
+    switch(input)
+    {
+        case '1':
+            optionVoltmetre=0;
+            UART_PutString(" Unitees selectionnees: V \n \r");
+            break;
+        
+        case '2':
+            optionVoltmetre=1;
+            UART_PutString(" Unitees selectionnees: mV \n \r");
+            break;
+        
+        default:
+            UART_PutString(" - Erreur - \n \r");
+            break;
+    }
+}
+
+void MenuOptionAmperemetre()
+{
+    UART_PutString(" \n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("============= Unite courant ============= \n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("||  1 - Amperes (A)                    || \n \r");
+    UART_PutString("||  2 - Miliamperes (mA)               || \n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("- Veuillez choisir une options - \n \r");
+    UART_PutString("========================================= \n \r");
+    char input='\0';
+        
+    while (!input){
+        input=UART_GetChar(); // Permet de savoir le mode choisi
+    }
+    
+    switch(input)
+    {
+        case '1':
+            optionAmperemetre=0;
+            UART_PutString(" Unitees selectionnees: A \n \r");
+            break;
+        
+        case '2':
+            optionAmperemetre=1;
+            UART_PutString(" Unitees selectionnees: mA \n \r");
+            break;
+        
+        default:
+            UART_PutString(" - Erreur - \n \r");
+            break;
+    }
+}
+
+void MenuOptionOhmmetre()
+{
+    UART_PutString(" \n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("============ Unite resistance =========== \n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("||  1 - Ohms                           || \n \r");
+    UART_PutString("||  2 - KiloOhms                       || \n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("- Veuillez choisir une options - \n \r");
+    UART_PutString("========================================= \n \r");
+    char input='\0';
+        
+    while (!input){
+        input=UART_GetChar(); // Permet de savoir le mode choisi
+    }
+    
+    switch(input)
+    {
+        case '1':
+            optionOhmmetre=0;
+            UART_PutString(" Unitees selectionnees: Ohms \n \r");
+            break;
+        
+        case '2':
+            optionOhmmetre=1;
+            UART_PutString(" Unitees selectionnees: kOhms \n \r");
+            break;
+        
+        default:
+            UART_PutString(" - Erreur - \n \r");
+            break;
+    }
+}
+
+void MenuFrequenceEchatillonage()
+{
+    UART_PutString(" \n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("========= Frequence Echatillonage ======= \n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("||  1 - 1  Hz (1/sec)                  || \n \r");
+    UART_PutString("||  2 - 2  Hz (2/sec)                  || \n \r");
+    UART_PutString("||  3 - 5  Hz (5/sec)                  || \n \r");
+    UART_PutString("||  4 - 10 Hz (10/sec)                 || \n \r");
+    UART_PutString("||  5 - 20 Hz (20/sec)                 || \n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("- Veuillez choisir une options - \n \r");
+    UART_PutString("========================================= \n \r");
+    char input='\0';
+        
+    while (!input){
+        input=UART_GetChar(); // Permet de savoir le mode choisi
+    }
+    
+    switch(input)
+    {
+        case '1':
+            frequence_echatillonage=1;
+            UART_PutString(" Frequence d'echatillonage selectionnee: 1 Hz \n \r");
+            break;
+        
+        case '2':
+            frequence_echatillonage=2;
+            UART_PutString(" Frequence d'echatillonage selectionnee: 2 Hz \n \r");
+            break;
+        
+        case '3':
+            frequence_echatillonage=5;
+            UART_PutString(" Frequence d'echatillonage selectionnee: 5 Hz \n \r");
+            break;
+        
+        case '4':
+            frequence_echatillonage=10;
+            UART_PutString(" Frequence d'echatillonage selectionnee: 10 Hz \n \r");
+            break;
+        
+        case '5':
+            frequence_echatillonage=20;
+            UART_PutString(" Frequence d'echatillonage selectionnee: 20 Hz \n \r");
+            break;
+        
+        default:
+            UART_PutString(" - Erreur - \n \r");
+            break;
+    }
+}
+
+void MenuParametres(){
+    UART_PutString(" \n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("============== Parametres =============== \n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("||  1 - Frequence d'echatillonage     ||\n \r");
+    UART_PutString("||  2 - Unitees Voltage               ||\n \r");
+    UART_PutString("||  3 - Unitees Courant               ||\n \r");
+    UART_PutString("||  4 - Unitees Resistance            ||\n \r");
+    UART_PutString("||  5 - Quitter le menu de parametres ||\n \r");
+    UART_PutString("========================================= \n \r");
+    UART_PutString("- Veuillez choisir une options - \n \r");
+    UART_PutString("========================================= \n \r");
+                
+    char input='\0';
+        
+    while (!input){
+        input=UART_GetChar(); // Permet de savoir le mode choisi
+    }
+     
+    switch(input)
+    {
+        case '1':
+            MenuFrequenceEchatillonage();
+            UART_PutString("- Menu frequence echantillonage quitte -\n\r");
+            break;
+        
+        case '2':
+            MenuOptionVoltmetre();
+            UART_PutString("- Menu voltmetre quitte -\n\r");
+            break;
+                    
+        case '3':
+            MenuOptionAmperemetre();
+            UART_PutString("- Menu amperemetre quitte -\n\r");
+            break;
+                    
+        case '4':
+            MenuOptionOhmmetre();
+            UART_PutString("- Menu ohmmetre quitte -\n\r");
+            break;
+                    
+        default:
+            UART_PutString("- Menu parametres quitte -\n\r");
+        }   
+}
 
 ////////////////////////
 // Cette fonction permet l'utilisation du voltmetre 
@@ -66,10 +275,23 @@ void mode_Voltmetre()
         {
             adc_volt=0;
         }
-        UART_PutString("|| Voltage || "); 
-        sprintf(result_volts,"%.3f",adc_volt); //affichage de résultat en mvolts via UART et Putty
-        UART_PutString(result_volts);
-        UART_PutString (" V ||\n\r");
+        
+        
+        if (optionVoltmetre==0)
+        {
+            UART_PutString("|| Voltage || ");
+            sprintf(result_volts,"%.3f",adc_volt); //affichage de résultat en Volts via UART et Putty
+            UART_PutString(result_volts);
+            UART_PutString (" V ||\n\r");
+        }
+        
+        else{
+            adc_volt=adc_volt*1000;
+            UART_PutString("|| Voltage || ");
+            sprintf(result_volts,"%.0f",adc_volt); //affichage de résultat en mVolts via UART et Putty
+            UART_PutString(result_volts);
+            UART_PutString (" mV ||\n\r");
+        }
     }
 } 
 
@@ -124,10 +346,22 @@ void mode_Ohmetre()
         else if (resistance > 10000) {resistance *=1.1;}
         if(resistance < 250000)
         {
-            UART_PutString("|| Resistance || "); 
-            sprintf(val_resistance,"%f",resistance);
-            UART_PutString(val_resistance);
-            UART_PutString (" Ohms||\n\r");
+            if (optionOhmmetre==0)
+            {
+                UART_PutString("|| Resistance || "); 
+                sprintf(val_resistance,"%f",resistance);
+                UART_PutString(val_resistance);
+                UART_PutString (" Ohms||\n\r"); 
+            }
+
+            else{
+                resistance=resistance/1000;
+                UART_PutString("|| Resistance || "); 
+                sprintf(val_resistance,"%f",resistance);
+                UART_PutString(val_resistance);
+                UART_PutString (" kOhms||\n\r"); 
+            }
+            
             CyDelay(100);
         }
         else
@@ -159,10 +393,21 @@ void mode_Amperemetre ()
         adcResult=ADC_GetResult32();
         adcVolt=ADC_CountsTo_Volts(adcResult);
         adcAmp = adcVolt/R_2; // en A  (loi d'Ohm)
-        UART_PutString("|| Courant || ");
-        sprintf(result_Amp,"%f",adcAmp);
-        UART_PutString(result_Amp);
-        UART_PutString (" A||\n\r");
+        if (optionAmperemetre==0)
+        {
+            UART_PutString("|| Courant || ");
+            sprintf(result_Amp,"%.3f",adcAmp);
+            UART_PutString(result_Amp);
+            UART_PutString (" A||\n\r"); 
+        }
+
+        else{
+            adcAmp=adcAmp*1000;
+            UART_PutString("|| Courant || ");
+            sprintf(result_Amp,"%.0f",adcAmp);
+            UART_PutString(result_Amp);
+            UART_PutString (" mA||\n\r"); 
+        }
     }
 }
 //////////////////////////////////////////////////////////////////////////
@@ -180,9 +425,6 @@ int main(void)
     ADC_SAR_Start();
     ADC_SAR_StartConvert();
     
-    
-    int frequence_echatillonage = 10; // Hz
-    int periode_echatillonage=1000/frequence_echatillonage; // mS
     char input;
     
     // Affichage du message d'accueil
@@ -203,7 +445,7 @@ int main(void)
         char8 inputTemp;
         switch (input)
         {
-            case '0':
+            case '1':
                 UART_PutString("- Mode Voltmetre (Appuyez sur ENTER pour quitter) - \n \r ");
                 CyDelay(500);
                 // On reste dans le mode Voltmètre tant qu'on appuie pas sur une touche sur le clavier
@@ -220,7 +462,7 @@ int main(void)
                 }
                 break;
                 
-            case '1':
+            case '2':
                 UART_PutString("- Mode Amperemetre (Appuyez sur ENTER pour quitter) - \n\r ");
                 CyDelay(500);
                 inputTemp = 0;
@@ -236,7 +478,7 @@ int main(void)
                 }
                 break;
 
-            case '2':
+            case '3':
                 UART_PutString("- Mode Ohmmetre (Appuyez sur ENTER pour quitter) - \n\r ");
                 CyDelay(500);
                 inputTemp = 0;
@@ -251,7 +493,8 @@ int main(void)
                     }
                 }
                 break;  
-            case '3':
+                
+            case '4':
                 UART_PutString("- Mode Capacimetre (Appuyez sur ENTER pour quitter) - \n\r ");
                 CyDelay(500);
                 inputTemp = 0;
@@ -265,11 +508,17 @@ int main(void)
                         inputTemp=0;
                     }
                 }
-                break; 
+                break;
+                
+            case '5':
+                MenuParametres();
+                break;
+            
+                
             default:
                 UART_PutString("- Error: No mode selected -\n\r");
         }
-
+        periode_echatillonage=1000/frequence_echatillonage; // mS
         CyDelay(1000);
     }
 } ///////////////////=========== main loop Ends Here ===============/////////////////////////
