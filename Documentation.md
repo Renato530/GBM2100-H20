@@ -116,6 +116,11 @@ présence d'une impédance dans notre FreeSoC qui affecte la valeur de la résis
 
 Tableau 4: Essais expérimentaux effectués sur l'ohmètre
 
+ <figure class="video_container">
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTpft_QFTHJTE6t6AvndqwOW35QqkJcjC4h1Y33P8fuqk1R-fKJRkmImc00Alzv2B-iJ3qAoD9SoYSs/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+</figure>
+
+
 | Ohmmètre     |    Résistance affichée    |    Résistance écrite     | 
 | :---         | :--------------------:    | -------------:           | 
 | essai 1      | Cell 2                    | Cell 3                   | 
