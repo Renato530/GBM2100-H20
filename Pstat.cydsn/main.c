@@ -22,6 +22,12 @@ volatile uint32_t t_10us=0;
 
 ///////////////////////////// FUNCTIONS BODY /////////////////////////////
 
+CY_ISR(Timing_ISR_Handler)
+{
+    Timer_ReadStatusRegister();
+    t_10us++;
+}
+
 void UART_initialisation() 
 {
     UART_Start();
@@ -46,50 +52,41 @@ void mode_Capacimetre()
     uint32_t DAC_valeur = 0xff;
     char capacitance[10];
     DAC_Stop();
-    int adcResult;
+    int32 adc_conversion=0;
+    
     if (ADC_SAR_IsEndConversion(ADC_SAR_RETURN_STATUS)!=0)
     {
-        adcResult = ADC_SAR_GetResult16();
+        adc_conversion = ADC_SAR_GetResult16();
     }
     DAC_Start();
-    DAC_valeur = 0x64;
+    DAC_valeur = 0x64; // injection d'un courant de 0.8 mA
     DAC_SetValue(DAC_valeur);
    
-    int n=0;
-    uint16 ADC_max = 2048;
-    while (adcResult < ADC_max)
+    int32 adc_max = 2048;
+    while (adc_conversion < adc_max)
     {
-        if (n==0)
-        {
-            UART_PutString("o- Mesure en cours -o \n\r");
-            n++;
-            CyGlobalIntDisable;
-            t_10us=0;
-            CyGlobalIntEnable;
-        }
         if (ADC_SAR_IsEndConversion(ADC_SAR_RETURN_STATUS)!=0)
         {
-            adcResult=ADC_SAR_GetResult16();
+            adc_conversion=ADC_SAR_GetResult16();
         }
     }
         
     CyGlobalIntDisable;
     DAC_SetValue(0x00);
     DAC_Stop();
-    while (adcResult > 256)
+    while (adc_conversion > 256)
     {
-        int Q = DAC_valeur*8;
+        float charge = DAC_valeur*8;
         uint32 temps = t_10us/100;
-        int voltage = ADC_max/2;
-        int capacitance_nf= 1000*8*((Q*temps)/voltage);
-        uint32 Cap_nF = capacitance_nf;
-        sprintf(capacitance,"%lu",Cap_nF);
+        float voltage = adc_max/2;
+        float capacitance_nf= 1000*8*((charge*temps)/voltage);
+        sprintf(capacitance,"%.2f",capacitance_nf);
         UART_PutString("-> Capacitance : "); 
         UART_PutString(capacitance);
         UART_PutString("nF \n\r");
         if(ADC_SAR_IsEndConversion(ADC_SAR_RETURN_STATUS)!=0)
         {
-            adcResult=ADC_SAR_GetResult16();
+            adc_conversion=ADC_SAR_GetResult16();
     
         }
     }
@@ -104,14 +101,11 @@ int main(void)
 {
     FreeRTOS_Start();
     ADC_SAR_Start();
-    //LCD_Start();
-   
-    // Fonctions ecran LED
-    // LCD_Position(0,0);
-    // LCD_PrintString("Voltmetre");
-    // LCD_ClearDisplay();
-    
     ADC_SAR_StartConvert();
+    DAC_Start();
+    Timer_Start();
+    Timing_ISR_StartEx(Timing_ISR_Handler);
+    
     //xTaskCreate(UART_initialisation,"InUART",200,(void*)0, tskIDLE_PRIORITY,&mTache1); // Creation d'un task pour le FreeRTOS
     
     int frequence_echatillonage = 10; // Hz
