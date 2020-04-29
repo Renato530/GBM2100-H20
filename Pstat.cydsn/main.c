@@ -13,9 +13,6 @@
  * ========================================
 */
 
-// TODO: Integrer l'Ohmetre
-// TODO: Integrer l'Amperemetre
-// TODO: Tester l'Amperemetre
 
 #include "project.h"
 #include "FreeRTOS.h"
@@ -41,54 +38,48 @@ void UART_initialisation()
     UART_PutString("||  0 - Mode Voltmetre   ||\n \r");
     UART_PutString("||  1 - Mode Amperemetre ||\n \r");
     UART_PutString("||  2 - Mode Ohmmetre    ||\n \r");
+    UART_PutString("||  3 - Mode Capacimetre ||\n \r");
     UART_PutString("=========================== \n \r");
     UART_PutString("- Veuillez choisir un mode - \n \r");
     UART_PutString("=========================== \n \r");
     CyDelay(300);
 }
 
+
 ////////////////////////
 // Cette fonction permet l'utilisation du voltmetre 
 ////////////////////////
-
-//TODO: Integrer FreeRTOS
-//TODO: Envoyer les donnes via MATLAB (affichage tableau, graphique...)
 void mode_Voltmetre() 
 {
     AMux_FastSelect(0);
-    //UART_PutString("- Mode Voltmetre (Appuyez sur nimporte quelle touche pour quitter) - \n\r ");
+    
     // Declaration des variables
-    float dac_bin=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
-    float dac_volt=0; // y étant la conversion de x en millivolts
+    int adc_bin=0; // x étant le résultat obtenu de la composante ADC et leur assignée une valeur initial nulle
+    float adc_volt=0; // y étant la conversion de x en millivolts
     char result_volts[15]={'\0'}; //louer un espace pour le string de l'affichage via Putty
     
     if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT) !=0) // Verficiation de la conversion
     {
-        dac_bin=ADC_SAR_GetResult16(); // Retourne la conversion à x pour le channel '0'
-    
-        dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
-        
-        if (dac_volt <=0) // Condition pour retourner un potentiel positif via notre multimètre
+        adc_bin=ADC_SAR_GetResult16(); // Retourne la conversion à x pour le channel '0'
+        adc_volt=ADC_SAR_CountsTo_Volts(adc_bin); //conversion du résultats de l'ADC origninallement en bit en volts
+        if (adc_volt <=0) // Condition pour retourner un potentiel positif via notre multimètre
         {
-            dac_volt=0;
+            adc_volt=0;
         }
-        dac_bin=ADC_SAR_GetResult16(); // Retourne la conversion à x pour le channel '0' 
-        dac_volt=ADC_SAR_CountsTo_mVolts(dac_bin); //conversion du résultats de l'ADC origninallement en bit en mvolts
-        dac_volt=dac_volt/1000; // Conversion des mVolts en volts
-        UART_PutString("-> Voltage : "); 
-        sprintf(result_volts,"%.3f",dac_volt); //affichage de résultat en mvolts via UART et Putty
+        UART_PutString("|| Voltage || "); 
+        sprintf(result_volts,"%.3f",adc_volt); //affichage de résultat en mvolts via UART et Putty
         UART_PutString(result_volts);
-        UART_PutString (" V\n\r");
+        UART_PutString (" V ||\n\r");
     }
-} // Ceci est une tache qui correspond au mode Voltmetre de notre multimetre (utile pour l'implementation de plusieurs outils dans le multimetre)
+} 
 
 ////////////////////////
 // Cette fonction permet l'utilisation du ohmetre 
 ////////////////////////
-
 void mode_Ohmetre()
 {
     AMux_FastSelect(1);
+    
     // Déclaration des variables
     int courant = 0;
     float resistance = 0;
@@ -154,13 +145,13 @@ void mode_Ohmetre()
 // Cette fonction permet l'utilisation de l'amperemetre 
 ////////////////////////
 
-void mode_Amperemetre () // Configuration de l'amperemetre
+void mode_Amperemetre () 
 {
     ADC_Start();
     int32 adcResult;
     float adcVolt;
     float adcAmp;
-    int R_2=100; // resistance de reference en mOhms
+    int R_2=100; // resistance de reference en Ohms
     char result_Amp[20];
     ADC_StartConvert();
     if (ADC_IsEndConversion(ADC_RETURN_STATUS)!=0)
@@ -259,7 +250,22 @@ int main(void)
                         inputTemp=0;
                     }
                 }
-                break;    
+                break;  
+            case '3':
+                UART_PutString("- Mode Capacimetre (Appuyez sur ENTER pour quitter) - \n\r ");
+                CyDelay(500);
+                inputTemp = 0;
+                while(inputTemp == 0)
+                {
+                    //mode_Capacimetre();
+                    CyDelay(periode_echatillonage);
+                    inputTemp=UART_GetChar();
+                    if (!inputTemp)
+                    {
+                        inputTemp=0;
+                    }
+                }
+                break; 
             default:
                 UART_PutString("- Error: No mode selected -\n\r");
         }
