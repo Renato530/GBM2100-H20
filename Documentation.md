@@ -111,23 +111,17 @@ Tableau 3: Caractéristiques du Ohmètre
 ### Essais expérimentaux
 
 Pour effectuer nos tests, on a utilisé un potentiomètre de 10kOhms afin de varier les résistances affichées.
-Lors de nos essais pour le mode ohmètre de notre multimètre, nous avons rémarque un écart entre la valeur affiché par notre multimètre est la valeur mesure par un multimètre industriel. Cette différence peut être expliqué par la 
+Lors de nos essais pour le mode ohmètre de notre multimètre, nous avons rémarque un écart entre la valeur affiché par notre multimètre est la valeur mesurée par un multimètre industriel. 
+Cette différence peut être expliqué par la 
 présence d'une impédance dans notre FreeSoC qui affecte la valeur de la résistance calculée. 
+Le lien suivant est conçu pour vous diriger vers le fichier Excel qui présente un tableau et un graphique montrant la différence entre les valeurs de résistance théorique et celle expérimentale obtenu à l'aide de l'interface PuTTy.
 
-Tableau 4: Essais expérimentaux effectués sur l'ohmètre
-
- <figure class="video_container">
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTpft_QFTHJTE6t6AvndqwOW35QqkJcjC4h1Y33P8fuqk1R-fKJRkmImc00Alzv2B-iJ3qAoD9SoYSs/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-</figure>
+[Essais expérimentaux effectués sur l'ohmètre](https://docs.google.com/spreadsheets/d/e/2PACX-1vTpft_QFTHJTE6t6AvndqwOW35QqkJcjC4h1Y33P8fuqk1R-fKJRkmImc00Alzv2B-iJ3qAoD9SoYSs/pubhtml).
 
 
-| Ohmmètre     |    Résistance affichée    |    Résistance écrite     | 
-| :---         | :--------------------:    | -------------:           | 
-| essai 1      | Cell 2                    | Cell 3                   | 
-| essai 2      | Cell 2                    | Cell 3                   | 
-| essai 3      | Cell 2                    | Cell 3                   | 
 
-</details>
+
+
 
 <img src="documentation/images/TopDesign_Ohmetre.PNG" width="700" height="500">*Figure 5: TopDesign du ohmmètre*
 
