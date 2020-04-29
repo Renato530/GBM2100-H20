@@ -1,7 +1,15 @@
 # Multimètre FreeSoC2 PSoC5LP DevBoard
 
-Dans le cadre du cours GBM2100, nous avons opté pour l'élaboration d'un multimètre à l'aide d'un microcontrôleur. Notre intérêt est focalisé sur la conception d'un voltmètre, d'un ohmètre, d'un ampèrmètre, ainsi qu'un capacimètre. Les différentes composantes du multimètre sont intégrés à partir d'une interface conçue avec Putty. Une configuration d'un menu a été ajouté. Il est un outil permettant de choisir la composante voulue en saisissant le numéro correspondant de cette dernière. Ainsi, cet outil est une application desntinée à faciliter la sélection. Dans les prochaines lignes, nous abordons les différentes étapes permettant la création et l'optimisation d'un multimètre.
-Nous commençons tout d'abord, par spécifier le matériel et les deux relations mathématiques permettant de fournir les données recherchées par l'utilisateur. Par la suite, on va enchainer avec l'explication de chaque branche crée.
+Dans le cadre du cours GBM2100, nous avons opté pour l'élaboration d'un multimètre à l'aide d'un microcontrôleur. 
+Notre intérêt est focalisé sur la conception d'un voltmètre, d'un ohmètre, d'un ampèrmètre, ainsi qu'un capacimètre. 
+Les différentes composantes du multimètre sont intégrés à partir d'une interface conçue avec Putty. 
+Une configuration d'un menu a été ajouté. 
+Il est un outil permettant de choisir la composante voulue en saisissant le numéro correspondant de cette dernière. 
+Ainsi, cet outil est une application desntinée à faciliter la sélection. 
+
+Dans les prochaines lignes, nous abordons les différentes étapes permettant la création et l'optimisation d'un multimètre.
+Nous commençons tout d'abord, par spécifier le matériel et les deux relations mathématiques permettant de fournir les données recherchées par l'utilisateur. 
+Par la suite, on va enchainer avec l'explication de chaque branche crée.
 
 
 
@@ -9,7 +17,7 @@ Nous commençons tout d'abord, par spécifier le matériel et les deux relations
 
 ## Matériel
 
--   FreeSoC 5LP
+-   FreeSoC 5LP- CY8C5888AXI-LP096
 -   PSoC Creator 4.2
 -   Kit de résistance
 -   Potentiomètre 10kOhm
@@ -38,9 +46,12 @@ $`i(t) = C*\frac{dv}{dt}`$
 - [ ] Task 2 insérer des images du montage expérimental
 - [X] Task 3 insérer une image du TopDesign
 
+Le voltmètre permet de mesurer la tension dans un circuit électrique entre deux points.
 Ce voltmètre sera la composante du multimètre qui requiert le moins d'élements dans PSoC. En effet
-on peut simplement construire un voltmètre à partir d'un ADC. Dans notre cas, on a choisi d'implementer
-un ADC simple tel vu dans le laboratoire 3 du cours. 
+on peut simplement construire un voltmètre à partir d'un ADC_SAR Seq et un UART. 
+Dans notre cas, on a choisi d'implementer un ADC simple tel vu dans le laboratoire 3 du cours. 
+
+Le schéma suivant illustre le fonctionnement de la composante voltmètre :
 
 <img src="documentation/images/Schema_Voltmetre.png" width="500" height="800">*Figure 2: Schéma du Voltmètre*
 
@@ -130,6 +141,8 @@ Pour ce qui est de l'ampèremètre, nous avons dû pousser nos recherches en ce 
 les composantes que nous voulions utiliser ainsi que les branchements que nous souhaitions faire pour que le tout puisse fonctionner
 étant donné que nous n'avions pas de modèle de référence en tant que tel contrairement au voltmètre et au ohmmètre. 
 Cette fonction du multimètre a donc été celle qui a demandé une recherche plus poussée de notre part. 
+On note qu'il faut tenir compte des impédances de FreeSoC et les limites physiques des pins.
+
 Afin de concevoir cette fonction, nous avons opté pour des résistances externes plutôt qu'interne. Notre ampèremètre
 est conçu d'un ADC.(pas fini d'expliquer)
 Le schéma ci-dessous indique la manière dont notre équipe à décidé d'approcher le problème.
