@@ -195,3 +195,7 @@ Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
 3. Améliorer l'interface de l'usage avec un module graphique
 4. xxxxxxxxxxxxxxxxx
 
+## Interface Utilisateur (putty)
+
+Afin qu'un utilisateur puisse utiliser notre multimètre, une interface a été concue sur putty. Celle-ci consiste en un menu et sous-menus permettant de choisir le mode du multimètre (voltmètre ampèremètre ou ohmmètre) et d'accèder au menu de paramètres afin de changer l'unité d'affichage du multimètre ainsi que de changer la vitesse d'afichage des mesures (fréquence d'échatillonage).
+
