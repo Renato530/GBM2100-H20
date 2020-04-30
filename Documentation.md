@@ -41,7 +41,7 @@ $`i(t) = C*\frac{dv}{dt}`$
 ## Volmètre
 
 - [x] Task 1 Completer tableaux essais
-- [ ] Task 2 insérer des images du montage expérimental
+- [x] Task 2 insérer des images du montage expérimental
 - [x] Task 3 insérer une image du TopDesign
 
 Le voltmètre permet de mesurer la tension dans un circuit électrique entre deux points.
@@ -79,12 +79,13 @@ Tableau 2: Essais expérimentaux effectués sur le volmètre
 
 <img src="documentation/images/TopDesign_Voltmetre.PNG" width="700" height="500">*Figure 3: TopDesign du voltmètre*
 
+<img src="documentation/images/montage_voltmetre.png" width="700" height="500">*Figure 4: Montage expérimental du voltmètre*
 
   
 ## Ohmètre
 
 - [x] Task 1 Completer tableaux essais
-- [ ] Task 2 insérer des images du montage expérimental
+- [x] Task 2 insérer des images du montage expérimental
 - [x] Task 3 insérer une image du TopDesign
 
 En ce qui concerne l'Ohmètre, cette composante va s'inspirer du laboratoire 3 dans lequel nous avons dû 
@@ -123,6 +124,8 @@ Le lien suivant est conçu pour vous diriger vers le fichier Excel qui présente
 
 <img src="documentation/images/TopDesign_Ohmetre.PNG" width="700" height="500">*Figure 5: TopDesign du ohmmètre*
 
+<img src="documentation/images/montage_ohmmetre.png" width="700" height="500">*Figure 4: Montage expérimental du ohmmètre*
+
 
 ## Ampèremètre
 
@@ -130,7 +133,7 @@ Le lien suivant est conçu pour vous diriger vers le fichier Excel qui présente
 - [X] Task 2 insérer tableau de caractéristiques
 - [x] Task 3 completer le tableau de caractéristique
 - [x] Task 4 Completer tableaux essais
-- [ ] Task 5 insérer des images du montage expérimental
+- [x] Task 5 insérer des images du montage expérimental
 - [X] Task 6 insérer une image du TopDesign
 - [ ] Task 7 insérer schéma 
 
@@ -171,7 +174,7 @@ Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
 
 <img src="documentation/images/TopDesign_Amperemetre.PNG" width="700" height="500">*Figure 7: TopDesign de l'ampèremètre*
 
-
+<img src="documentation/images/montage_amperemetre.png" width="700" height="500">*Figure 4: Montage expérimental de l'ampèremètre*
 
   
 ## Capacimètre
