@@ -11,8 +11,6 @@ Dans les prochaines lignes, nous abordons les différentes étapes permettant la
 Nous commençons tout d'abord, par spécifier le matériel et les deux relations mathématiques permettant de fournir les données recherchées par l'utilisateur. 
 Par la suite, on va enchainer avec l'explication de chaque branche crée.
 
-
-
 <img src="documentation/images/Schema_multimetre.png" width="700" height="500">*Figure 1: Schéma du multimètre*
 
 ## Matériel
@@ -42,9 +40,9 @@ $`i(t) = C*\frac{dv}{dt}`$
 
 ## Volmètre
 
-- [ ] Task 1 Completer tableaux essais
+- [x] Task 1 Completer tableaux essais
 - [ ] Task 2 insérer des images du montage expérimental
-- [X] Task 3 insérer une image du TopDesign
+- [x] Task 3 insérer une image du TopDesign
 
 Le voltmètre permet de mesurer la tension dans un circuit électrique entre deux points.
 Ce voltmètre sera la composante du multimètre qui requiert le moins d'élements dans PSoC. En effet
@@ -61,7 +59,7 @@ Tableau 1: Caractéristiques du Ohmètre
 
 | Voltmètre    |    Potentiel minimal      |    Potentiel maximal     | 
 | :---         | :--------------------:    | -------------:           | 
-| N/A          | 0 mv                      | 5000 mV                  | 
+| N/A          | 0 mv                      | 2048 mV                  | 
 
 ### Essais expérimentaux
 
@@ -71,11 +69,11 @@ industriel a été utilisé pour des fins de comparaison.
 
 Tableau 2: Essais expérimentaux effectués sur le volmètre
 
-| Voltmètre    |    Potentiel  affiché     |    Potentiel écrit       | 
+| Voltmètre    |    Potentiel  affiché (mV)|    Potentiel écrit (mV)  | 
 | :---         | :--------------------:    | -------------:           | 
-| essai 1      | Cell 2                    | Cell 3                   | 
-| essai 2      | Cell 2                    | Cell 3                   | 
-| essai 3      | Cell 2                    | Cell 3                   | 
+| essai 1      | 2047                      | 2048                     | 
+| essai 2      | 4940                      | 5000                     | 
+
 
 
 
@@ -85,9 +83,9 @@ Tableau 2: Essais expérimentaux effectués sur le volmètre
   
 ## Ohmètre
 
-- [ ] Task 1 Completer tableaux essais
+- [x] Task 1 Completer tableaux essais
 - [ ] Task 2 insérer des images du montage expérimental
-- [X] Task 3 insérer une image du TopDesign
+- [x] Task 3 insérer une image du TopDesign
 
 En ce qui concerne l'Ohmètre, cette composante va s'inspirer du laboratoire 3 dans lequel nous avons dû 
 déterminer une résistance interne du FreeSoC2 PSoC5LP. Cépendant, on doit être en mesure d'extraire les 
@@ -104,9 +102,9 @@ près de celles fournis par le fabriquant d'un élément résistif.
 
 Tableau 3: Caractéristiques du Ohmètre
 
-| Ohmmètre     |    Résistance minimale    |    Résistance maximale   | 
-| :---         | :--------------------:    | -------------:           | 
-| N/A          | Cell 2                    | Cell 3                   | 
+| Ohmmètre     |    Résistance minimale ($`\Omega`$)   |    Résistance maximale ($`\Omega`$)  | 
+| :---         | :------------------------------------:| ------------------------------------:| 
+| N/A          | 0                                     | 120 000                              | 
 
 ### Essais expérimentaux
 
@@ -130,8 +128,8 @@ Le lien suivant est conçu pour vous diriger vers le fichier Excel qui présente
 
 - [ ] Task 1 Completer paragraphe de description
 - [X] Task 2 insérer tableau de caractéristiques
-- [ ] Task 3 completer le tableau de caractéristique
-- [ ] Task 4 Completer tableaux essais
+- [x] Task 3 completer le tableau de caractéristique
+- [x] Task 4 Completer tableaux essais
 - [ ] Task 5 insérer des images du montage expérimental
 - [X] Task 6 insérer une image du TopDesign
 - [ ] Task 7 insérer schéma 
@@ -152,9 +150,9 @@ Voici un tableau qui resume les caractéristiques principales de notre ampèrem�
 
 Tableau 5: Caractéristiques de l'Ampèremètre
 
-| Ampèremètre  |    Courant minimal        |    Courant maximale      | 
+| Ampèremètre  |    Courant minimal (mA)   |    Courant maximal (mA)  | 
 | :---         | :--------------------:    | -------------:           | 
-| N/A          | Cell 2                    | Cell 3                   | 
+| N/A          | 0                         | 47                       | 
 
 
 ### Essais expérimentaux
@@ -163,11 +161,10 @@ Tableau 5: Caractéristiques de l'Ampèremètre
 
 Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
 
-| Ampèremètre  |    Courant affiché        |    Courant écrit         | 
+| Ampèremètre  |    Courant affiché (mA)   |    Courant écrit (mA)    | 
 | :---         | :--------------------:    | -------------:           | 
-| essai 1      | Cell 2                    | Cell 3                   | 
-| essai 2      | Cell 2                    | Cell 3                   | 
-| essai 3      | Cell 2                    | Cell 3                   |
+| essai 1      | 47                        | 50                       | 
+
 
  
 
