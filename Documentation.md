@@ -199,3 +199,19 @@ Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
 
 Afin qu'un utilisateur puisse utiliser notre multimètre, une interface a été concue sur putty. Celle-ci consiste en un menu et sous-menus permettant de choisir le mode du multimètre (voltmètre ampèremètre ou ohmmètre) et d'accèder au menu de paramètres afin de changer l'unité d'affichage du multimètre ainsi que de changer la vitesse d'afichage des mesures (fréquence d'échatillonage).
 
+Le menu principal comporte les options suivantes:
+
+1. Mode Voltmètre
+2.  Mode Ampèremètre
+3. Mode Ohmmètre
+4. Mode Capacimètre
+5. Paramètres
+
+Même si l'interface utilisateur est très intuitive, un mode d'emploi définira plus en profondeur les détails importants du fonctionnement du menu.
+
+Mode d'emploi du menu du multimètre: 
+- Pour sélectionner une option, il suffit d'entrer au clavier le chiffre correspondant à l'option. Si le caractère n'est pas valide, on retourne au menu principale. La même logique s'applique aux sous-menus.
+- Afin de quitter les différents modes du multimètres il suffit d'appuyer sur nimporte quelle touche.
+- Dans le menu des paramètres, après avoir sélectionner une option, on retourne automatiquement au menu principal.
+
+
