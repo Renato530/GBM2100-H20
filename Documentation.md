@@ -51,7 +51,7 @@ Dans notre cas, on a choisi d'implementer un ADC simple tel vu dans le laboratoi
 
 Le schéma suivant illustre le fonctionnement de la composante voltmètre :
 
-<img src="documentation/images/Schema_Voltmetre.png" width="500" height="800">*Figure 2: Schéma du Voltmètre*
+<img src="documentation/images/Schema_Voltmetre.png" width="500" height="800">*Figure 3: Schéma du Voltmètre*
 
 Voici un tableau qui resume les caractéristiques principales de notre voltmètre.
 
@@ -77,9 +77,9 @@ Tableau 2: Essais expérimentaux effectués sur le volmètre
 
 
 
-<img src="documentation/images/TopDesign_Voltmetre.PNG" width="700" height="500">*Figure 3: TopDesign du voltmètre*
+<img src="documentation/images/TopDesign_Voltmetre.PNG" width="700" height="500">*Figure 4: TopDesign du voltmètre*
 
-<img src="documentation/images/montage_voltmetre.png" width="700" height="500">*Figure 4: Montage expérimental du voltmètre*
+<img src="documentation/images/montage_voltmetre.png" width="700" height="500">*Figure 5: Montage expérimental du voltmètre*
 
   
 ## Ohmètre
@@ -95,7 +95,7 @@ est conçu à partir d'un iDAC et un ADC simple. Le iDAC permet de fournir un co
 le segmenter avec le ADC pour extraire l'information sur le potentiel puis calculer la résistance par la 
 loi d'Ohm. Le schéma ci-dessous indique la manière dont notre équipe à décidé d'approcher le problème.
 
-<img src="documentation/images/Schema_Ohmetre.png" width="500" height="800">*Figure 4: Schéma du Ohmètre*
+<img src="documentation/images/Schema_Ohmetre.png" width="500" height="800">*Figure 6: Schéma du Ohmètre*
 
 Voici un tableau qui resume les caractéristiques principales de notre ohmètre. Les valeurs des résistances 
 indiquées sur le tableau permet d'établir une plage dans lequel les valeurs fournis par l'Ohmètre sont 
@@ -122,9 +122,9 @@ Le lien suivant est conçu pour vous diriger vers le fichier Excel qui présente
 
 
 
-<img src="documentation/images/TopDesign_Ohmetre.PNG" width="700" height="500">*Figure 5: TopDesign du ohmmètre*
+<img src="documentation/images/TopDesign_Ohmetre.PNG" width="700" height="500">*Figure 7: TopDesign du ohmmètre*
 
-<img src="documentation/images/montage_ohmmetre.png" width="700" height="500">*Figure 4: Montage expérimental du ohmmètre*
+<img src="documentation/images/montage_ohmmetre.png" width="700" height="500">*Figure 8: Montage expérimental du ohmmètre*
 
 
 ## Ampèremètre
@@ -147,7 +147,7 @@ Afin de concevoir cette fonction, nous avons opté pour des résistances externe
 est conçu d'un ADC.(pas fini d'expliquer)
 Le schéma ci-dessous indique la manière dont notre équipe à décidé d'approcher le problème.
 
-<img src="documentation/images/schema_amperemetre.png" width="500" height="800">*Figure 4: Schéma de l'ampèremètre*
+<img src="documentation/images/schema_amperemetre.png" width="500" height="800">*Figure 9: Schéma de l'ampèremètre*
 
 Voici un tableau qui resume les caractéristiques principales de notre ampèremètre.
 [Compléter le texte]
@@ -173,9 +173,9 @@ Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
  
 
 
-<img src="documentation/images/TopDesign_Amperemetre.PNG" width="700" height="500">*Figure 7: TopDesign de l'ampèremètre*
+<img src="documentation/images/TopDesign_Amperemetre.PNG" width="700" height="500">*Figure 10: TopDesign de l'ampèremètre*
 
-<img src="documentation/images/montage_amperemetre.png" width="700" height="500">*Figure 4: Montage expérimental de l'ampèremètre*
+<img src="documentation/images/montage_amperemetre.png" width="700" height="500">*Figure 11: Montage expérimental de l'ampèremètre*
 
   
 ## Capacimètre
@@ -188,7 +188,7 @@ Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
 - [ ] Task 6 insérer une image du TopDesign
 - [x] Task 7 insérer schéma 
 
-<img src="documentation/images/schema_capacimetre.png" width="500" height="800">*Figure 4: Schéma du capacimètre*
+<img src="documentation/images/schema_capacimetre.png" width="500" height="800">*Figure 12: Schéma du capacimètre*
 
 ## Composantes à améliorer 
 
