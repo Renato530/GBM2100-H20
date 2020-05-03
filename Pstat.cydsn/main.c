@@ -8,7 +8,7 @@
  * WHICH IS THE PROPERTY OF Équipe 1E.
  * Renato Castillo          1962797
  * Karl-Philippe Beaudet    1958657
- * Richema Métallus         1953911
+ * Richema Métellus         1953911
  * Tasnim Ahmed             1958545
  * ========================================
 */
@@ -303,12 +303,12 @@ void mode_Ohmetre()
     AMux_FastSelect(1);
     
     // Déclaration des variables
-    int courant = 0;
-    float resistance = 0;
-    int voltage = 0;
-    char val_resistance[10];
-    unsigned int DAC_valeur = 0xff;
-    int v_input=4095;
+    int courant = 0; //
+    float resistance = 0; //
+    int voltage = 0; //
+    char val_resistance[10]; // 
+    unsigned int DAC_valeur = 0xff; //
+    int v_input=4095; //
     
     // Initialisation des composantes
     DAC_Start();
@@ -349,7 +349,7 @@ void mode_Ohmetre()
             if (optionOhmmetre==0)
             {
                 UART_PutString("|| Resistance || "); 
-                sprintf(val_resistance,"%f",resistance);
+                sprintf(val_resistance,"%f",resistance); // affichage du résultat en Ohms via UART et Putty
                 UART_PutString(val_resistance);
                 UART_PutString (" Ohms||\n\r"); 
             }
@@ -357,7 +357,7 @@ void mode_Ohmetre()
             else{
                 resistance=resistance/1000;
                 UART_PutString("|| Resistance || "); 
-                sprintf(val_resistance,"%f",resistance);
+                sprintf(val_resistance,"%f",resistance); // affichage du résultat kOhms via UART et Putty
                 UART_PutString(val_resistance);
                 UART_PutString (" kOhms||\n\r"); 
             }
@@ -381,22 +381,23 @@ void mode_Ohmetre()
 
 void mode_Amperemetre () 
 {
-    ADC_Start();
-    int32 adcResult;
+    ADC_Start(); // initialisation de la composante ADC
+    int32 adcResult; 
     float adcVolt;
     float adcAmp;
     int R_2=100; // resistance de reference en Ohms
-    char result_Amp[20];
-    ADC_StartConvert();
-    if (ADC_IsEndConversion(ADC_RETURN_STATUS)!=0)
+    char result_Amp[20]; // louer un espace pour le string de l'affichage via Putty
+    ADC_StartConvert(); // intitialisation de la composante de conversion du ADC
+    
+    if (ADC_IsEndConversion(ADC_RETURN_STATUS)!=0) // Vérification de la conversion
     {
-        adcResult=ADC_GetResult32();
-        adcVolt=ADC_CountsTo_Volts(adcResult);
+        adcResult=ADC_GetResult32(); // retourne le résultat converti en 32-bit
+        adcVolt=ADC_CountsTo_Volts(adcResult); // adcVolt prend ce résultat de l'ADC (adcResult) originallement en bits et le converti en Volts 
         adcAmp = adcVolt/R_2; // en A  (loi d'Ohm)
         if (optionAmperemetre==0)
         {
             UART_PutString("|| Courant || ");
-            sprintf(result_Amp,"%.3f",adcAmp);
+            sprintf(result_Amp,"%.3f",adcAmp); // afiichage du résultat en A via UART et Putty
             UART_PutString(result_Amp);
             UART_PutString (" A||\n\r"); 
         }
@@ -404,7 +405,7 @@ void mode_Amperemetre ()
         else{
             adcAmp=adcAmp*1000;
             UART_PutString("|| Courant || ");
-            sprintf(result_Amp,"%.0f",adcAmp);
+            sprintf(result_Amp,"%.0f",adcAmp); // affichage du résultat en mA via UART et Putty
             UART_PutString(result_Amp);
             UART_PutString (" mA||\n\r"); 
         }
