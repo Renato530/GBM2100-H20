@@ -303,48 +303,48 @@ void mode_Ohmetre()
     AMux_FastSelect(1);
     
     // Déclaration des variables
-    int courant = 0; //
-    float resistance = 0; //
-    int voltage = 0; //
-    char val_resistance[10]; // 
-    unsigned int DAC_valeur = 0xff; //
-    int v_input=4095; //
+    int courant = 0; // intitialisation du courant à 0
+    float resistance = 0; // initialisation de la résistance à 0
+    int voltage = 0; // initialisation du volatge à 0
+    char val_resistance[10]; // louer un espace pour le string de l'affichage via Putty
+    unsigned int DAC_valeur = 0xff; // peut prendre une valeur entre 0 et 255
+    int v_input=4095; // initialisation du v_input à 4095
     
     // Initialisation des composantes
-    DAC_Start();
-    ADC_SAR_Start();
-    DAC_valeur= 0xff;
-    DAC_SetValue(DAC_valeur);
-    ADC_SAR_StartConvert();
+    DAC_Start(); 
+    ADC_SAR_Start(); 
+    DAC_valeur= 0xff; // peut une valeur entre 0 et 255 
+    DAC_SetValue(DAC_valeur); // Définit la valeur du DAC entre 0 et 255 avec la plage donnée
+    ADC_SAR_StartConvert(); 
     
     
     while ((DAC_valeur > 0) && (v_input >=4000))
     {
-        DAC_valeur=DAC_valeur - 0x01;
-        DAC_SetValue(DAC_valeur);
+        DAC_valeur=DAC_valeur - 0x01; // soustrait 1 en hexadecimal à la valeur du DAC
+        DAC_SetValue(DAC_valeur); // Définit la valeur du DAC entre 0 et 255 avec la plage donnée
         CyDelay(3);
-        if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT)!=0)
+        if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT)!=0) // Vérification de la conversion
         {
-            v_input= ADC_SAR_GetResult16();
+            v_input= ADC_SAR_GetResult16(); // retourne un résultat de 16-bits
         }
         CyDelay(2);
 
     }
-    if (v_input < 4000)
+    if (v_input < 4000) // Condition lorsque le v_input est à moins de 4000
     {
-        DAC_SetValue(DAC_valeur);
+        DAC_SetValue(DAC_valeur); // Définit la valeur entre 0 et 255 avec la plage donnée.
         CyDelay(1);
-        courant = DAC_valeur*8;
-        voltage=v_input*1000/2;
-        resistance= voltage/courant; 
-        resistance -=470;
-        if (resistance <= 0) 
+        courant = DAC_valeur*8; // multiplier la valeur du DAC par 8 pour trouver le courant
+        voltage=v_input*1000/2; // 
+        resistance= voltage/courant; // formule pour trouver la résistance (loi d'ohm)
+        resistance -=470; // soustrait -470 à la valeur de la résistance
+        if (resistance <= 0) // condition pour retourner une intensité positif via notre multimètre
         {
             resistance = 0;
         }
         
-        else if (resistance > 10000) {resistance *=1.1;}
-        if(resistance < 250000)
+        else if (resistance > 10000) {resistance *=1.1;} //
+        if(resistance < 250000) // condition pour une résistance plus petite que 250 000
         {
             if (optionOhmmetre==0)
             {
@@ -391,8 +391,8 @@ void mode_Amperemetre ()
     
     if (ADC_IsEndConversion(ADC_RETURN_STATUS)!=0) // Vérification de la conversion
     {
-        adcResult=ADC_GetResult32(); // retourne le résultat converti en 32-bit
-        adcVolt=ADC_CountsTo_Volts(adcResult); // adcVolt prend ce résultat de l'ADC (adcResult) originallement en bits et le converti en Volts 
+        adcResult=ADC_GetResult32(); // retourne un résultat de 32-bit
+        adcVolt=ADC_CountsTo_Volts(adcResult); // conversion du résultat de l'ADC originallement en bits en Volts 
         adcAmp = adcVolt/R_2; // en A  (loi d'Ohm)
         if (optionAmperemetre==0)
         {
