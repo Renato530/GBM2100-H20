@@ -15,6 +15,8 @@ Le schéma suivant illustre notre plan de conception du multimètre:
 
 <img src="documentation/images/Schema_multimetre.png" width="700" height="500">*Figure 1: Schéma du multimètre*
 
+<img src="documentation/images/TopDesign_Multimetre.PNG" width="700" height="500">*Figure 2: TopDesign du multimètre*
+
 ## Matériel
 
 -   FreeSoC 5LP- CY8C5888AXI-LP096
@@ -199,6 +201,8 @@ Cela demandera du temps et plusieurs essaies. Ainsi, nous n'étions pas en mesur
 Le schéma décrivant le fonctionnement de la composante capacimètre est la suivante:
 
 <img src="documentation/images/schema_capacimetre.png" width="500" height="800">*Figure 12: Schéma du capacimètre*
+
+<img src="documentation/images/TopDesign_Capacimetre.PNG" width="700" height="500">*Figure 13: TopDesign du capacimètre*
 
 ## Composantes à améliorer 
 
