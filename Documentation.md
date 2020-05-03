@@ -177,7 +177,7 @@ Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
  
 
 
-<img src="documentation/images/TopDesign_Amperemetre.PNG" width="700" height="500">*Figure 10: TopDesign de l'ampèremètre*
+<img src="documentation/images/TopDesign_Amperemetre (version 2).PNG" width="700" height="500">*Figure 10: TopDesign de l'ampèremètre*
 
 <img src="documentation/images/montage_amperemetre.png" width="700" height="500">*Figure 11: Montage expérimental de l'ampèremètre*
 
