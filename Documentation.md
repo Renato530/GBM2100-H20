@@ -1,15 +1,17 @@
 # Multimètre FreeSoC2 PSoC5LP DevBoard
 
-Dans le cadre du cours GBM2100, nous avons opté pour l'élaboration d'un multimètre à l'aide d'un microcontrôleur. 
-Notre intérêt est focalisé sur la conception d'un voltmètre, d'un ohmètre, d'un ampèrmètre, ainsi qu'un capacimètre. 
+Dans le cadre du cours GBM2100, nous avons opté pour l'élaboration d'un multimètre à l'aide d'un microcontrôleur pour le projet intégrateur de la session d'hiver 2020.. 
+Notre intérêt est focalisé sur la conception d'un voltmètre, d'un ohmètre, d'un ampèrmètre, ainsi qu'un capacimètre si nous avons le temps. 
 Les différentes composantes du multimètre sont intégrés à partir d'une interface conçue avec Putty. 
 Une configuration d'un menu a été ajouté. 
 Il est un outil permettant de choisir la composante voulue en saisissant le numéro correspondant de cette dernière. 
-Ainsi, cet outil est une application desntinée à faciliter la sélection. 
+Ainsi, cet outil est une application desntinée à faciliter la sélection de la composante voulue ainsi que des unités d'affichage. 
 
 Dans les prochaines lignes, nous abordons les différentes étapes permettant la création et l'optimisation d'un multimètre.
 Nous commençons tout d'abord, par spécifier le matériel et les deux relations mathématiques permettant de fournir les données recherchées par l'utilisateur. 
 Par la suite, on va enchainer avec l'explication de chaque branche crée.
+
+Le schéma suivant illustre notre plan de conception du multimètre:
 
 <img src="documentation/images/Schema_multimetre.png" width="700" height="500">*Figure 1: Schéma du multimètre*
 
@@ -180,7 +182,7 @@ Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
   
 ## Capacimètre
 
-- [ ] Task 1 Completer paragraphe de description
+- [x] Task 1 Completer paragraphe de description
 - [ ] Task 2 insérer tableau de caractéristiques
 - [ ] Task 3 completer le tableau de caractéristique
 - [ ] Task 4 Completer tableaux essais
@@ -188,9 +190,21 @@ Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
 - [ ] Task 6 insérer une image du TopDesign
 - [x] Task 7 insérer schéma 
 
+La composant du capacimètre avait le but de charger un condensateur en appliquant un courant
+et par la suite, on fait une lecture d'ADC et en utilisant la relation entre la courant/capacitance, 
+on sera capable de trouver la vouleur de la capacitance. Cela nécessite également un timer qui va gérer le temps de chragement du condensateur.
+Cette association entre le timer et le temps de chargements du condensateur est plus compliquée que nous avons pensé.
+Cela demandera du temps et plusieurs essaies. Ainsi, nous n'étions pas en mesure de la compléter.
+
+Le schéma décrivant le fonctionnement de la composante capacimètre est la suivante:
+
 <img src="documentation/images/schema_capacimetre.png" width="500" height="800">*Figure 12: Schéma du capacimètre*
 
 ## Composantes à améliorer 
+
+Les prochains points sont des idées que nous avons pensé faire afin d'améliorer
+notre projet. Ces ajouts requièrent une connaissance approfonfie dans le fonctionnement des
+microcontrôleurs. 
 
 1. Insérer un pont de communication avec Matlab pour un transfer de données
 2. Intégrer des ampli-op du FreeSoC pour augmenter la plage fonctionnelle
