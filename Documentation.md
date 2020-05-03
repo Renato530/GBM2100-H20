@@ -130,12 +130,12 @@ Le lien suivant est conçu pour vous diriger vers le fichier Excel qui présente
 ## Ampèremètre
 
 - [ ] Task 1 Completer paragraphe de description
-- [X] Task 2 insérer tableau de caractéristiques
+- [x] Task 2 insérer tableau de caractéristiques
 - [x] Task 3 completer le tableau de caractéristique
 - [x] Task 4 Completer tableaux essais
 - [x] Task 5 insérer des images du montage expérimental
-- [X] Task 6 insérer une image du TopDesign
-- [ ] Task 7 insérer schéma 
+- [x] Task 6 insérer une image du TopDesign
+- [x] Task 7 insérer schéma 
 
 Pour ce qui est de l'ampèremètre, nous avons dû pousser nos recherches en ce qui concerne la disposition de notre circuit, 
 les composantes que nous voulions utiliser ainsi que les branchements que nous souhaitions faire pour que le tout puisse fonctionner
@@ -147,6 +147,7 @@ Afin de concevoir cette fonction, nous avons opté pour des résistances externe
 est conçu d'un ADC.(pas fini d'expliquer)
 Le schéma ci-dessous indique la manière dont notre équipe à décidé d'approcher le problème.
 
+<img src="documentation/images/schema_amperemetre.png" width="500" height="800">*Figure 4: Schéma de l'ampèremètre*
 
 Voici un tableau qui resume les caractéristiques principales de notre ampèremètre.
 [Compléter le texte]
@@ -185,15 +186,18 @@ Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
 - [ ] Task 4 Completer tableaux essais
 - [ ] Task 5 insérer des images du montage expérimental
 - [ ] Task 6 insérer une image du TopDesign
-- [ ] Task 7 insérer schéma 
+- [x] Task 7 insérer schéma 
 
+<img src="documentation/images/schema_capacimetre.png" width="500" height="800">*Figure 4: Schéma du capacimètre*
 
 ## Composantes à améliorer 
 
 1. Insérer un pont de communication avec Matlab pour un transfer de données
 2. Intégrer des ampli-op du FreeSoC pour augmenter la plage fonctionnelle
 3. Améliorer l'interface de l'usage avec un module graphique
-4. xxxxxxxxxxxxxxxxx
+4. Intégrer la composante LCD au multimètre
+5. Intégrer un clavier 4x4 matriciel
+6. Intégrer la gestion de tâches avec FreeRTOS
 
 ## Interface Utilisateur (putty)
 
@@ -202,7 +206,7 @@ Afin qu'un utilisateur puisse utiliser notre multimètre, une interface a été 
 Le menu principal comporte les options suivantes:
 
 1. Mode Voltmètre
-2.  Mode Ampèremètre
+2. Mode Ampèremètre
 3. Mode Ohmmètre
 4. Mode Capacimètre
 5. Paramètres
