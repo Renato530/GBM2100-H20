@@ -308,12 +308,12 @@ void mode_Ohmetre()
     int voltage = 0; // initialisation du volatge à 0
     char val_resistance[10]; // louer un espace pour le string de l'affichage via Putty
     unsigned int DAC_valeur = 0xff; // peut prendre une valeur entre 0 et 255
-    int v_input=4095; // initialisation du v_input à 4095
+    int v_input=4095; // initialisation de la tension de la pin à 4095
     
     // Initialisation des composantes
     DAC_Start(); 
     ADC_SAR_Start(); 
-    DAC_valeur= 0xff; // peut une valeur entre 0 et 255 
+    DAC_valeur= 0xff; // peut prendre une valeur entre 0 et 255 
     DAC_SetValue(DAC_valeur); // Définit la valeur du DAC entre 0 et 255 avec la plage donnée
     ADC_SAR_StartConvert(); 
     
@@ -330,12 +330,12 @@ void mode_Ohmetre()
         CyDelay(2);
 
     }
-    if (v_input < 4000) // Condition lorsque le v_input est à moins de 4000
+    if (v_input < 4000) // Condition lorsque la tension de la pin est à moins de 4000
     {
-        DAC_SetValue(DAC_valeur); // Définit la valeur entre 0 et 255 avec la plage donnée.
+        DAC_SetValue(DAC_valeur); // Définit la valeur entre 0 et 255 avec la plage donnée
         CyDelay(1);
-        courant = DAC_valeur*8; // multiplier la valeur du DAC par 8 pour trouver le courant
-        voltage=v_input*1000/2; // 
+        courant = DAC_valeur*8; // formule pour trouver le courant
+        voltage=v_input*1000/2; // formule pour trouver le voltage
         resistance= voltage/courant; // formule pour trouver la résistance (loi d'ohm)
         resistance -=470; // soustrait -470 à la valeur de la résistance
         if (resistance <= 0) // condition pour retourner une intensité positif via notre multimètre
@@ -343,7 +343,7 @@ void mode_Ohmetre()
             resistance = 0;
         }
         
-        else if (resistance > 10000) {resistance *=1.1;} //
+        else if (resistance > 10000) {resistance *=1.1;} // condition pour une résistance plus grande que 10 000
         if(resistance < 250000) // condition pour une résistance plus petite que 250 000
         {
             if (optionOhmmetre==0)
