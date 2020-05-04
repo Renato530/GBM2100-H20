@@ -239,14 +239,14 @@ Mode d'emploi du menu du multimètre:
 - Afin de quitter les différents modes du multimètres il suffit d'appuyer sur nimporte quelle touche.
 - Dans le menu des paramètres, après avoir sélectionner une option, on retourne automatiquement au menu principal.
 
-<img src="documentation/images/Capture_1.PNG" width="700" height="500">*Figure 14: Capture du menu principal*
+<img src="documentation/images/Capture_1.png" width="700" height="500">*Figure 14: Capture du menu principal*
 
-<img src="documentation/images/Capture_2.PNG" width="700" height="500">*Figure 15: Exemple de mesures du voltmètre*
+<img src="documentation/images/Capture_2.png" width="700" height="500">*Figure 15: Exemple de mesures du voltmètre*
 
-<img src="documentation/images/Capture_3.PNG" width="700" height="500">*Figure 16: Exemple de mesure de l'ampèremètre*
+<img src="documentation/images/Capture_3.png" width="700" height="500">*Figure 16: Exemple de mesure de l'ampèremètre*
 
-<img src="documentation/images/Capture_4.PNG" width="700" height="500">*Figure 17: Menu des paramètres*
+<img src="documentation/images/Capture_4.png" width="700" height="500">*Figure 17: Menu des paramètres*
 
-<img src="documentation/images/Capture_5.PNG" width="700" height="500">*Figure 16: Exemple menu de changement d'unités*
+<img src="documentation/images/Capture_5.png" width="700" height="500">*Figure 16: Exemple menu de changement d'unités*
 
 
