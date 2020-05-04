@@ -253,4 +253,4 @@ Mode d'emploi du menu du multimètre:
 
 À des fins de vérification supplémentaires, un multimètre industriel a été utilisé pour s'assurer du bon fonctionnement général du multimètre car les mesures prises avec le multimètre industriel n'étaient pas assez précices pour valider les mesures calculées avec notre multimètre. Cepandant les mesures approximatives nous ont permis de s'assurer les mesures était faites au bon endroit dans le circuit et que le mutimètre donnait approximativement des bonne valeur puisque les valeurs données par le multimètre industriel sont indiquées par une aiguille.
 
-<img src="documentation/images/multimetre.png" width="700" height="500">*Figure 17: Photo du multimètre industriel*
+<img src="documentation/images/Multimetre.png" width="700" height="500">*Figure 17: Photo du multimètre industriel*
