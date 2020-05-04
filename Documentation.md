@@ -9,7 +9,7 @@ Ainsi, cet outil est une application desntinée à faciliter la sélection de la
 
 Dans les prochaines lignes, nous abordons les différentes étapes permettant la création et l'optimisation d'un multimètre.
 Nous commençons tout d'abord, par spécifier le matériel et les deux relations mathématiques permettant de fournir les données recherchées par l'utilisateur. 
-Par la suite, on va enchainer avec l'explication de chaque branche crée.
+Par la suite, nous enchaînons avec l'explication de chaque branche crée.
 
 Le schéma suivant illustre notre plan de conception du multimètre:
 
@@ -133,7 +133,7 @@ Le lien suivant est conçu pour vous diriger vers le fichier Excel qui présente
 
 ## Ampèremètre
 
-- [ ] Task 1 Completer paragraphe de description
+- [x] Task 1 Completer paragraphe de description
 - [x] Task 2 insérer tableau de caractéristiques
 - [x] Task 3 completer le tableau de caractéristique
 - [x] Task 4 Completer tableaux essais
@@ -148,7 +148,7 @@ Cette fonction du multimètre a donc été celle qui a demandé une recherche pl
 On note qu'il faut tenir compte des impédances de FreeSoC et les limites physiques des pins.
 
 Afin de concevoir cette fonction, nous avons opté pour des résistances externes plutôt qu'interne. Notre ampèremètre
-est conçu d'un ADC.(pas fini d'expliquer)
+est conçu d'un ADC_SAR, d'un iDAC et d'une composante UART. (à terminer) 
 Le schéma ci-dessous indique la manière dont notre équipe à décidé d'approcher le problème.
 
 <img src="documentation/images/schema_amperemetre.png" width="500" height="800">*Figure 9: Schéma de l'ampèremètre*
@@ -189,18 +189,20 @@ Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
 - [ ] Task 3 completer le tableau de caractéristique
 - [ ] Task 4 Completer tableaux essais
 - [ ] Task 5 insérer des images du montage expérimental
-- [ ] Task 6 insérer une image du TopDesign
+- [x] Task 6 insérer une image du TopDesign
 - [x] Task 7 insérer schéma 
 
 La composant du capacimètre avait le but de charger un condensateur en appliquant un courant
 et par la suite, on fait une lecture d'ADC et en utilisant la relation entre la courant/capacitance, 
 on sera capable de trouver la vouleur de la capacitance. Cela nécessite également un timer qui va gérer le temps de chragement du condensateur.
-Cette association entre le timer et le temps de chargements du condensateur est plus compliquée que nous avons pensé.
+Cette association entre le timer et le temps de chargements du condensateur est plus compliquée que nous le pensions.
 Cela demandera du temps et plusieurs essaies. Ainsi, nous n'étions pas en mesure de la compléter.
 
 Le schéma décrivant le fonctionnement de la composante capacimètre est la suivante:
 
 <img src="documentation/images/schema_capacimetre.png" width="500" height="800">*Figure 12: Schéma du capacimètre*
+
+Voici le TopDesign du capacimètre que nous avons entamé, mais que nous n'avons pas pû compléter faute de temps et de ressources.
 
 <img src="documentation/images/TopDesign_Capacimetre.PNG" width="700" height="500">*Figure 13: TopDesign du capacimètre*
 
@@ -216,6 +218,7 @@ microcontrôleurs.
 4. Intégrer la composante LCD au multimètre
 5. Intégrer un clavier 4x4 matriciel
 6. Intégrer la gestion de tâches avec FreeRTOS
+7. Réussir à compléter notre capacimètre et à l'intégrer au multimètre
 
 ## Interface Utilisateur (putty)
 
