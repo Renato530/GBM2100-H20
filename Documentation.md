@@ -148,7 +148,8 @@ Cette fonction du multimètre a donc été celle qui a demandé une recherche pl
 On note qu'il faut tenir compte des impédances de FreeSoC et les limites physiques des pins.
 
 Afin de concevoir cette fonction, nous avons opté pour des résistances externes plutôt qu'interne. Notre ampèremètre
-est conçu d'un ADC_SAR, d'un iDAC et d'une composante UART. (à terminer) 
+est conçu d'un ADC_SAR, d'un iDAC et d'une composante UART. Le iDAC permet de trouver le courant issu de la résistance externe
+et du potentiel segmenter par l'ADC à l'aide de la formule de la loi d'Ohm. 
 Le schéma ci-dessous indique la manière dont notre équipe à décidé d'approcher le problème.
 
 <img src="documentation/images/schema_amperemetre.png" width="500" height="800">*Figure 9: Schéma de l'ampèremètre*
@@ -218,7 +219,6 @@ microcontrôleurs.
 4. Intégrer la composante LCD au multimètre
 5. Intégrer un clavier 4x4 matriciel
 6. Intégrer la gestion de tâches avec FreeRTOS
-7. Réussir à compléter notre capacimètre et à l'intégrer au multimètre
 
 ## Interface Utilisateur (putty)
 
