@@ -93,7 +93,7 @@ Voici un tableau qui resume les caractéristiques principales de notre ohmètre.
 indiquées sur le tableau permet d'établir une plage dans lequel les valeurs fournis par l'Ohmètre sont 
 près de celles fournis par le fabriquant d'un élément résistif.
 
-Tableau 3: Caractéristiques du Ohmètre
+Tableau 3: Caractéristiques du Ohmmètre
 
 | Ohmmètre     |    Résistance minimale ($`\Omega`$)   |    Résistance maximale ($`\Omega`$)  | 
 | :---         | :------------------------------------:| ------------------------------------:| 
@@ -106,6 +106,7 @@ Lors de nos essais pour le mode ohmètre de notre multimètre, nous avons rémar
 Cette différence peut être expliqué par la présence d'une impédance dans notre FreeSoC qui affecte la valeur de la résistance calculée. 
 Le lien suivant est conçu pour vous diriger vers le fichier Excel qui présente un tableau et un graphique montrant la différence entre les valeurs de résistance théorique et celle expérimentale obtenu à l'aide de l'interface PuTTy.
 
+Tableau 4: Essais expérimentaux effectués sur l'ohmmètre
 [Essais expérimentaux effectués sur l'ohmètre](https://docs.google.com/spreadsheets/d/e/2PACX-1vTpft_QFTHJTE6t6AvndqwOW35QqkJcjC4h1Y33P8fuqk1R-fKJRkmImc00Alzv2B-iJ3qAoD9SoYSs/pubhtml).
 
 <img src="documentation/images/TopDesign_Ohmetre.PNG" width="700" height="500">*Figure 7: TopDesign du ohmmètre*
@@ -139,7 +140,8 @@ Tableau 5: Caractéristiques de l'Ampèremètre
 
 ### Essais expérimentaux
 
-[Insérer un texte]
+Pour effectuer nos tests, nous avons utilisé un potentiomètre de 10k$`\Omega`$ avec une résistance de référence de 100$`\Omega`$.
+Nous pensons que l'écart de 3 mA est dû à une impédance interne qui modifie la valeur du potentiel (V) lu. 
 
 Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
 
