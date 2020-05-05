@@ -1,9 +1,8 @@
 # Multimètre FreeSoC2 PSoC5LP DevBoard
 
-Dans le cadre du cours GBM2100, nous avons opté pour l'élaboration d'un multimètre à l'aide d'un microcontrôleur pour le projet intégrateur de la session d'hiver 2020.. 
+Dans le cadre du cours GBM2100, nous avons opté pour l'élaboration d'un multimètre à l'aide d'un microcontrôleur pour le projet intégrateur de la session d'hiver 2020. 
 Notre intérêt est focalisé sur la conception d'un voltmètre, d'un ohmètre, d'un ampèrmètre, ainsi qu'un capacimètre si nous avons le temps. 
-Les différentes composantes du multimètre sont intégrés à partir d'une interface conçue avec Putty. 
-Une configuration d'un menu a été ajouté. 
+Les différentes composantes du multimètre sont intégrés à partir d'une interface conçue avec Putty. Une configuration d'un menu a été ajouté. 
 Il est un outil permettant de choisir la composante voulue en saisissant le numéro correspondant de cette dernière. 
 Ainsi, cet outil est une application desntinée à faciliter la sélection de la composante voulue ainsi que des unités d'affichage. 
 
@@ -40,13 +39,7 @@ $`C = \frac{q}{V}`$
 $`i(t) = C*\frac{dv}{dt}`$
 
 
-
-
 ## Volmètre
-
-- [x] Task 1 Completer tableaux essais
-- [x] Task 2 insérer des images du montage expérimental
-- [x] Task 3 insérer une image du TopDesign
 
 Le voltmètre permet de mesurer la tension dans un circuit électrique entre deux points.
 Ce voltmètre sera la composante du multimètre qui requiert le moins d'élements dans PSoC. En effet
@@ -80,17 +73,12 @@ Tableau 2: Essais expérimentaux effectués sur le volmètre
 
 
 
-
 <img src="documentation/images/TopDesign_Voltmetre.PNG" width="700" height="500">*Figure 4: TopDesign du voltmètre*
 
 <img src="documentation/images/montage_voltmetre.png" width="700" height="500">*Figure 5: Montage expérimental du voltmètre*
 
   
 ## Ohmètre
-
-- [x] Task 1 Completer tableaux essais
-- [x] Task 2 insérer des images du montage expérimental
-- [x] Task 3 insérer une image du TopDesign
 
 En ce qui concerne l'Ohmètre, cette composante va s'inspirer du laboratoire 3 dans lequel nous avons dû 
 déterminer une résistance interne du FreeSoC2 PSoC5LP. Cépendant, on doit être en mesure d'extraire les 
@@ -113,18 +101,12 @@ Tableau 3: Caractéristiques du Ohmètre
 
 ### Essais expérimentaux
 
-Pour effectuer nos tests, on a utilisé un potentiomètre de 10kOhms afin de varier les résistances affichées.
+Pour effectuer nos tests, on a utilisé un potentiomètre de 10k$`\Omega`$ afin de varier les résistances affichées.
 Lors de nos essais pour le mode ohmètre de notre multimètre, nous avons rémarque un écart entre la valeur affiché par notre multimètre est la valeur mesurée par un multimètre industriel. 
-Cette différence peut être expliqué par la 
-présence d'une impédance dans notre FreeSoC qui affecte la valeur de la résistance calculée. 
+Cette différence peut être expliqué par la présence d'une impédance dans notre FreeSoC qui affecte la valeur de la résistance calculée. 
 Le lien suivant est conçu pour vous diriger vers le fichier Excel qui présente un tableau et un graphique montrant la différence entre les valeurs de résistance théorique et celle expérimentale obtenu à l'aide de l'interface PuTTy.
 
 [Essais expérimentaux effectués sur l'ohmètre](https://docs.google.com/spreadsheets/d/e/2PACX-1vTpft_QFTHJTE6t6AvndqwOW35QqkJcjC4h1Y33P8fuqk1R-fKJRkmImc00Alzv2B-iJ3qAoD9SoYSs/pubhtml).
-
-
-
-
-
 
 <img src="documentation/images/TopDesign_Ohmetre.PNG" width="700" height="500">*Figure 7: TopDesign du ohmmètre*
 
@@ -132,14 +114,6 @@ Le lien suivant est conçu pour vous diriger vers le fichier Excel qui présente
 
 
 ## Ampèremètre
-
-- [x] Task 1 Completer paragraphe de description
-- [x] Task 2 insérer tableau de caractéristiques
-- [x] Task 3 completer le tableau de caractéristique
-- [x] Task 4 Completer tableaux essais
-- [x] Task 5 insérer des images du montage expérimental
-- [x] Task 6 insérer une image du TopDesign
-- [x] Task 7 insérer schéma 
 
 Pour ce qui est de l'ampèremètre, nous avons dû pousser nos recherches en ce qui concerne la disposition de notre circuit, 
 les composantes que nous voulions utiliser ainsi que les branchements que nous souhaitions faire pour que le tout puisse fonctionner
@@ -155,7 +129,6 @@ Le schéma ci-dessous indique la manière dont notre équipe à décidé d'appro
 <img src="documentation/images/schema_amperemetre.png" width="500" height="800">*Figure 9: Schéma de l'ampèremètre*
 
 Voici un tableau qui resume les caractéristiques principales de notre ampèremètre.
-[Compléter le texte]
 
 Tableau 5: Caractéristiques de l'Ampèremètre
 
@@ -184,14 +157,6 @@ Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
 
   
 ## Capacimètre
-
-- [x] Task 1 Completer paragraphe de description
-- [ ] Task 2 insérer tableau de caractéristiques
-- [ ] Task 3 completer le tableau de caractéristique
-- [ ] Task 4 Completer tableaux essais
-- [ ] Task 5 insérer des images du montage expérimental
-- [x] Task 6 insérer une image du TopDesign
-- [x] Task 7 insérer schéma 
 
 La composant du capacimètre avait le but de charger un condensateur en appliquant un courant
 et par la suite, on fait une lecture d'ADC et en utilisant la relation entre la courant/capacitance, 
