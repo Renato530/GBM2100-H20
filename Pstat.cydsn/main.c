@@ -19,7 +19,10 @@
 #include "task.h"
 #include "stdio.h"
 
-// Variable options permettent de définir les unitées des fonctions du multimetre
+/*
+    Variable options permettent de définir les unitées des fonctions du multimetre
+    ==============================================================================
+*/
 volatile int optionVoltmetre=0; // Volts
 volatile int optionAmperemetre=1; // miliAmperes
 volatile int optionOhmmetre=0; // Ohms
@@ -255,9 +258,11 @@ void MenuParametres(){
         }   
 }
 
-////////////////////////
-// Cette fonction permet l'utilisation du voltmetre 
-////////////////////////
+/*
+    Mode Voltmètre
+    ================================================
+    Cette fonction permet l'utilisation du voltmetre 
+*/
 void mode_Voltmetre() 
 {
     AMux_FastSelect(0);
@@ -295,9 +300,11 @@ void mode_Voltmetre()
     }
 } 
 
-////////////////////////
-// Cette fonction permet l'utilisation du ohmetre 
-////////////////////////
+/*
+    Mode Ohmmètre
+    ==============================================
+    Cette fonction permet l'utilisation du ohmetre 
+*/
 void mode_Ohmetre()
 {
     AMux_FastSelect(1);
@@ -375,9 +382,11 @@ void mode_Ohmetre()
     }
 }
 
-////////////////////////
-// Cette fonction permet l'utilisation de l'amperemetre 
-////////////////////////
+/*
+    Mode Ampèremètre
+    ====================================================
+    Cette fonction permet l'utilisation de l'amperemetre 
+*/
 
 void mode_Amperemetre () 
 {
