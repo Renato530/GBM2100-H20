@@ -12,22 +12,39 @@
  * Tasnim Ahmed             1958545
  * ========================================
 */
+
+/*
+    NOTE:
+    ==============================================================
+    Ce code compile, mais on a des problèmes d'affichage sur Putty. 
+*/
+    
 #include "project.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include <stdio.h>
 
-volatile uint32_t t_10us=0;
+volatile uint32_t t_10us=0; // cette variable permet de garde le temps de charge du condensateur en mémoire
 
 
 ///////////////////////////// FUNCTIONS BODY /////////////////////////////
 
+/*
+    Interruption sur l'ADC
+    =============================================================
+    Cette interruption a pour but de capturer la mesure du 
+    potentiel du condensateur à un temps t_10us donné. La capture
+    sera fait via l'ADC.
+*/
 CY_ISR(Timing_ISR_Handler)
 {
     Timer_ReadStatusRegister();
     t_10us++;
 }
 
+/*
+    Voir main.c de la branche master
+*/
 void UART_initialisation() 
 {
     UART_Start();
@@ -46,15 +63,20 @@ void UART_initialisation()
     CyDelay(300);
 }
 
-
+/*
+    Mode Capacimètre
+    =============================================================
+    Cette fonction est la configuration du capacimètre dans
+    notre multimètre.
+*/
 void mode_Capacimetre()
 {
-    uint32_t DAC_valeur = 0xff;
-    char capacitance[10];
+    uint32_t DAC_valeur = 0xff; // Valeur fourni au DAC entre 0 et 255
+    char capacitance[10]; // Espace alloué pour afficher via Putty par un string
     DAC_Stop();
-    int32 adc_conversion=0;
+    int32 adc_conversion=0; // valeur extrait par l'ADC sur le potentiel du condensateur
     
-    if (ADC_SAR_IsEndConversion(ADC_SAR_RETURN_STATUS)!=0)
+    if (ADC_SAR_IsEndConversion(ADC_SAR_RETURN_STATUS)!=0) // Condition pour obtenir une lecture
     {
         adc_conversion = ADC_SAR_GetResult16();
     }
@@ -63,7 +85,7 @@ void mode_Capacimetre()
     DAC_SetValue(DAC_valeur);
    
     int32 adc_max = 2048;
-    while (adc_conversion < adc_max)
+    while (adc_conversion < adc_max) // permet de ne pas charger le condensateur au déla de 2.048V
     {
         if (ADC_SAR_IsEndConversion(ADC_SAR_RETURN_STATUS)!=0)
         {
@@ -76,10 +98,10 @@ void mode_Capacimetre()
     DAC_Stop();
     while (adc_conversion > 256)
     {
-        float charge = DAC_valeur*8;
-        uint32 temps = t_10us/100;
-        float voltage = adc_max/2;
-        float capacitance_nf= 1000*8*((charge*temps)/voltage);
+        float charge = DAC_valeur*8; // Charge Q = courant*temps
+        uint32 temps = t_10us/100; // temps en ms
+        float voltage = adc_max/2; 
+        float capacitance_nf= 1000*8*((charge*temps)/voltage); // utilisation de C = voltage*charge en nF
         sprintf(capacitance,"%.2f",capacitance_nf);
         UART_PutString("-> Capacitance : "); 
         UART_PutString(capacitance);
@@ -105,8 +127,6 @@ int main(void)
     DAC_Start();
     Timer_Start();
     Timing_ISR_StartEx(Timing_ISR_Handler);
-    
-    //xTaskCreate(UART_initialisation,"InUART",200,(void*)0, tskIDLE_PRIORITY,&mTache1); // Creation d'un task pour le FreeRTOS
     
     int frequence_echatillonage = 10; // Hz
     int periode_echatillonage=1000/frequence_echatillonage; // mS
