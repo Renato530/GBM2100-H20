@@ -106,7 +106,7 @@ Lors de nos essais pour le mode ohmètre de notre multimètre, nous avons rémar
 Cette différence peut être expliqué par la présence d'une impédance dans notre FreeSoC qui affecte la valeur de la résistance calculée. 
 Le lien suivant est conçu pour vous diriger vers le fichier Excel qui présente un tableau et un graphique montrant la différence entre les valeurs de résistance théorique et celle expérimentale obtenu à l'aide de l'interface PuTTy.
 
-Tableau 4: Essais expérimentaux effectués sur l'ohmmètre
+Tableau 4: 
 [Essais expérimentaux effectués sur l'ohmètre](https://docs.google.com/spreadsheets/d/e/2PACX-1vTpft_QFTHJTE6t6AvndqwOW35QqkJcjC4h1Y33P8fuqk1R-fKJRkmImc00Alzv2B-iJ3qAoD9SoYSs/pubhtml).
 
 <img src="documentation/images/TopDesign_Ohmetre.PNG" width="700" height="500">*Figure 7: TopDesign du ohmmètre*
