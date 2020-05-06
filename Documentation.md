@@ -33,14 +33,14 @@ Table de matières
 =================
 
 <!--ts-->
-   * [Matériel](##Matériel)
-   * [Volmètre](##Volmètre)
-   * [Ohmètre](##Ohmètre)
-   * [Ampèremètre](##Ampèremètre)
-   * [Capacimètre](##Capacimètre)
-   * [Composantes à améliorer](##Composantes à améliorer)
-   * [Interface Utilisateur](##Interface Utilisateur)
-   * [Tests supplémentaires](##Tests supplémentaires)
+   * [Matériel](#Matériel)
+   * [Volmètre](#Volmètre)
+   * [Ohmètre](#Ohmètre)
+   * [Ampèremètre](#Ampèremètre)
+   * [Capacimètre](#Capacimètre)
+   * [Composantes à améliorer](#Composantes à améliorer)
+   * [Interface Utilisateur](#Interface Utilisateur)
+   * [Tests supplémentaires](#Tests supplémentaires)
 <!--te-->
 
 ## Matériel
