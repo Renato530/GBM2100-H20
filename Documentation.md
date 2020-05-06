@@ -1,3 +1,5 @@
+<img src="documentation/images/logo_poly.png" width="500" height="200">
+
 # Multimètre FreeSoC2 PSoC5LP DevBoard
 
 Dans le cadre du cours GBM2100, nous avons opté pour l'élaboration d'un multimètre à l'aide d'un microcontrôleur pour le projet intégrateur de la session d'hiver 2020. 
@@ -16,18 +18,6 @@ Le schéma suivant illustre notre plan de conception du multimètre:
 
 <img src="documentation/images/TopDesign_Multimetre.PNG" width="700" height="500">*Figure 2: TopDesign du multimètre*
 
-## Matériel
-
--   FreeSoC 5LP- CY8C5888AXI-LP096
--   PSoC Creator 4.2
--   Kit de résistance
--   Potentiomètre 10kOhm
--   Putty
--   Fils jumper
--   Condensateur
--   écran LCD
-
-
 #### Loi d'Ohm
 
 $`V=RI`$
@@ -38,6 +28,31 @@ $`C = \frac{q}{V}`$
 
 $`i(t) = C*\frac{dv}{dt}`$
 
+
+Table de matières
+=================
+
+<!--ts-->
+   * [Matériel](##Matériel)
+   * [Volmètre](##Volmètre)
+   * [Ohmètre](##Ohmètre)
+   * [Ampèremètre](##Ampèremètre)
+   * [Capacimètre](##Capacimètre)
+   * [Composantes à améliorer](##Composantes à améliorer)
+   * [Interface Utilisateur](##Interface Utilisateur)
+   * [Tests supplémentaires](##Tests supplémentaires)
+<!--te-->
+
+## Matériel
+
+-   FreeSoC 5LP- CY8C5888AXI-LP096
+-   PSoC Creator 4.2
+-   Kit de résistance
+-   Potentiomètre 10kOhm
+-   Putty
+-   Fils jumper
+-   Condensateur
+-   écran LCD
 
 ## Volmètre
 
@@ -186,8 +201,9 @@ microcontrôleurs.
 4. Intégrer la composante LCD au multimètre
 5. Intégrer un clavier 4x4 matriciel
 6. Intégrer la gestion de tâches avec FreeRTOS
+7. Terminer le capacimètre et l'intégrer au multimètre
 
-## Interface Utilisateur (putty)
+## Interface Utilisateur 
 
 Afin qu'un utilisateur puisse utiliser notre multimètre, une interface a été concue sur putty. Celle-ci consiste en un menu et sous-menus permettant de choisir le mode du multimètre (voltmètre ampèremètre ou ohmmètre) et d'accèder au menu de paramètres afin de changer l'unité d'affichage du multimètre ainsi que de changer la vitesse d'afichage des mesures (fréquence d'échatillonage).
 
