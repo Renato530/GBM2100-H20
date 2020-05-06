@@ -38,12 +38,13 @@ Table de matières
    * [Ohmètre](#Ohmètre)
    * [Ampèremètre](#Ampèremètre)
    * [Capacimètre](#Capacimètre)
-   * [Composantes à améliorer](#Composantes à améliorer)
-   * [Interface Utilisateur](#Interface Utilisateur)
-   * [Tests supplémentaires](#Tests supplémentaires)
+   * [Composantes à améliorer](#Composantes-à-améliorer)
+   * [Interface Utilisateur](#Interface-Utilisateur)
+   * [Tests supplémentaires](#Tests-supplémentaires)
 <!--te-->
 
-## Matériel
+Matériel
+=================
 
 -   FreeSoC 5LP- CY8C5888AXI-LP096
 -   PSoC Creator 4.2
@@ -54,7 +55,8 @@ Table de matières
 -   Condensateur
 -   écran LCD
 
-## Volmètre
+Volmètre
+=================
 
 Le voltmètre permet de mesurer la tension dans un circuit électrique entre deux points.
 Ce voltmètre sera la composante du multimètre qui requiert le moins d'élements dans PSoC. En effet
@@ -93,7 +95,8 @@ Tableau 2: Essais expérimentaux effectués sur le volmètre
 <img src="documentation/images/montage_voltmetre.png" width="700" height="500">*Figure 5: Montage expérimental du voltmètre*
 
   
-## Ohmètre
+Ohmètre
+=================
 
 En ce qui concerne l'Ohmètre, cette composante va s'inspirer du laboratoire 3 dans lequel nous avons dû 
 déterminer une résistance interne du FreeSoC2 PSoC5LP. Cépendant, on doit être en mesure d'extraire les 
@@ -129,7 +132,8 @@ Tableau 4:
 <img src="documentation/images/montage_ohmmetre.png" width="700" height="500">*Figure 8: Montage expérimental du ohmmètre*
 
 
-## Ampèremètre
+Ampèremètre
+=================
 
 Pour ce qui est de l'ampèremètre, nous avons dû pousser nos recherches en ce qui concerne la disposition de notre circuit, 
 les composantes que nous voulions utiliser ainsi que les branchements que nous souhaitions faire pour que le tout puisse fonctionner
@@ -173,7 +177,8 @@ Tableau 6: Essais expérimentaux effectués sur l'ampèremètre
 <img src="documentation/images/montage_amperemetre.png" width="700" height="500">*Figure 11: Montage expérimental de l'ampèremètre*
 
   
-## Capacimètre
+Capacimètre
+=================
 
 La composant du capacimètre avait le but de charger un condensateur en appliquant un courant
 et par la suite, on fait une lecture d'ADC et en utilisant la relation entre la courant/capacitance, 
@@ -189,7 +194,8 @@ Voici le TopDesign du capacimètre que nous avons entamé, mais que nous n'avons
 
 <img src="documentation/images/TopDesign_Capacimetre.PNG" width="700" height="500">*Figure 13: TopDesign du capacimètre*
 
-## Composantes à améliorer 
+Composantes à améliorer 
+=======================
 
 Les prochains points sont des idées que nous avons pensé faire afin d'améliorer
 notre projet. Ces ajouts requièrent une connaissance approfonfie dans le fonctionnement des
@@ -203,7 +209,8 @@ microcontrôleurs.
 6. Intégrer la gestion de tâches avec FreeRTOS
 7. Terminer le capacimètre et l'intégrer au multimètre
 
-## Interface Utilisateur 
+Interface Utilisateur 
+=====================
 
 Afin qu'un utilisateur puisse utiliser notre multimètre, une interface a été concue sur putty. Celle-ci consiste en un menu et sous-menus permettant de choisir le mode du multimètre (voltmètre ampèremètre ou ohmmètre) et d'accèder au menu de paramètres afin de changer l'unité d'affichage du multimètre ainsi que de changer la vitesse d'afichage des mesures (fréquence d'échatillonage).
 
@@ -232,7 +239,8 @@ Mode d'emploi du menu du multimètre:
 
 <img src="documentation/images/Capture_5.png" width="700" height="500">*Figure 16: Exemple menu de changement d'unités*
 
-## Tests supplémentaires
+Tests supplémentaires
+=====================
 
 À des fins de vérification supplémentaires, un multimètre industriel a été utilisé pour s'assurer du bon fonctionnement général du multimètre car les mesures prises avec le multimètre industriel n'étaient pas assez précices pour valider les mesures calculées avec notre multimètre. Cepandant les mesures approximatives nous ont permis de s'assurer les mesures était faites au bon endroit dans le circuit et que le mutimètre donnait approximativement des bonne valeur puisque les valeurs données par le multimètre industriel sont indiquées par une aiguille.
 
